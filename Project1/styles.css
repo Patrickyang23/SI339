@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #0044cc;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    padding: 2em;
+}
+
+.gallery {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+}
+
+.athlete {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.2s; */
+}
+
+.athlete:hover {
+    transform: scale(1.05);
+}
+
+.athlete img {
+    width: 80px; 
+    height: 80px; 
+    float: right;
+    border-radius: 50%; 
+    margin-left: 20px;
+
+  }
+
+.athlete-details {
+    text-align: left;
+}
+
+.athlete-details h2 {
+    margin: 0.5em 0;
+    font-size: 24px;
+}
+
+.races, .comments {
+    margin-top: 10px;
+}
+
+.races h3, .comments h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.race {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.race p {
+    margin: 0.5em 0;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2em;
+}
