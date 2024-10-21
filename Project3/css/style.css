@@ -1,0 +1,467 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    background-color: #f4f4f4;
+    color: rgba(51, 51, 51);
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size for large headings */
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size for medium headings */
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Responsive font size for smaller headings */
+}
+
+/* Styling for "Skip to Main Content" link */
+.skip {
+    position: absolute;
+    top: -100px;
+    text-align: center;
+    width: 90vw;
+    /* max-width: 600px;  Set a maximum width for larger screens */
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    z-index: 1000;  /* Ensures it's on top of other elements */
+    opacity: 0;  /* Initially invisible */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;  /* Smooth transitions */
+}
+
+.skip:focus {
+    top: 10px;  /* Move the link back into view */
+    opacity: 1;  /* Make it visible */
+    z-index: 1200
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    display: flex;
+    justify-content: left; /* Default for the small screen */
+    align-items: center;
+    background-color: rgba(30, 108, 147, 1);  /* Add a background color */
+    padding: 10px 20px;  /* Padding around the nav to give space */
+    z-index: 1000;  /* Ensure the nav stays on top of other elements */
+}
+
+/* Hamburger Menu (default: visible on smaller screens) */
+.hamburger {
+    display: block;
+    font-size: 1.4rem;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+    z-index: 1100;  /* Ensure it's above the overlay */
+}
+
+/* Left side - "Cross Country" */
+.nav-left {
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Right side - Navigation links */
+.nav-menu ul {
+    list-style: none;
+    display: none; /* Default: hide menu for small screens */
+    padding: 0;
+    margin: 0;
+    gap: 10px;  /* Space between items */
+}
+
+.nav-menu ul li {
+    display: inline;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;  /* Make <a> behave as a block to allow transform */
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for scale */
+}
+
+.nav-menu ul li a:hover {
+    transform: scale(1.05);
+}
+
+/* Side Menu (hidden by default, visible on small screens) */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(30, 108, 147, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1100;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    margin: 20px 0;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    /* font-size: 1.2em; */
+}
+
+/* Make the side menu slide in */
+.side-menu.active {
+    left: 0;
+}
+
+/* Overlay (initially hidden) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Responsive behavior for screens smaller than 780px */
+@media (min-width: 780px) {
+    /* Hide the hamburger icon */
+    .hamburger {
+        display: none;
+    }
+    /* Show the full navigation menu */
+    .nav-menu ul {
+        display: flex;  /* Switch to horizontal nav layout */
+        justify-content: flex-start;
+    }
+
+    /* Hide the side menu since the full menu is visible */
+    .side-menu {
+        display: none;
+    }
+}
+
+/* Header styling */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 1;  /* Ensure it's behind the nav if needed */
+    position: relative;  /* Avoid overlap with nav */
+    margin-top: 80px;
+}
+
+header h1 {
+    font-weight: normal;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Main content */
+main {
+    margin-top: 20px;
+}
+
+/* Section styling */
+section {
+    scroll-margin-top: 80px;  /* Adjust this value to match or slightly exceed the height of your fixed navbar */
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+section h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+/* Summary Section */
+.summary {
+    /* background-color: #dfe6e9; */
+    padding: 15px;
+    line-height: 1.6;
+    border-radius: 8px;
+    word-wrap: break-word;
+    white-space: normal;  /* Ensure proper word wrapping */
+    /* margin-top: 20px; */
+}
+
+.summary p {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+/* Athlete section */
+span.athlete  {
+    font-weight: bold;
+    /* color: #2980b9; */
+    white-space: nowrap;  /* Ensure athlete names do not break onto new lines */
+    display: inline;  /* Ensure span is treated as inline element */
+}
+
+/* Time styling */
+time {
+    font-style: italic;
+    color: #333;
+}
+
+/* Scrollable container for the table */
+.table-container {
+    max-height: 30vh;  /* Limit the height to 30% of the viewport */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    margin-top: 15px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+    position: sticky;  /* Enable the sticky behavior */
+    top: 0;  /* Stick the header to the top of the container */
+    z-index: 2;  /* Ensure it stays above other content when scrolling */
+}
+
+/* Container for all athlete cards */
+.athlete-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
+    gap: 20px;  /* Space between cards */
+    padding: 20px;
+    max-height: 70vh;  /* Limit the height to 30% of the viewport */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+}
+
+/* Athlete Card Styling */
+.athlete-card {
+    display: flex;  /* Flexbox to align image and info side by side */
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    align-items: center;  /* Ensure the image is aligned at the top */
+    width: 100%;
+    max-width: 300px;  /* Limit the card width on large screens */
+    margin: 10px auto;  /* Center the card and add vertical spacing */
+}
+
+.athlete-card:hover {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+}
+
+/* Athlete Image */
+.athlete-figure {
+    margin-left: 20px;
+    margin-right: 20px;  /* Space between image and info */
+    text-align: center;
+    width: 100px;  /* Set width for the figure */
+    height: 150px;  /* Ensure uniform height */
+    flex-shrink: 0;  /* Prevent the image from shrinking */
+}
+
+.athlete-figure img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.athlete-figure figcaption {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #3498db;
+}
+
+/* Athlete Info */
+.athlete-info {
+    margin-top: 20px;
+    margin-left: 20px;
+    flex: 1; /* Let it take up remaining space */
+}
+
+dl {
+    margin: 0;
+}
+
+dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+dd {
+    margin-bottom: 15px;
+}
+
+/* Gallery Section */
+.gallery-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;  /* Space between images */
+    justify-content: center;
+    max-height: 65vh;  /* Limit the height to 30% of the viewport */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+}
+
+.gallery-container img {
+    margin: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;  /* Smooth hover transition */
+}
+
+.gallery-container img:hover {
+    transform: scale(1.1);  /* Slight zoom effect on hover */
+}
+
+
+/* Footer styling */
+footer {
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+/* Container for flex layout */
+.footer-container {
+    display: flex;  /* Use flexbox for layout */
+    justify-content: space-between;  /* Distribute space between left and right sections */
+    align-items: center;  /* Align content at the top */
+    flex-wrap: wrap;  /* Wrap the items if needed for smaller screens */
+}
+
+/* Left section with vertical centering */
+.footer-left {
+    text-align: left;
+}
+
+.footer-left address {
+    font-style: normal;  /* Remove italic from the address tag */
+}
+
+/* Right section */
+.footer-right {
+    width: 45%;  /* Adjust width for right content */
+    text-align: right;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+footer a, p {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Instagram Icon - Ensure Font Awesome works */
+.fa-brands.fa-instagram {
+    font-size: 24px;
+    color: #833ab4; /* Optional: Instagram brand color */
+    transition: color 0.3s;
+}
+
+.fa-brands.fa-instagram:hover {
+    color: #f77737; /* Change color on hover to Instagram's secondary color */
+}
+
+/* Limit to five photos in a row for large screens */
+@media (min-width: 1024px) {
+    #gallery {
+        grid-template-columns: repeat(5, 1fr);  /* Restrict to 5 images in a row */
+    }
+}
+
+/* Responsive footer - Stack items on smaller screens */
+@media (max-width: 480px) {
+    .footer-left, .footer-right {
+        width: 100%;  /* Stack left and right sections */
+        text-align: center;
+    }
+}
