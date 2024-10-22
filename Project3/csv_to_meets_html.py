@@ -36,7 +36,7 @@ def csv_to_html(csv_filename, output_folder):
    <body>
    <a class="skip" href = "#main">Skip to Main Content</a>
    <nav>
-        <div class="hamburger">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+        <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
         <div class="nav-left">Cross Country</div>
         <div class="nav-menu">
             <ul>
@@ -63,26 +63,35 @@ def csv_to_html(csv_filename, output_folder):
    
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
+        // Add click event listener for the hamburger icon
         document.querySelector(".hamburger").addEventListener("click", function () {{
+            toggleMenu();
+        }});
+        
+        // Add keydown event listener for keyboard navigation
+        document.querySelector(".hamburger").addEventListener("keydown", function (event) {{
+            if (event.key === "Enter" || event.key === " ") {{
+                event.preventDefault(); // Prevent default behavior for space
+                toggleMenu();
+            }}
+        }});
+        
+        // Add click event listener for overlay
+        document.querySelector(".overlay").addEventListener("click", function () {{
+            toggleMenu();
+        }});
+
+        // Function to toggle menu visibility
+        function toggleMenu() {{
             var sideMenu = document.querySelector(".side-menu");
             var overlay = document.querySelector(".overlay");
 
-            // Toggle the visibility of the side menu and overlay
             sideMenu.classList.toggle("active");
             overlay.classList.toggle("active");
-        }});
-
-        document.querySelector(".overlay").addEventListener("click", function () {{
-            var sideMenu = document.querySelector(".side-menu");
-            var overlay = document.querySelector(".overlay");
-
-            // Remove the active classes to hide the side menu and overlay
-            sideMenu.classList.remove("active");
-            overlay.classList.remove("active");
-        }});
+        }}
     </script>
    
-   <header>
+<header>
       <!--Meet Info-->
        
         <h1><a href="{link_url}">{link_text}</a></h1>
