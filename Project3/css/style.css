@@ -304,6 +304,29 @@ table th {
     z-index: 2;  /* Ensure it stays above other content when scrolling */
 }
 
+/* Container for the filters */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Space between the filters */
+    /* margin-bottom: 10px; */
+    text-align: center;
+}
+
+/* Style for filter dropdowns */
+.filter-select {
+    width: 200px;  /* Ensure equal width */
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#no-results-message {
+    display: none;
+    color: black;
+    text-align: center;
+}
+
 /* Container for all athlete cards */
 .athlete-cards-container {
     display: grid;

@@ -150,24 +150,26 @@ def csv_to_html(csv_filename, output_folder):
                     <section id="individual-results" tabindex="0">\n
                     <h2>Individual Results</h2>
                     
-                    <!-- Dropdown to filter by grade -->
-                    <label for="grade-filter">Filter by Grade: </label>
-                    <select id="grade-filter">
-                        <option value="all">All Grades</option>
-                        <option value="9">Grade 9</option>
-                        <option value="10">Grade 10</option>
-                        <option value="11">Grade 11</option>
-                        <option value="12">Grade 12</option>
-                    </select>
-                    
-                    <!-- Search by name input field -->
-                    <label for="name-search">Search by Name: </label>
-                    <input type="text" id="name-search" placeholder="Search for an athlete by name">
+                    <div class="filter-container">
+                        <!-- Dropdown to filter by grade -->
+                        <label for="grade-filter">Filter by Grade: </label>
+                        <select id="grade-filter" class="filter-select">
+                            <option value="all">All Grades</option>
+                            <option value="9">Grade 9</option>
+                            <option value="10">Grade 10</option>
+                            <option value="11">Grade 11</option>
+                            <option value="12">Grade 12</option>
+                        </select>
+                        
+                        <!-- Search by name input field -->
+                        <label for="name-search">Search by Name: </label>
+                        <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
+                    </div>
 
                     <div class="athlete-cards-container">
                     
                     <!-- No results message (hidden by default) -->
-                    <p id="no-results-message" style="display: none;">No results matched your criteria.</p>
+                    <p id="no-results-message" >No results matched your criteria.</p>
                     """
 
                 place = row[0]
