@@ -160,7 +160,15 @@ def csv_to_html(csv_filename, output_folder):
                         <option value="12">Grade 12</option>
                     </select>
                     
-                    <div class="athlete-cards-container">"""
+                    <!-- Search by name input field -->
+                    <label for="name-search">Search by Name: </label>
+                    <input type="text" id="name-search" placeholder="Search for an athlete by name">
+
+                    <div class="athlete-cards-container">
+                    
+                    <!-- No results message (hidden by default) -->
+                    <p id="no-results-message" style="display: none;">No results matched your criteria.</p>
+                    """
 
                 place = row[0]
                 grade = row[1]
@@ -170,7 +178,7 @@ def csv_to_html(csv_filename, output_folder):
 
                 # Add the athlete div
                 html_content += f"""
-    <div class="athlete-card" data-grade="{grade}">
+    <div class="athlete-card" data-grade="{grade}" data-name="{name.lower()}">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
             <figcaption>{name}</figcaption>
@@ -185,23 +193,48 @@ def csv_to_html(csv_filename, output_folder):
     </div>
     
     <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {{
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
+        // Get the grade filter, name search elements, and no result messages
+        const gradeFilter = document.getElementById("grade-filter");
+        const nameSearch = document.getElementById("name-search");
+        const noResultsMessage = document.getElementById("no-results-message");
+        
+        // Add event listeners for both filters
+        gradeFilter.addEventListener("change", filterAthletes);
+        nameSearch.addEventListener("input", filterAthletes);
+
+        // Function to filter athletes based on grade and name
+        function filterAthletes() {{
+            const selectedGrade = gradeFilter.value;
+            const searchName = nameSearch.value.toLowerCase();  // Convert search input to lowercase for case-insensitive search
+            const athleteCards = document.querySelectorAll(".athlete-card");
+            
+            let visibleCount = 0;  // Keep track of how many cards are visible
 
             athleteCards.forEach(function(card) {{
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
+                const cardGrade = card.getAttribute("data-grade");
+                const cardName = card.getAttribute("data-name");
 
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {{
-                    card.style.display = "flex"; // Show card
+                // Check if the card matches the selected grade and search query
+                const matchesGrade = (selectedGrade === "all" || cardGrade === selectedGrade);
+                const matchesName = cardName.includes(searchName);
+
+                // Show the card if it matches both filters, otherwise hide it
+                if (matchesGrade && matchesName) {{
+                    card.style.display = "flex";  // Show card
+                    visibleCount++;  // Increment visible count
                 }} else {{
-                    card.style.display = "none"; // Hide card
+                    card.style.display = "none";  // Hide card
                 }}
             }});
-        }});
+            
+            // If no cards are visible, show the no results message
+            if (visibleCount === 0) {{
+                noResultsMessage.style.display = "block";  // Show the message
+            }} else {{
+                noResultsMessage.style.display = "none";  // Hide the message
+            }}
+        }}
+        
     </script>
 """
 
