@@ -63,32 +63,46 @@ def csv_to_html(csv_filename, output_folder):
    
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
-        // Add click event listener for the hamburger icon
-        document.querySelector(".hamburger").addEventListener("click", function () {{
-            toggleMenu();
+        // Select the relevant elements
+        const hamburger = document.querySelector(".hamburger");
+        const sideMenu = document.querySelector(".side-menu");
+        const overlay = document.querySelector(".overlay");
+        const sideMenuLinks = document.querySelectorAll(".side-menu a");
+
+        // Function to open the menu
+        function openMenu() {{
+            sideMenu.classList.add("active");
+            overlay.classList.add("active");
+        }}
+
+        // Function to close the menu
+        function closeMenu() {{
+            sideMenu.classList.remove("active");
+            overlay.classList.remove("active");
+        }}
+
+        // Automatically open the menu when the hamburger icon is focused
+        hamburger.addEventListener("focus", function () {{
+            openMenu();
         }});
-        
-        // Add keydown event listener for keyboard navigation
-        document.querySelector(".hamburger").addEventListener("keydown", function (event) {{
-            if (event.key === "Enter" || event.key === " ") {{
-                event.preventDefault(); // Prevent default behavior for space
-                toggleMenu();
+
+        // Add focus listeners to each link in the side menu
+        sideMenuLinks.forEach(function (link) {{
+            link.addEventListener("focus", function () {{
+                openMenu();
+            }});
+        }});
+
+        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
+        document.addEventListener("focusin", function (event) {{
+            // Check if the newly focused element is outside both the side menu and the hamburger icon
+            if (
+                !sideMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {{
+                closeMenu();
             }}
         }});
-        
-        // Add click event listener for overlay
-        document.querySelector(".overlay").addEventListener("click", function () {{
-            toggleMenu();
-        }});
-
-        // Function to toggle menu visibility
-        function toggleMenu() {{
-            var sideMenu = document.querySelector(".side-menu");
-            var overlay = document.querySelector(".overlay");
-
-            sideMenu.classList.toggle("active");
-            overlay.classList.toggle("active");
-        }}
     </script>
    
 <header>
