@@ -40,22 +40,22 @@ def csv_to_html(csv_filename, output_folder):
         <div class="nav-left">Cross Country</div>
         <div class="nav-menu">
             <ul>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#team-results">Team Results</a></li>
-                <li><a href="#individual-results">Individual Results</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Gallery</a></li>
             </ul>
         </div>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
             <ul>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#team-results">Team Results</a></li>
-                <li><a href="#individual-results">Individual Results</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -105,16 +105,16 @@ def csv_to_html(csv_filename, output_folder):
         }});
     </script>
    
-<header>
+    <header tabindex="0">
       <!--Meet Info-->
        
         <h1><a href="{link_url}">{link_text}</a></h1>
         <h2>{h2_text}</h2>
-   </header>
-   <main id = "main">
+    </header>
+    <main id = "main">
 
 
-    <section class="summary" id = "summary">
+    <section class="summary" id = "summary" tabindex="0">
       <h2>Race Summary</h2>
       {summary_text}
     </section>
@@ -122,7 +122,7 @@ def csv_to_html(csv_filename, output_folder):
 
 
         # Start container for individual results
-        html_content += """<section id="team-results">\n
+        html_content += """<section id="team-results" tabindex="0">\n
         <h2>Team Results</h2>"""
         
         # Add a div container to enable scrolling
@@ -147,8 +147,19 @@ def csv_to_html(csv_filename, output_folder):
                     table_start = False
                     html_content += "</table>\n"
                     html_content += """</section>\n
-                    <section id="individual-results">\n
-                    <h2>Individual Results</h2>\n
+                    <section id="individual-results" tabindex="0">\n
+                    <h2>Individual Results</h2>
+                    
+                    <!-- Dropdown to filter by grade -->
+                    <label for="grade-filter">Filter by Grade: </label>
+                    <select id="grade-filter">
+                        <option value="all">All Grades</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                    
                     <div class="athlete-cards-container">"""
 
                 place = row[0]
@@ -159,7 +170,7 @@ def csv_to_html(csv_filename, output_folder):
 
                 # Add the athlete div
                 html_content += f"""
-    <div class="athlete-card">
+    <div class="athlete-card" data-grade="{grade}">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
             <figcaption>{name}</figcaption>
@@ -172,11 +183,31 @@ def csv_to_html(csv_filename, output_folder):
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {{
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
+
+            athleteCards.forEach(function(card) {{
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {{
+                    card.style.display = "flex"; // Show card
+                }} else {{
+                    card.style.display = "none"; // Hide card
+                }}
+            }});
+        }});
+    </script>
 """
 
         html_content += """</div>\n
         </section>\n
-        <section id = "gallery">
+        <section id = "gallery" tabindex="0">
             <h2>Gallery</h2>
             <div class="gallery-container">
             """

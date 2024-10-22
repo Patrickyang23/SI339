@@ -276,6 +276,7 @@ time {
 .table-container {
     max-height: 30vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling on smaller screens */
     margin-top: 15px;
 }
 
@@ -309,8 +310,9 @@ table th {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
     gap: 20px;  /* Space between cards */
     padding: 20px;
-    max-height: 70vh;  /* Limit the height to 30% of the viewport */
+    max-height: 45vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling if content exceeds the height */
 }
 
 /* Athlete Card Styling */
@@ -385,8 +387,9 @@ dd {
     flex-wrap: wrap;
     gap: 10px;  /* Space between images */
     justify-content: center;
-    max-height: 65vh;  /* Limit the height to 30% of the viewport */
+    max-height: 45vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable hotizontal scrolling if content exceeds the height */
 }
 
 .gallery-container img {

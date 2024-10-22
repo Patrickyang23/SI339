@@ -12,26 +12,26 @@
    <body>
    <a class="skip" href = "#main">Skip to Main Content</a>
    <nav>
-        <div class="hamburger">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+        <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
         <div class="nav-left">Cross Country</div>
         <div class="nav-menu">
             <ul>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#team-results">Team Results</a></li>
-                <li><a href="#individual-results">Individual Results</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Gallery</a></li>
             </ul>
         </div>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
             <ul>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#team-results">Team Results</a></li>
-                <li><a href="#individual-results">Individual Results</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -39,39 +39,62 @@
    
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
-        document.querySelector(".hamburger").addEventListener("click", function () {
-            var sideMenu = document.querySelector(".side-menu");
-            var overlay = document.querySelector(".overlay");
+        // Select the relevant elements
+        const hamburger = document.querySelector(".hamburger");
+        const sideMenu = document.querySelector(".side-menu");
+        const overlay = document.querySelector(".overlay");
+        const sideMenuLinks = document.querySelectorAll(".side-menu a");
 
-            // Toggle the visibility of the side menu and overlay
-            sideMenu.classList.toggle("active");
-            overlay.classList.toggle("active");
-        });
+        // Function to open the menu
+        function openMenu() {
+            sideMenu.classList.add("active");
+            overlay.classList.add("active");
+        }
 
-        document.querySelector(".overlay").addEventListener("click", function () {
-            var sideMenu = document.querySelector(".side-menu");
-            var overlay = document.querySelector(".overlay");
-
-            // Remove the active classes to hide the side menu and overlay
+        // Function to close the menu
+        function closeMenu() {
             sideMenu.classList.remove("active");
             overlay.classList.remove("active");
+        }
+
+        // Automatically open the menu when the hamburger icon is focused
+        hamburger.addEventListener("focus", function () {
+            openMenu();
+        });
+
+        // Add focus listeners to each link in the side menu
+        sideMenuLinks.forEach(function (link) {
+            link.addEventListener("focus", function () {
+                openMenu();
+            });
+        });
+
+        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
+        document.addEventListener("focusin", function (event) {
+            // Check if the newly focused element is outside both the side menu and the hamburger icon
+            if (
+                !sideMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                closeMenu();
+            }
         });
     </script>
    
-   <header>
+    <header tabindex="0">
       <!--Meet Info-->
        
         <h1><a href="https://www.athletic.net/CrossCountry/meet/238311/results/952326">SEC Jamboree #1 Mens 5000 Meters Varsity</a></h1>
         <h2>Tue Sep 10 2024</h2>
-   </header>
-   <main id = "main">
+    </header>
+    <main id = "main">
 
 
-    <section class="summary" id = "summary">
+    <section class="summary" id = "summary" tabindex="0">
       <h2>Race Summary</h2>
       <p>Ann Arbor Skyline's varsity boys team placed 11th overall with 102 points. Leading the team was <span class="athlete">Nicholas Yuan</span>, who finished 20th with a time of <span class="time">17:29.80</span>, followed by <span class="athlete">Bruno Cifaldi</span> in 25th (<span class="time">17:41.70</span>), and <span class="athlete">Enshu Kuan</span> in 32nd (<span class="time">17:52.60</span>). <span class="athlete">Jack Robichaud</span> (40th, <span class="time">18:12.20</span>) and <span class="athlete">Zeke Lafferty</span> (51st, <span class="time">18:29.10</span>) rounded out the scoring for Skyline, while <span class="athlete">Matthew Casavant</span> achieved a personal record (PR) with a time of <span class="time">18:01.60</span>.</p>
     </section>
-<section id="team-results">
+<section id="team-results" tabindex="0">
 
         <h2>Team Results</h2><div class="table-container">
 <table>
@@ -92,12 +115,22 @@
 </table>
 </section>
 
-                    <section id="individual-results">
+                    <section id="individual-results" tabindex="0">
 
                     <h2>Individual Results</h2>
-
+                    
+                    <!-- Dropdown to filter by grade -->
+                    <label for="grade-filter">Filter by Grade: </label>
+                    <select id="grade-filter">
+                        <option value="all">All Grades</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                    
                     <div class="athlete-cards-container">
-    <div class="athlete-card">
+    <div class="athlete-card" data-grade="10">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/21615273.jpg" width="200" alt="Profile picture of Nicholas Yuan"> 
             <figcaption>Nicholas Yuan</figcaption>
@@ -110,8 +143,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="11">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/21147176.jpg" width="200" alt="Profile picture of Bruno Cifaldi"> 
             <figcaption>Bruno Cifaldi</figcaption>
@@ -124,8 +177,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="10">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/23687884.jpg" width="200" alt="Profile picture of Enshu Kuan"> 
             <figcaption>Enshu Kuan</figcaption>
@@ -138,8 +211,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="12">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/18820279.jpg" width="200" alt="Profile picture of Jack Robichaud"> 
             <figcaption>Jack Robichaud</figcaption>
@@ -152,8 +245,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="11">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/21142917.jpg" width="200" alt="Profile picture of Zeke Lafferty"> 
             <figcaption>Zeke Lafferty</figcaption>
@@ -166,8 +279,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="11">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/21147171.jpg" width="200" alt="Profile picture of Gustaf Finn"> 
             <figcaption>Gustaf Finn</figcaption>
@@ -180,8 +313,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="9">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/23349698.jpg" width="200" alt="Profile picture of Oskar MacArthur"> 
             <figcaption>Oskar MacArthur</figcaption>
@@ -194,8 +347,28 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
 
-    <div class="athlete-card">
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
+
+    <div class="athlete-card" data-grade="9">
         <figure class="athlete-figure"> 
             <img src="../images/profiles/19203161.jpg" width="200" alt="Profile picture of Martin Gehrke"> 
             <figcaption>Martin Gehrke</figcaption>
@@ -208,14 +381,58 @@
             </dl>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to filter athlete cards by grade
+        document.getElementById("grade-filter").addEventListener("change", function() {
+            var selectedGrade = this.value;
+            var athleteCards = document.querySelectorAll(".athlete-card");
+
+            athleteCards.forEach(function(card) {
+                // Get the grade of the current card
+                var cardGrade = card.getAttribute("data-grade");
+
+                // Show or hide the card based on the selected grade
+                if (selectedGrade === "all" || cardGrade === selectedGrade) {
+                    card.style.display = "flex"; // Show card
+                } else {
+                    card.style.display = "none"; // Hide card
+                }
+            });
+        });
+    </script>
 </div>
 
         </section>
 
-        <section id = "gallery">
+        <section id = "gallery" tabindex="0">
             <h2>Gallery</h2>
             <div class="gallery-container">
-            
+            <img src=../images/meets/235827/IMG_8973.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9049.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9023.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9019.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9032.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_8984.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9018.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9025.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9045.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_20240829_171731303.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9037.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9034.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_20240829_171709091.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9031.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9050.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9036.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9035.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_8974.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9033.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9024.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9043.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9022.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9026.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9039.jpg width = "200" alt="Meet Photo Gallery">
+<img src=../images/meets/235827/IMG_9030.jpg width = "200" alt="Meet Photo Gallery">
             </div>
         </section>
    
