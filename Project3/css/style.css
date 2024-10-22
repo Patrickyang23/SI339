@@ -79,12 +79,8 @@ nav {
 }
 
 .hamburger:focus{
-    display: block;
-    font-size: 1.4rem;
-    margin-left: 10px;
-    cursor: pointer;
-    color: white;
-    z-index: 1100;  /* Ensure it's above the overlay */
+    outline: 2px solid #fff;  /* Add a visible outline (white, for example) */
+    outline-offset: 4px;  /* Offset to separate the outline from the icon */
 }
 
 /* Left side - "Cross Country" */
