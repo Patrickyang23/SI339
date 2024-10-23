@@ -19,6 +19,7 @@ body {
 
 h1 {
     font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size for large headings */
+    text-decoration: underline;
 }
 
 h2 {
@@ -261,18 +262,29 @@ table th {
 /* Container for the filters */
 .filter-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;  /* Space between the filters */
-    margin: 20px 10px;
-    text-align: center;
+    margin: 20px 30px;
+}
+
+/* Filter group to keep label and input together */
+.filter-group {
+    display: flex;
+    flex-direction: column;  /* Stack label and input vertically */
+    min-width: 150px;  /* Ensure a minimum width for each group */
+    max-width: 300px;
+    flex: 1 1 200px;  /* Grow and shrink based on available space */
 }
 
 /* Style for filter dropdowns */
 .filter-select {
-    width: 200px;  /* Ensure equal width */
-    padding: 5px;
-    font-size: 16px;
+    padding: 10px;
     text-align: center;
+}
+
+label {
+    margin-bottom: 5px;
 }
 
 #no-results-message {
@@ -365,7 +377,7 @@ dd {
     flex-wrap: wrap;
     gap: 10px;  /* Space between images */
     justify-content: center;
-    max-height: 45vh;  /* Limit the height to 30% of the viewport */
+    max-height: 35vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
     overflow-x: auto;  /* Enable hotizontal scrolling if content exceeds the height */
 }
@@ -388,7 +400,6 @@ footer {
     background-color: #2c3e50;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
     color: white;
     text-align: center;
 }
@@ -396,39 +407,17 @@ footer {
 /* Container for flex layout */
 .footer-container {
     display: flex;  /* Use flexbox for layout */
-    justify-content: space-between;  /* Distribute space between left and right sections */
-    align-items: center;  /* Align content at the top */
-    flex-wrap: wrap;  /* Wrap the items if needed for smaller screens */
-}
-
-/* Left section with vertical centering */
-.footer-left {
-    text-align: left;
+    flex-direction: column;
+    align-items: center;  /* Align content at the top*/
 }
 
 .footer-left address {
     font-style: normal;  /* Remove italic from the address tag */
 }
 
-/* Right section */
-.footer-right {
-    width: 45%;  /* Adjust width for right content */
-    text-align: right;
-}
-
-.footer-bottom {
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-}
-
 footer a, p {
     color: white;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    padding: 5px;
 }
 
 /* Instagram Icon - Ensure Font Awesome works */
@@ -440,19 +429,4 @@ footer a:hover {
 
 .fa-brands.fa-instagram:hover {
     color: #f77737; /* Change color on hover to Instagram's secondary color */
-}
-
-/* Limit to five photos in a row for large screens */
-@media (min-width: 1024px) {
-    #gallery {
-        grid-template-columns: repeat(5, 1fr);  /* Restrict to 5 images in a row */
-    }
-}
-
-/* Responsive footer - Stack items on smaller screens */
-@media (max-width: 480px) {
-    .footer-left, .footer-right {
-        width: 100%;  /* Stack left and right sections */
-        text-align: center;
-    }
 }

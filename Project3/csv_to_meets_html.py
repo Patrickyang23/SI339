@@ -162,19 +162,23 @@ def csv_to_html(csv_filename, output_folder):
                     <h2>Individual Results</h2>
                     
                     <div class="filter-container">
+                        <div class="filter-group">
                         <!-- Dropdown to filter by grade -->
-                        <label for="grade-filter">Filter by Grade: </label>
-                        <select id="grade-filter" class="filter-select">
-                            <option value="all">All Grades</option>
-                            <option value="9">Grade 9</option>
-                            <option value="10">Grade 10</option>
-                            <option value="11">Grade 11</option>
-                            <option value="12">Grade 12</option>
-                        </select>
+                            <label for="grade-filter">Filter by Grade: </label>
+                            <select id="grade-filter" class="filter-select">
+                                <option value="all">All Grades</option>
+                                <option value="9">Grade 9</option>
+                                <option value="10">Grade 10</option>
+                                <option value="11">Grade 11</option>
+                                <option value="12">Grade 12</option>
+                            </select>
+                        </div>
                         
-                        <!-- Search by name input field -->
-                        <label for="name-search">Search by Name: </label>
-                        <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
+                        <div class="filter-group">
+                            <!-- Search by name input field -->
+                            <label for="name-search">Search by Name: </label>
+                            <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
+                        </div>
                     </div>
 
                     <div class="athlete-cards-container">
@@ -268,25 +272,22 @@ def csv_to_html(csv_filename, output_folder):
    </main>   
    <footer>
         <div class="footer-container">
-            <div class="footer-left">
-                <p>
-                    Skyline High School<br>
-                    <address>
-                        2552 North Maple Road<br>
-                        Ann Arbor, MI 48103<br>
-                    </address>
-                </p>
-            </div>
-            
-            <div class="footer-right">
-                <p>
-                    <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
-                    Follow us on Instagram
-                    <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
-                    </a> 
-                </p>
-            </div>
-            <p class="footer-bottom">&copy 2024 Skyline High School. All rights reserved.<br></p>
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
         </div>
     </footer>
     </body>
