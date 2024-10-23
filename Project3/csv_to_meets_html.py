@@ -126,43 +126,29 @@ def csv_to_html(csv_filename, output_folder):
 
 
     <section class="summary" id = "summary" tabindex="0">
-        <h2>Race Summary</h2>
-        <button class="toggle-button" aria-expanded="false">Show Summary</button>
-        <div class="collapsible-content">
+        <div class="section-header">
+            <h2>Race Summary</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
+        </div>
+        <div class="collapsible-content open">
             {summary_text}
         </div>
     </section>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {{
-        const toggleButton = document.querySelector('.toggle-button');
-        const collapsibleContent = document.querySelector('.collapsible-content');
-
-        toggleButton.addEventListener('click', function() {{
-            // Toggle the expanded state
-            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-            toggleButton.setAttribute('aria-expanded', !isExpanded);
-            
-            // Change button text and content visibility
-            if (isExpanded) {{
-                toggleButton.textContent = 'Show Summary';
-                collapsibleContent.classList.remove('open');
-            }} else {{
-                toggleButton.textContent = 'Hide Summary';
-                collapsibleContent.classList.add('open');
-            }}
-        }});
-    }});
-</script>
 """
 
 
         # Start container for individual results
         html_content += """<section id="team-results" tabindex="0">\n
-        <h2>Team Results</h2>"""
+        <div class="section-header">
+            <h2>Team Results</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>\n
+        """
         
-        # Add a div container to enable scrolling
-        html_content += """<div class="table-container">\n"""
+        # Add a collapsible div container to enable scrolling
+        html_content += """
+        <div class="collapsible-content open">\n
+        <div class="table-container">\n"""
         
         # Process the remaining rows (after the first five)
         html_content += """<table>\n"""
@@ -181,7 +167,9 @@ def csv_to_html(csv_filename, output_folder):
             elif len(row) == 8 and row[5].strip().lower() == 'ann arbor skyline':
                 if table_start == True:
                     table_start = False
-                    html_content += "</table>\n"
+                    html_content += """</table>\n
+                    </div>\n
+                    </div>\n"""
                     html_content += """</section>\n
                     <section id="individual-results" tabindex="0">\n
                     <h2>Individual Results</h2>
@@ -236,7 +224,8 @@ def csv_to_html(csv_filename, output_folder):
                 </div>
                 """
 
-        html_content += """</div>\n
+        html_content += """
+        </div>\n
         </section>\n
         
         <script>
@@ -293,6 +282,31 @@ def csv_to_html(csv_filename, output_folder):
         html_content += """
             </div>
         </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {{
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+
+                toggleButtons.forEach(toggleButton => {{
+                    const sectionName = toggleButton.getAttribute('data-section');
+                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
+
+                    toggleButton.addEventListener('click', function() {{
+                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                        toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                        // Update the button text based on the section
+                        if (isExpanded) {{
+                            toggleButton.textContent = `Show ${sectionName}`;
+                            collapsibleContent.classList.remove('open');
+                        }} else {{
+                            toggleButton.textContent = `Hide ${sectionName}`;
+                            collapsibleContent.classList.add('open');
+                        }}
+                    }});
+                }});
+            }});
+        </script>
    
    </main>   
    <footer>
