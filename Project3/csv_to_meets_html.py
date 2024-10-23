@@ -172,33 +172,37 @@ def csv_to_html(csv_filename, output_folder):
                     </div>\n"""
                     html_content += """</section>\n
                     <section id="individual-results" tabindex="0">\n
-                    <h2>Individual Results</h2>
-                    
-                    <div class="filter-container">
-                        <div class="filter-group">
-                        <!-- Dropdown to filter by grade -->
-                            <label for="grade-filter">Filter by Grade: </label>
-                            <select id="grade-filter" class="filter-select">
-                                <option value="all">All Grades</option>
-                                <option value="9">Grade 9</option>
-                                <option value="10">Grade 10</option>
-                                <option value="11">Grade 11</option>
-                                <option value="12">Grade 12</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <!-- Search by name input field -->
-                            <label for="name-search">Search by Name: </label>
-                            <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
-                        </div>
+                    <div class="section-header">
+                        <h2>Individual Results</h2>
+                        <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
                     </div>
-
-                    <div class="athlete-cards-container">
                     
-                    <!-- No results message (hidden by default) -->
-                    <p id="no-results-message" >No results matched your criteria.</p>
-                    """
+                    <div class="collapsible-content open">
+                        <div class="filter-container">
+                            <div class="filter-group">
+                            <!-- Dropdown to filter by grade -->
+                                <label for="grade-filter">Filter by Grade: </label>
+                                <select id="grade-filter" class="filter-select">
+                                    <option value="all">All Grades</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <!-- Search by name input field -->
+                                <label for="name-search">Search by Name: </label>
+                                <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
+                            </div>
+                        </div>
+
+                        <div class="athlete-cards-container">
+                        
+                        <!-- No results message (hidden by default) -->
+                        <p id="no-results-message" >No results matched your criteria.</p>
+                        """
 
                 place = row[0]
                 grade = row[1]
@@ -225,6 +229,7 @@ def csv_to_html(csv_filename, output_folder):
                 """
 
         html_content += """
+        </div>\n
         </div>\n
         </section>\n
         
@@ -273,13 +278,19 @@ def csv_to_html(csv_filename, output_folder):
         </script>
         
         <section id = "gallery" tabindex="0">
-            <h2>Gallery</h2>
-            <div class="gallery-container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+            </div>
+            
+            <div class="collapsible-content open">
+                <div class="gallery-container">
             """
 
         html_content += create_meet_image_gallery(url)
         # Close the HTML document
         html_content += """
+            </div>
             </div>
         </section>
         
@@ -401,7 +412,7 @@ def generate_image_tags(image_files, folder_path):
     for img in image_files:
         img_path = os.path.join(folder_path, img)
         # print(f"The image_path is {img_path}")
-        img_tags.append(f'<img src=../{img_path} width = "100" alt="Meet Photo Gallery">')
+        img_tags.append(f'<img src=../{img_path} width = "80" alt="Meet Photo Gallery">')
     return "\n".join(img_tags)
 
 # Putting it all together

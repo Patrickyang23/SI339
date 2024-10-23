@@ -250,12 +250,12 @@ time {
     display: inline-block;
     margin: 10px 0;
     padding: 10px 15px;
-    background-color: #3498db;
+    background-color: rgba(30, 108, 147);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 120px; /* Set a fixed width for all buttons */
+    width: 130px; /* Set a fixed width for all buttons */
 }
 
 .toggle-button[aria-expanded="true"] {
