@@ -174,29 +174,21 @@ def csv_to_html(csv_filename, output_folder):
                     <section id="individual-results" tabindex="0">\n
                     <div class="section-header">
                         <h2>Individual Results</h2>
+                        
+                        <!-- Floating Action Buttons (FABs) -->
+                        <div class="fab-container">
+                            <button class="fab-inline" id="fab-filter" aria-label="Filter by Grade">
+                                <i class="fas fa-filter"></i>
+                            </button>
+                            <button class="fab-inline" id="fab-search" aria-label="Search by Name">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
                         <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
                     </div>
                     
                     <div class="collapsible-content open">
-                        <div class="filter-container">
-                            <div class="filter-group">
-                            <!-- Dropdown to filter by grade -->
-                                <label for="grade-filter">Filter by Grade: </label>
-                                <select id="grade-filter" class="filter-select">
-                                    <option value="all">All Grades</option>
-                                    <option value="9">Grade 9</option>
-                                    <option value="10">Grade 10</option>
-                                    <option value="11">Grade 11</option>
-                                    <option value="12">Grade 12</option>
-                                </select>
-                            </div>
-                            
-                            <div class="filter-group">
-                                <!-- Search by name input field -->
-                                <label for="name-search">Search by Name: </label>
-                                <input type="text" id="name-search" class="filter-select" placeholder="Search by Athlete Name">
-                            </div>
-                        </div>
 
                         <div class="athlete-cards-container">
                         
@@ -230,51 +222,84 @@ def csv_to_html(csv_filename, output_folder):
 
         html_content += """
         </div>\n
+        <!-- Modal for filtering by grade -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <h3>Filter by Grade</h3>
+                <select id="grade-filter" class="filter-select">
+                    <option value="all">All Grades</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button id="apply-filter">Apply</button>
+            </div>
+        </div>
+
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
         </div>\n
         </section>\n
         
         <script>
-        // Get the grade filter, name search elements, and no result messages
-        const gradeFilter = document.getElementById("grade-filter");
-        const nameSearch = document.getElementById("name-search");
-        const noResultsMessage = document.getElementById("no-results-message");
-        
-        // Add event listeners for both filters
-        gradeFilter.addEventListener("change", filterAthletes);
-        nameSearch.addEventListener("input", filterAthletes);
+            document.addEventListener('DOMContentLoaded', function() {
+            const filterFab = document.getElementById('fab-filter');
+            const searchFab = document.getElementById('fab-search');
+            const filterModal = document.getElementById('filter-modal');
+            const searchModal = document.getElementById('search-modal');
+            const applyFilterButton = document.getElementById('apply-filter');
+            const applySearchButton = document.getElementById('apply-search');
+            const gradeFilter = document.getElementById('grade-filter');
+            const nameSearch = document.getElementById('name-search');
+            const athleteCards = document.querySelectorAll('.athlete-card');
 
-        // Function to filter athletes based on grade and name
-        function filterAthletes() {{
-            const selectedGrade = gradeFilter.value;
-            const searchName = nameSearch.value.toLowerCase();  // Convert search input to lowercase for case-insensitive search
-            const athleteCards = document.querySelectorAll(".athlete-card");
-            
-            let visibleCount = 0;  // Keep track of how many cards are visible
+            // Show/Hide Filter Modal
+            filterFab.addEventListener('click', function() {
+                filterModal.classList.toggle('active');
+            });
 
-            athleteCards.forEach(function(card) {{
-                const cardGrade = card.getAttribute("data-grade");
-                const cardName = card.getAttribute("data-name");
+            // Show/Hide Search Modal
+            searchFab.addEventListener('click', function() {
+                searchModal.classList.toggle('active');
+            });
 
-                // Check if the card matches the selected grade and search query
-                const matchesGrade = (selectedGrade === "all" || cardGrade === selectedGrade);
-                const matchesName = cardName.includes(searchName);
+            // Apply the filter
+            applyFilterButton.addEventListener('click', function() {
+                const selectedGrade = gradeFilter.value;
+                filterModal.classList.remove('active');
 
-                // Show the card if it matches both filters, otherwise hide it
-                if (matchesGrade && matchesName) {{
-                    card.style.display = "flex";  // Show card
-                    visibleCount++;  // Increment visible count
-                }} else {{
-                    card.style.display = "none";  // Hide card
-                }}
-            }});
-            
-            // If no cards are visible, show the no results message
-            if (visibleCount === 0) {{
-                noResultsMessage.style.display = "block";  // Show the message
-            }} else {{
-                noResultsMessage.style.display = "none";  // Hide the message
-            }}
-        }} 
+                athleteCards.forEach(card => {
+                    const cardGrade = card.getAttribute('data-grade');
+                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Apply the search
+            applySearchButton.addEventListener('click', function() {
+                const searchName = nameSearch.value.toLowerCase();
+                searchModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    if (cardName.includes(searchName)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
         </script>
         
         <section id = "gallery" tabindex="0">
