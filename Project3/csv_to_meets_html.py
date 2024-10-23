@@ -80,6 +80,21 @@ def csv_to_html(csv_filename, output_folder):
             sideMenu.classList.remove("active");
             overlay.classList.remove("active");
         }}
+        
+        // Function to toggle menu visibility
+        function toggleMenu() {{
+            const isActive = sideMenu.classList.contains("active");
+            if (isActive) {{
+                closeMenu();
+            }} else {{
+                openMenu();
+            }}
+        }}
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener("click", function () {{
+            toggleMenu();
+        }});
 
         // Automatically open the menu when the hamburger icon is focused
         hamburger.addEventListener("focus", function () {{
@@ -102,6 +117,11 @@ def csv_to_html(csv_filename, output_folder):
             ) {{
                 closeMenu();
             }}
+        }});
+        
+        // Add event listener to overlay to close the menu when clicked
+        overlay.addEventListener("click", function () {{
+            closeMenu();
         }});
     </script>
    
@@ -180,21 +200,26 @@ def csv_to_html(csv_filename, output_folder):
 
                 # Add the athlete div
                 html_content += f"""
-    <div class="athlete-card" data-grade="{grade}" data-name="{name.lower()}">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
-            <figcaption>{name}</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>{place}</dd>
-                <dt>Time</dt><dd>{time}</dd>
-                <dt>Grade</dt><dd>{grade}</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
+                <div class="athlete-card" data-grade="{grade}" data-name="{name.lower()}">
+                    <figure class="athlete-figure"> 
+                        <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
+                        <figcaption>{name}</figcaption>
+                    </figure>
+                    
+                    <div class="athlete-info">
+                        <dl>
+                            <dt>Place</dt><dd>{place}</dd>
+                            <dt>Time</dt><dd>{time}</dd>
+                            <dt>Grade</dt><dd>{grade}</dd>
+                        </dl>
+                    </div>
+                </div>
+                """
+
+        html_content += """</div>\n
+        </section>\n
+        
+        <script>
         // Get the grade filter, name search elements, and no result messages
         const gradeFilter = document.getElementById("grade-filter");
         const nameSearch = document.getElementById("name-search");
@@ -235,13 +260,9 @@ def csv_to_html(csv_filename, output_folder):
             }} else {{
                 noResultsMessage.style.display = "none";  // Hide the message
             }}
-        }}
+        }} 
+        </script>
         
-    </script>
-"""
-
-        html_content += """</div>\n
-        </section>\n
         <section id = "gallery" tabindex="0">
             <h2>Gallery</h2>
             <div class="gallery-container">
