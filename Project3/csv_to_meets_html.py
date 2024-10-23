@@ -173,23 +173,12 @@ def csv_to_html(csv_filename, output_folder):
                     html_content += """</section>\n
                     <section id="individual-results" tabindex="0">\n
                     <div class="section-header">
-                        <h2>Individual Results</h2>
-                        
-                        <!-- Floating Action Buttons (FABs) -->
-                        <div class="fab-container">
-                            <button class="fab-inline" id="fab-filter" aria-label="Filter by Grade">
-                                <i class="fas fa-filter"></i>
-                            </button>
-                            <button class="fab-inline" id="fab-search" aria-label="Search by Name">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        
+                        <h2>Individual Results</h2>              
                         <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
                     </div>
                     
                     <div class="collapsible-content open">
-
+                    <div class="individual-results-container">
                         <div class="athlete-cards-container">
                         
                         <!-- No results message (hidden by default) -->
@@ -222,6 +211,28 @@ def csv_to_html(csv_filename, output_folder):
 
         html_content += """
         </div>\n
+                
+        <!-- Floating Action Buttons (FABs) -->
+        <div class="fab-container">
+            <button class="fab" id="fab-filter" aria-label="Filter by Grade">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="fab" id="fab-search" aria-label="Search by Name">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        </div>\n
+        
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
+        
         <!-- Modal for filtering by grade -->
         <div id="filter-modal" class="modal">
             <div class="modal-content">
@@ -236,15 +247,7 @@ def csv_to_html(csv_filename, output_folder):
                 <button id="apply-filter">Apply</button>
             </div>
         </div>
-
-        <!-- Modal for searching by name -->
-        <div id="search-modal" class="modal">
-            <div class="modal-content">
-                <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
-                <button id="apply-search">Search</button>
-            </div>
-        </div>
+        
         </div>\n
         </section>\n
         

@@ -294,107 +294,31 @@ table th {
     z-index: 2;  /* Ensure it stays above other content when scrolling */
 }
 
-/* Container for the filters */
-.filter-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;  /* Space between the filters */
-    margin: 20px 30px;
-}
-
-/* Filter group to keep label and input together */
-.filter-group {
-    display: flex;
-    flex-direction: column;  /* Stack label and input vertically */
-    min-width: 150px;  /* Ensure a minimum width for each group */
-    max-width: 300px;
-    flex: 1 1 200px;  /* Grow and shrink based on available space */
-}
-
-/* Style for filter dropdowns */
-.filter-select {
-    padding: 10px;
-    text-align: center;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
 #no-results-message {
     display: none;
     color: black;
     text-align: center;
 }
 
-/* Styles for the Floating Action Buttons */
-.fab-container {
+/* Parent container to hold both the cards container and FAB container */
+.individual-results-container {
+    position: relative;  /* Relative to position FABs inside it */
+    max-height: 40vh;    /* Limit height of the parent container */
     display: flex;
-    gap: 10px; /* Space between the FABs */
-}
-
-.fab-inline {
-    width: 60px;
-    height: 60px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-}
-
-.fab-inline:hover {
-    background-color: #2980b9;
-}
-
-/* Modal styling */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001; /* On top of FAB */
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 300px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Show modal when active */
-.modal.active {
-    display: flex;
-}
-
-/* Filter select box styling */
-.filter-select {
-    margin: 10px 0;
-    width: 100%;
-    padding: 8px;
+    flex-direction: column; /* Stack content vertically */
 }
 
 /* Container for all athlete cards */
 .athlete-cards-container {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    flex: 1;   /* Take up available space */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
     gap: 20px;  /* Space between cards */
     padding: 10px;
-    max-height: 40vh;  /* Limit the height to 30% of the viewport */
+    /* max-height: 40vh;  Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
     overflow-x: auto;  /* Enable horizontal scrolling if content exceeds the height */
 }
@@ -405,14 +329,14 @@ label {
     flex-direction: row;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
     align-items: center;  /* Ensure the image is aligned at the top */
     width: 100%;
-    max-width: 300px;  /* Limit the card width on large screens */
+    max-width: 260px;  /* Limit the card width on large screens */
     margin-bottom: 10px;  /* Center the card and add vertical spacing */
     margin: auto;
 }
@@ -463,6 +387,71 @@ dt {
 
 dd {
     margin-bottom: 15px;
+}
+
+/* Styles for the Floating Action Buttons */
+.fab-container {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between FABs */
+    z-index: 1000; /* Ensure FABs are on top of the content */
+}
+
+.fab {
+    width: 30px;
+    height: 30px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.fab:hover {
+    background-color: #2980b9;
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* On top of FAB */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Show modal when active */
+.modal.active {
+    display: flex;
+}
+
+/* Filter select box styling */
+.filter-select {
+    margin: 10px 0;
+    width: 100%;
+    padding: 8px;
 }
 
 /* Gallery Section */
