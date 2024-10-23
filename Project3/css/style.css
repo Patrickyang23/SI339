@@ -227,6 +227,33 @@ time {
     color: #333;
 }
 
+/* Styles for the collapsible section */
+.collapsible-content {
+    max-height: 0;  /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;  /* Smooth expand/collapse transition */
+}
+
+.collapsible-content.open {
+    max-height: 500px;  /* Set a reasonable max height for expanded view */
+}
+
+/* Toggle button styling */
+.toggle-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggle-button[aria-expanded="true"] {
+    background-color: #e74c3c;
+}
+
 /* Scrollable container for the table */
 .table-container {
     max-height: 30vh;  /* Limit the height to 30% of the viewport */

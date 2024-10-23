@@ -126,9 +126,34 @@ def csv_to_html(csv_filename, output_folder):
 
 
     <section class="summary" id = "summary" tabindex="0">
-      <h2>Race Summary</h2>
-      {summary_text}
+        <h2>Race Summary</h2>
+        <button class="toggle-button" aria-expanded="false">Show Summary</button>
+        <div class="collapsible-content">
+            {summary_text}
+        </div>
     </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {{
+        const toggleButton = document.querySelector('.toggle-button');
+        const collapsibleContent = document.querySelector('.collapsible-content');
+
+        toggleButton.addEventListener('click', function() {{
+            // Toggle the expanded state
+            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            toggleButton.setAttribute('aria-expanded', !isExpanded);
+            
+            // Change button text and content visibility
+            if (isExpanded) {{
+                toggleButton.textContent = 'Show Summary';
+                collapsibleContent.classList.remove('open');
+            }} else {{
+                toggleButton.textContent = 'Hide Summary';
+                collapsibleContent.classList.add('open');
+            }}
+        }});
+    }});
+</script>
 """
 
 
