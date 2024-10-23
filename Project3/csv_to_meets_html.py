@@ -37,16 +37,7 @@ def csv_to_html(csv_filename, output_folder):
    <a class="skip" href = "#main">Skip to Main Content</a>
    <nav>
         <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
-        <div class="nav-left">Cross Country</div>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#summary" tabindex="0">Summary</a></li>
-                <li><a href="#team-results" tabindex="0">Team Results</a></li>
-                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Gallery</a></li>
-            </ul>
-        </div>
+        <div class="nav-right">Skyline Cross Country 2024</div>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -348,8 +339,8 @@ def extract_meet_id(url):
     else:
         raise ValueError("Meet ID not found in URL.")
 
-# Step 2: Select 25 random photos from the folder
-def select_random_photos(folder_path, num_photos=25):
+# Step 2: Select 15 random photos from the folder
+def select_random_photos(folder_path, num_photos=15):
     # List all files in the folder
     print(f"Checking {folder_path}")
     all_files = os.listdir(folder_path)
@@ -361,7 +352,7 @@ def select_random_photos(folder_path, num_photos=25):
         return ""
         raise ValueError(f"Not enough images in the folder. Found {len(image_files)} images.")
     
-    # Select 25 random images
+    # Select 15 random images
     return random.sample(image_files, num_photos)
 
 # Step 3: Generate HTML image tags
@@ -370,7 +361,7 @@ def generate_image_tags(image_files, folder_path):
     for img in image_files:
         img_path = os.path.join(folder_path, img)
         # print(f"The image_path is {img_path}")
-        img_tags.append(f'<img src=../{img_path} width = "200" alt="Meet Photo Gallery">')
+        img_tags.append(f'<img src=../{img_path} width = "100" alt="Meet Photo Gallery">')
     return "\n".join(img_tags)
 
 # Putting it all together
@@ -385,7 +376,7 @@ def create_meet_image_gallery(url):
         return ""
         raise FileNotFoundError(f"The folder {folder_path} does not exist.")
     
-    # Select 25 random photos
+    # Select 15 random photos
     selected_photos = select_random_photos(folder_path)
     
     # Generate image tags

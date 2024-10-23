@@ -34,7 +34,7 @@ h3 {
     position: absolute;
     top: -100px;
     text-align: center;
-    width: 90vw;
+    width: 60vw;
     left: 50%;
     transform:translateX(-50%);
     background-color: rgba(51, 51, 51, 0.8);
@@ -61,11 +61,17 @@ nav {
     right: 0;
     height: 65px;
     display: flex;
-    justify-content: left; /* Default for the small screen */
+    justify-content: space-between; /* Default for the small screen */
     align-items: center;
     background-color: rgba(30, 108, 147, 1);  /* Add a background color */
     padding: 10px 20px;  /* Padding around the nav to give space */
     z-index: 1000;  /* Ensure the nav stays on top of other elements */
+}
+
+.nav-right {
+    color: white;
+    /* font-weight: bold; */
+    margin-right: 10px;
 }
 
 /* Hamburger Menu (default: visible on smaller screens) */
@@ -78,43 +84,13 @@ nav {
     z-index: 1100;  /* Ensure it's above the overlay */
 }
 
-.hamburger:focus{
-    outline: 2px solid #fff;  /* Add a visible outline (white, for example) */
-    outline-offset: 4px;  /* Offset to separate the outline from the icon */
+.hamburger:hover{
+    transform: scale(1.2);
 }
 
-/* Left side - "Cross Country" */
-.nav-left {
-    margin-left: 10px;
-    color: white;
-    font-weight: bold;
-}
-
-/* Right side - Navigation links */
-.nav-menu ul {
-    list-style: none;
-    display: none; /* Default: hide menu for small screens */
-    padding: 0;
-    margin: 0;
-    gap: 10px;  /* Space between items */
-}
-
-.nav-menu ul li {
-    display: inline;
-}
-
-.nav-menu ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: inline-block;  /* Make <a> behave as a block to allow transform */
-    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for scale */
-}
-
-.nav-menu ul li a:hover {
-    transform: scale(1.05);
-}
+/* .hamburger:focus{
+    transform: scale(1.2);
+} */
 
 /* Side Menu (hidden by default, visible on small screens) */
 .side-menu {
@@ -166,28 +142,6 @@ nav {
 
 .overlay.active {
     display: block;
-}
-
-/* Responsive behavior for screens smaller than 780px */
-@media (min-width: 780px) {
-    nav {
-        justify-content: space-between;
-    }
-
-    /* Hide the hamburger icon */
-    .hamburger {
-        display: none;
-    }
-    /* Show the full navigation menu */
-    .nav-menu ul {
-        display: flex;  /* Switch to horizontal nav layout */
-        justify-content: flex-start;
-    }
-
-    /* Hide the side menu since the full menu is visible */
-    .side-menu {
-        display: none;
-    }
 }
 
 /* Header styling */
@@ -309,7 +263,7 @@ table th {
     display: flex;
     justify-content: center;
     gap: 20px;  /* Space between the filters */
-    /* margin-bottom: 10px; */
+    margin: 20px 10px;
     text-align: center;
 }
 
@@ -332,8 +286,8 @@ table th {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
     gap: 20px;  /* Space between cards */
-    padding: 20px;
-    max-height: 45vh;  /* Limit the height to 30% of the viewport */
+    padding: 10px;
+    max-height: 40vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
     overflow-x: auto;  /* Enable horizontal scrolling if content exceeds the height */
 }
@@ -352,7 +306,8 @@ table th {
     align-items: center;  /* Ensure the image is aligned at the top */
     width: 100%;
     max-width: 300px;  /* Limit the card width on large screens */
-    margin: 10px auto;  /* Center the card and add vertical spacing */
+    margin-bottom: 10px;  /* Center the card and add vertical spacing */
+    margin: auto;
 }
 
 .athlete-card:hover {
