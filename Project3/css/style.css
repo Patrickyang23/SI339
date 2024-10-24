@@ -289,11 +289,17 @@ time {
 .collapsible-content {
     max-height: 500px;  /* Default to expanded */
     overflow: hidden;
-    transition: max-height 0.3s ease-out;  /* Smooth expand/collapse transition */
+    transition: max-height 0.5s ease, transform 0.5s ease;  /* Smooth expand/collapse transition */
+    transform: translateY(0);  /* Default position */
+    opacity: 1;  /* Default opacity */
 }
 
 .collapsible-content:not(.open) {
     max-height: 0;  /* Hidden when not expanded */
+    transform: translateY(-30px);  /* Slide up when hidden */
+    opacity: 0;  /* Fade out as it slides up */
+    transition: max-height 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+    overflow: hidden;
 }
 
 /* Toggle button styling */
@@ -307,7 +313,7 @@ time {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 150px; /* Set a fixed width for all buttons */
+    width: 160px; /* Set a fixed width for all buttons */
 }
 
 .toggle-button[aria-expanded="true"] {
