@@ -37,7 +37,10 @@ def csv_to_html(csv_filename, output_folder):
    <a class="skip" href = "#main">Skip to Main Content</a>
    <nav>
         <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
-        <div class="nav-right">Skyline Cross Country 2024</div>
+        <div class="nav-right">
+            <div>Skyline Cross Country 2024</div>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -131,7 +134,9 @@ def csv_to_html(csv_filename, output_folder):
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            {summary_text}
+            <div class="summary-container">
+                {summary_text}
+            </div>
         </div>
     </section>
 """
@@ -266,11 +271,27 @@ def csv_to_html(csv_filename, output_folder):
             // Show/Hide Filter Modal
             filterFab.addEventListener('click', function() {
                 filterModal.classList.toggle('active');
+                if (searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active'); // Close search modal if open
+                }
             });
 
             // Show/Hide Search Modal
             searchFab.addEventListener('click', function() {
                 searchModal.classList.toggle('active');
+                if (filterModal.classList.contains('active')) {
+                    filterModal.classList.remove('active'); // Close filter modal if open
+                }
+            });
+            
+            // Close modals when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.classList.remove('active');
+                }
+                if (event.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
             });
 
             // Apply the filter
@@ -281,7 +302,7 @@ def csv_to_html(csv_filename, output_folder):
                 athleteCards.forEach(card => {
                     const cardGrade = card.getAttribute('data-grade');
                     if (selectedGrade === 'all' || cardGrade === selectedGrade) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }
@@ -296,7 +317,7 @@ def csv_to_html(csv_filename, output_folder):
                 athleteCards.forEach(card => {
                     const cardName = card.getAttribute('data-name');
                     if (cardName.includes(searchName)) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }

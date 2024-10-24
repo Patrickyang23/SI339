@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     font-size: clamp(1rem, 2vw, 1.2rem);
-    background-color: #f4f4f4;
+    background-color: white;
     color: rgba(51, 51, 51);
     line-height: 1.6;
     padding: 20px;
@@ -70,9 +70,22 @@ nav {
 }
 
 .nav-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     color: white;
     /* font-weight: bold; */
     margin-right: 10px;
+    text-align: center;
+}
+
+/* Logo styling */
+.nav-logo {
+    width: 80px; /* Adjust the width as necessary */
+    height: auto;
+    border-radius: 50%; /* Makes the image elliptical */
+    object-fit: cover;
+    margin-left: 15px;
 }
 
 /* Hamburger Menu (default: visible on smaller screens) */
@@ -182,7 +195,7 @@ main {
 /* Section styling */
 section {
     scroll-margin-top: 80px;  /* Adjust this value to match or slightly exceed the height of your fixed navbar */
-    background-color: #ecf0f1;
+    background-color: rgba(236, 240, 241, 0.8);;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -198,6 +211,30 @@ section h2 {
 }
 
 /* Summary Section */
+main {
+    background-image: url(../images/AASKYLINELOGO.png);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: center; /* Center the image within the container */
+    background-repeat:repeat-y;
+
+    /* Blend the background color and image */
+    background-blend-mode: overlay;
+
+    /* Text styling */
+    color: #333; /* Text color for readability */
+}
+
+/* .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    /* z-index: 1;
+} 
+*/
+
 .summary {
     /* background-color: #dfe6e9; */
     padding: 15px;
@@ -209,7 +246,7 @@ section h2 {
 }
 
 .summary p {
-    color: black;
+    color: rgb(51, 51, 51);
     margin-top: 10px;
     padding: 0;
 }
@@ -247,15 +284,16 @@ time {
 
 /* Toggle button styling */
 .toggle-button {
+    font-size: 1em;
     display: inline-block;
     margin: 10px 0;
-    padding: 10px 15px;
-    background-color: rgba(30, 108, 147);
+    padding: 10px 10px;
+    background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 130px; /* Set a fixed width for all buttons */
+    width: 150px; /* Set a fixed width for all buttons */
 }
 
 .toggle-button[aria-expanded="true"] {
@@ -296,7 +334,7 @@ table th {
 
 #no-results-message {
     display: none;
-    color: black;
+    color: rgb(51, 51, 51);
     text-align: center;
 }
 
@@ -392,7 +430,7 @@ dd {
 /* Styles for the Floating Action Buttons */
 .fab-container {
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     right: 0px;
     display: flex;
     flex-direction: column;
@@ -401,8 +439,8 @@ dd {
 }
 
 .fab {
-    width: 30px;
-    height: 30px;
+    width: 1.2em;
+    height: 1.2em;
     background-color: #3498db;
     color: white;
     border: none;
@@ -412,11 +450,12 @@ dd {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 1.2em;
+    text-align: center;
 }
 
 .fab:hover {
-    background-color: #2980b9;
+    background-color: rgba(30, 108, 147);
 }
 
 /* Modal styling */
@@ -434,12 +473,17 @@ dd {
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    max-width: 300px;
     width: 100%;
     text-align: center;
+    width: 300px; /* Fixed width for both modals */
+    height: 200px; /* Fixed height for both modals */
+    margin: 20% auto; /* Center the modal */
+    justify-content: center;
 }
 
 /* Show modal when active */
@@ -447,11 +491,34 @@ dd {
     display: flex;
 }
 
+/* Make the header text smaller */
+.modal-content h3 {
+    font-size: 1.1em; /* Adjust the header size */
+}
+
 /* Filter select box styling */
 .filter-select {
     margin: 10px 0;
     width: 100%;
     padding: 8px;
+    text-align: center;
+}
+
+input, select {
+    font-size: 1em; /* Make inputs and buttons 1em */
+    text-align: center;
+    margin: 10px 0px;
+    width: 100%; /* Make sure they take full width of modal */
+}
+
+.modal-content button {
+    font-size: 1em;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Gallery Section */
