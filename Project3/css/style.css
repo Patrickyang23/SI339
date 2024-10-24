@@ -160,14 +160,31 @@ nav {
 
 /* Header styling */
 header {
-    background-color: #2c3e50;
     color: white;
     padding: 20px;
     text-align: center;
     border-radius: 8px;
     z-index: 1;  /* Ensure it's behind the nav if needed */
     position: relative;  /* Avoid overlap with nav */
-    margin-top: 80px;
+    margin-top: 65px;
+    background-image: url(../images/background.jpeg);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: center;  /* Center the image within the container */
+    background-repeat:no-repeat;
+}
+
+/* Add the color overlay */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.7); /* Semi-transparent overlay color */
+    z-index: -1; /* Make sure the overlay stays behind the content */
+    pointer-events: none; /* Prevent interaction with the overlay */
+    border-radius: 8px;
 }
 
 header h1 {
@@ -183,8 +200,11 @@ header h2 {
 }
 
 header a {
-    color: #fff;
-    text-decoration: none;
+    color: white;
+}
+
+header a:hover {
+    color: #e74c3c;
 }
 
 /* Main content */
@@ -216,12 +236,6 @@ main {
     background-size: cover; /* Make the image cover the entire container */
     background-position: center; /* Center the image within the container */
     background-repeat:repeat-y;
-
-    /* Blend the background color and image */
-    background-blend-mode: overlay;
-
-    /* Text styling */
-    color: #333; /* Text color for readability */
 }
 
 /* .overlay {
@@ -321,7 +335,7 @@ table th, table td {
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: white;
 }
 
 table th {
@@ -368,7 +382,7 @@ table th {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
@@ -435,12 +449,12 @@ dd {
     display: flex;
     flex-direction: column;
     gap: 10px; /* Space between FABs */
-    z-index: 1000; /* Ensure FABs are on top of the content */
+    z-index: 500; /* Ensure FABs are on top of the content */
 }
 
 .fab {
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.5em;
+    height: 1.5em;
     background-color: #3498db;
     color: white;
     border: none;
@@ -528,7 +542,7 @@ input, select {
     flex-wrap: wrap;
     gap: 10px;  /* Space between images */
     justify-content: center;
-    max-height: 35vh;  /* Limit the height to 30% of the viewport */
+    max-height: 40vh;  /* Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
     overflow-x: auto;  /* Enable hotizontal scrolling if content exceeds the height */
 }
@@ -553,13 +567,34 @@ footer {
     border-radius: 8px;
     color: white;
     text-align: center;
+    background-image: url(../images/family5k.png);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: center;  /* Center the image within the container */
+    background-repeat: no-repeat;
+    position: relative; /* Ensure the ::before overlay is positioned correctly */
+}
+
+/* Add the color overlay */
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.7); /* Semi-transparent overlay color */
+    z-index: 1; /* Make sure the overlay stays behind the content */
+    pointer-events: none; /* Prevent interaction with the overlay */
+    border-radius: 8px;
 }
 
 /* Container for flex layout */
 .footer-container {
+    position: relative;
     display: flex;  /* Use flexbox for layout */
     flex-direction: column;
     align-items: center;  /* Align content at the top*/
+    z-index: 1;
 }
 
 .footer-left address {
@@ -571,13 +606,16 @@ footer a, p {
     padding: 5px;
 }
 
+footer a:hover {
+    color: #e74c3c;  /* Color change on hover */
+}
 /* Instagram Icon - Ensure Font Awesome works */
 .fa-brands.fa-instagram {
     font-size: 24px;
-    color: #833ab4; /* Optional: Instagram brand color */
+    color: white;
     transition: color 0.3s;
 }
 
 .fa-brands.fa-instagram:hover {
-    color: #f77737; /* Change color on hover to Instagram's secondary color */
+    color: #e74c3c; /* Change color on hover to Instagram's secondary color */
 }
