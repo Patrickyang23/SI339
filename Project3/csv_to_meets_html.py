@@ -130,7 +130,7 @@ def csv_to_html(csv_filename, output_folder):
 
     <section class="summary" id = "summary" tabindex="0">
         <div class="section-header">
-            <h2>Race Summary</h2>
+            <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
@@ -145,7 +145,7 @@ def csv_to_html(csv_filename, output_folder):
         # Start container for individual results
         html_content += """<section id="team-results" tabindex="0">\n
         <div class="section-header">
-            <h2>Team Results</h2>
+            <h2><i class="fas fa-medal"></i> Team Results</h2>
             <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
         </div>\n
         """
@@ -178,7 +178,7 @@ def csv_to_html(csv_filename, output_folder):
                     html_content += """</section>\n
                     <section id="individual-results" tabindex="0">\n
                     <div class="section-header">
-                        <h2>Individual Results</h2>              
+                        <h2><i class="fas fa-running"></i> Individual Results</h2>              
                         <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
                     </div>
                     
@@ -328,7 +328,7 @@ def csv_to_html(csv_filename, output_folder):
         
         <section id = "gallery" tabindex="0">
             <div class="section-header">
-                <h2>Photo Gallery</h2>
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
                 <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
             </div>
             
