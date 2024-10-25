@@ -17,9 +17,12 @@ body {
     flex-direction: column; /* Arrange items vertically */
 }
 
+b {
+    font-weight: bold;
+}
+
 h1 {
     font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size for large headings */
-    text-decoration: underline;
 }
 
 h2 {
@@ -69,30 +72,29 @@ nav {
     z-index: 1000;  /* Ensure the nav stays on top of other elements */
 }
 
-.nav-right {
+.nav-left {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     color: white;
-    /* font-weight: bold; */
-    margin-right: 10px;
     text-align: center;
+    margin-left: 10px;
 }
 
 /* Logo styling */
 .nav-logo {
-    width: 80px; /* Adjust the width as necessary */
+    width: 60px; /* Adjust the width as necessary */
     height: auto;
     border-radius: 50%; /* Makes the image elliptical */
     object-fit: cover;
-    margin-left: 15px;
+    margin-right: 10px;
 }
 
 /* Hamburger Menu (default: visible on smaller screens) */
 .hamburger {
     display: block;
     font-size: 1.4rem;
-    margin-left: 10px;
+    margin-right: 10px;
     cursor: pointer;
     color: white;
     z-index: 1100;  /* Ensure it's above the overlay */
@@ -159,7 +161,7 @@ nav {
 }
 
 /* Header styling */
-header {
+header.meets {
     color: white;
     padding: 20px;
     text-align: center;
@@ -170,6 +172,20 @@ header {
     background-image: url(../images/background.jpeg);
     background-size: cover; /* Make the image cover the entire container */
     background-position: center;  /* Center the image within the container */
+    background-repeat:no-repeat;
+}
+
+header.index {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 1;  /* Ensure it's behind the nav if needed */
+    position: relative;  /* Avoid overlap with nav */
+    margin-top: 65px;
+    background-image: url(../images/camping.jpeg);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: 60% 60%;  /* Center the image within the container */
     background-repeat:no-repeat;
 }
 
@@ -207,11 +223,6 @@ header a:hover {
     color: #e74c3c;
 }
 
-/* Main content */
-main {
-    margin-top: 20px;
-}
-
 /* Section styling */
 section {
     scroll-margin-top: 80px;  /* Adjust this value to match or slightly exceed the height of your fixed navbar */
@@ -222,7 +233,7 @@ section {
 }
 
 section h2 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
     display: inline-block;
     padding: 10px 0px 10px 0px;
@@ -232,37 +243,26 @@ section h2 {
 
 /* Summary Section */
 main {
-    background-image: url(../images/AASKYLINELOGO.png);
-    background-size: cover; /* Make the image cover the entire container */
-    background-position: center; /* Center the image within the container */
-    background-repeat:repeat-y;
+    margin-top: 20px;
+    background-image: url(../images/EAGLE.png);
+    background-size: 90vw auto;  /* Make the image fill the viewport width, height adjusts automatically */
+    background-position: center top;  /* Center horizontally, start at the top vertically */
+    background-repeat: repeat-y;  /* Repeat the image vertically if the content doesn't fill the screen */
 }
 
-/* .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-    /* z-index: 1;
-} 
-*/
-
-.summary {
-    /* background-color: #dfe6e9; */
-    padding: 15px;
+.summary-container {
     line-height: 1.6;
     border-radius: 8px;
     word-wrap: break-word;
     white-space: normal;  /* Ensure proper word wrapping */
-    /* margin-top: 20px; */
+    margin-top: 15px;
+    max-height: 40vh;
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling on smaller screens */
 }
 
-.summary p {
+.summary-container p {
     color: rgb(51, 51, 51);
-    margin-top: 10px;
-    padding: 0;
 }
 
 /* Athlete section */
@@ -368,7 +368,7 @@ table th {
 
 /* Container for all athlete cards */
 .athlete-cards-container {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-right: 20px;
     margin-left: 20px;
     flex: 1;   /* Take up available space */
@@ -601,6 +601,7 @@ footer::before {
     flex-direction: column;
     align-items: center;  /* Align content at the top*/
     z-index: 1;
+    gap: 8px;
 }
 
 .footer-left address {
