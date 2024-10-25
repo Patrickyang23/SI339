@@ -33,14 +33,14 @@ def csv_to_html(csv_filename, output_folder):
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-   <body>
-   <a class="skip" href = "#main">Skip to Main Content</a>
-   <nav>
-        <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
-        <div class="nav-right">
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
-            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         </div>
+        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -53,8 +53,9 @@ def csv_to_html(csv_filename, output_folder):
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
-   </nav>
-   
+    </nav>
+    """
+        html_content += """
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
         // Select the relevant elements
@@ -64,71 +65,72 @@ def csv_to_html(csv_filename, output_folder):
         const sideMenuLinks = document.querySelectorAll(".side-menu a");
 
         // Function to open the menu
-        function openMenu() {{
+        function openMenu() {
             sideMenu.classList.add("active");
             overlay.classList.add("active");
-        }}
+        }
 
         // Function to close the menu
-        function closeMenu() {{
+        function closeMenu() {
             sideMenu.classList.remove("active");
             overlay.classList.remove("active");
-        }}
+        }
         
         // Function to toggle menu visibility
-        function toggleMenu() {{
+        function toggleMenu() {
             const isActive = sideMenu.classList.contains("active");
-            if (isActive) {{
+            if (isActive) {
                 closeMenu();
-            }} else {{
+            } else {
                 openMenu();
-            }}
-        }}
+            }
+        }
 
         // Toggle menu when clicking the hamburger icon
-        hamburger.addEventListener("click", function () {{
+        hamburger.addEventListener("click", function () {
             toggleMenu();
-        }});
+        });
 
         // Automatically open the menu when the hamburger icon is focused
-        hamburger.addEventListener("focus", function () {{
+        hamburger.addEventListener("focus", function () {
             openMenu();
-        }});
+        });
 
         // Add focus listeners to each link in the side menu
-        sideMenuLinks.forEach(function (link) {{
-            link.addEventListener("focus", function () {{
+        sideMenuLinks.forEach(function (link) {
+            link.addEventListener("focus", function () {
                 openMenu();
-            }});
-        }});
+            });
+        });
 
         // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
-        document.addEventListener("focusin", function (event) {{
+        document.addEventListener("focusin", function (event) {
             // Check if the newly focused element is outside both the side menu and the hamburger icon
             if (
                 !sideMenu.contains(event.target) &&
                 !hamburger.contains(event.target)
-            ) {{
+            ) {
                 closeMenu();
-            }}
-        }});
+            }
+        });
         
         // Add event listener to overlay to close the menu when clicked
-        overlay.addEventListener("click", function () {{
+        overlay.addEventListener("click", function () {
             closeMenu();
-        }});
+        });
     </script>
-   
-    <header tabindex="0">
-      <!--Meet Info-->
-       
+    """
+    
+        html_content += f"""
+    <header class="meets" tabindex="0">
         <h1><a href="{link_url}">{link_text}</a></h1>
         <h2>{h2_text}</h2>
     </header>
+    
     <main id = "main">
 
 
-    <section class="summary" id = "summary" tabindex="0">
+    <section class="summary" id="summary" tabindex="0">
         <div class="section-header">
             <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
@@ -139,9 +141,8 @@ def csv_to_html(csv_filename, output_folder):
             </div>
         </div>
     </section>
-"""
-
-
+    """
+    
         # Start container for individual results
         html_content += """<section id="team-results" tabindex="0">\n
         <div class="section-header">
@@ -344,28 +345,28 @@ def csv_to_html(csv_filename, output_folder):
         </section>
         
         <script>
-            document.addEventListener('DOMContentLoaded', function() {{
+            document.addEventListener('DOMContentLoaded', function() {
                 const toggleButtons = document.querySelectorAll('.toggle-button');
 
-                toggleButtons.forEach(toggleButton => {{
+                toggleButtons.forEach(toggleButton => {
                     const sectionName = toggleButton.getAttribute('data-section');
                     const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
 
-                    toggleButton.addEventListener('click', function() {{
+                    toggleButton.addEventListener('click', function() {
                         const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                         toggleButton.setAttribute('aria-expanded', !isExpanded);
 
                         // Update the button text based on the section
-                        if (isExpanded) {{
+                        if (isExpanded) {
                             toggleButton.textContent = `Show ${sectionName}`;
                             collapsibleContent.classList.remove('open');
-                        }} else {{
+                        } else {
                             toggleButton.textContent = `Hide ${sectionName}`;
                             collapsibleContent.classList.add('open');
-                        }}
-                    }});
-                }});
-            }});
+                        }
+                    });
+                });
+            });
         </script>
    
    </main>   
