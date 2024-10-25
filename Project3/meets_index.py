@@ -1,7 +1,7 @@
 import csv
 import os
 
-def generate_homepage():
+def generate_homepage(csv_filename, html_filename):
     # Initialize HTML content
     html_content = """
 <!DOCTYPE html>
@@ -137,7 +137,34 @@ def generate_homepage():
             </div>
             
             <div class="collapsible-content open">
-                <div class="meets-container">
+                <div class="table-container">
+                """
+                    # Open the CSV file and read the data
+    with open(csv_filename, mode='r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        rows = list(reader)
+        html_content += """<table>\n"""
+            # Loop through the rows of the CSV (starting from the third row to skip headers)
+    for row in rows[2:]:
+        date = row[0]
+        meet_name = row[1]
+        category = row[2]
+        place = row[3]
+        score = row[4]
+        html_file = row[6]  # The HTML file for the meet link
+
+        # Add a table row for each entry in the CSV, with the meet name as a clickable link
+        html_content += f"""
+            <tr>
+                <td>{date}</td>
+                <td><a href="{html_file}" target="_blank">{meet_name}</a></td>
+                <td>{place}</td>
+                <td>{score}</td>
+            </tr>
+        """
+        # Close the HTML structure
+    html_content += """"
+                    </table>
                 </div>
             </div>
         </section>
@@ -187,17 +214,14 @@ def generate_homepage():
     </body>
     </html>
     """
-    return html_content
+    # Write the HTML content to the output file
+    with open(html_filename, mode='w', encoding='utf-8') as htmlfile:
+        htmlfile.write(html_content)
 
-def main():
-    # Generate the full HTML content
-    html_content = generate_homepage()
-    
-    # Write the HTML content to an output file
-    with open("index.html", "w") as file:
-        file.write(html_content)
-    print("HTML file generated successfully!")
+    print(f"HTML file generated: {html_filename}")
 
-# Run the main function
-if __name__ == "__main__":
-    main()
+
+# Example usage
+csv_filename = "skyline_team_results.csv"  # The CSV file containing the team results
+html_filename = "index.html"  # The output HTML file
+generate_homepage(csv_filename, html_filename)
