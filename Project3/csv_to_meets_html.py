@@ -343,7 +343,7 @@ def csv_to_html(csv_filename, output_folder):
             </div>
             
             <div class="collapsible-content open">
-                <div class="gallery-slide-container">
+                <div class="gallery-container">
                     <div class="gallery-slide">
                     """
         html_content += f"""

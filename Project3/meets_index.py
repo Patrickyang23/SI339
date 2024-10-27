@@ -27,10 +27,9 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         <div class="side-menu">
             <ul>
                 <li><a href="index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#about" tabindex="0">Summary</a></li>
-                <li><a href="#meets" tabindex="0">Team Results</a></li>
-                <li><a href="#performance" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Team Photos</a></li>
+                <li><a href="#about" tabindex="0">About Us</a></li>
+                <li><a href="#meets" tabindex="0">Our Meets</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -135,7 +134,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         <!-- Meets Section -->
         <section id = "meets" tabindex="0">
             <div class="section-header">
-                <h2><i class="fas fa-camera"></i> Our Meets</h2>
+                <h2><i class="fas fa-running"></i> Our Meets</h2>
                 <button class="toggle-button" aria-expanded="true" data-section="Meets">Hide Meets</button>
             </div>
             
@@ -190,12 +189,12 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         <!-- Gallery Section -->
         <section id = "gallery" tabindex="0">
             <div class="section-header">
-                <h2><i class="fas fa-camera"></i> Team Photos</h2>
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
                 <button class="toggle-button" aria-expanded="true" data-section="Photos">Hide Photos</button>
             </div>
             
             <div class="collapsible-content open">
-                <div class="gallery-slide-container">
+                <div class="gallery-container">
                     <div class="gallery-slide">
                     """
     html_content += f"""
