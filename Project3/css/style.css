@@ -676,14 +676,26 @@ footer a, footer p {
     right: 5px;
 }
 
-/* Slide-in and slide-out effects */
-.slide-in-left {
-    transform: translateX(-100vw);
+/* Slide-out to the left */
+.slide-out-left {
+    transform: translateX(-100%); /* Moves image completely out to the left */
 }
 
-.slide-in-right {
-    transform: translateX(100vw);
+/* Slide-out to the right */
+.slide-out-right {
+    transform: translateX(100%); /* Moves image completely out to the right */
 }
+
+/* Slide-in from the left */
+.slide-in-left {
+    transform: translateX(100%); /* Starts image out of view to the right */
+}
+
+/* Slide-in from the right */
+.slide-in-right {
+    transform: translateX(-100%); /* Starts image out of view to the left */
+}
+
 
 .active-slide {
     transform: translateX(0);

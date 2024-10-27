@@ -177,9 +177,6 @@ def generate_homepage(csv_filename, folder_path, html_filename):
 
      # Get the list of images from the folder
     image_list = generate_image_list(folder_path)
-
-    # Convert Python list of images to a JavaScript array format
-    js_image_array = f"const images = {image_list};"
        
     html_content += """
                     </table>
@@ -198,9 +195,11 @@ def generate_homepage(csv_filename, folder_path, html_filename):
                 <div class="gallery-slide-container">
                     <div class="gallery-slide">
                     """
-    html_content += f"""
-                            <img id="gallery-image" src="images/team/{image_list[0]}" alt="Gallery Image">
-                    """
+            # Add each image in `image_list` to create the gallery images
+    for image in image_list:
+        html_content += f"""
+                            <img src="images/team/{image}" class="slide-in-right" style="display: none;" alt="Gallery Image">
+                        """
     html_content += """
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -236,47 +235,39 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         });
     """    
 
-    html_content += f"""
-        {js_image_array}  // JavaScript array of images generated from Python
-
-        let currentImageIndex = 0;
-        const galleryImage = document.getElementById("gallery-image");
-    """
-    
     html_content += """
-
-    // Function to show the next image
-    function nextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        showImage("right");
-    }
-
-    // Function to show the previous image
-    function prevImage() {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        showImage("left");
-    }
-
-    // Function to display the image with sliding animation
-    function showImage(direction) {
-        galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".gallery-slide img");
         
-        // Trigger a reflow to restart animation
-        void galleryImage.offsetWidth;
+        // Display the first image initially
+        images[currentImageIndex].style.display = "block";
+        images[currentImageIndex].classList.add("active-slide");
+        
+        // Function to show the next image
+        function nextImage() {
+            images[currentImageIndex].classList.remove("active-slide");
+            images[currentImageIndex].style.display = "none";
+            images[currentImageIndex].classList.add("slide-out-left");
 
-        // Set the new image source
-        galleryImage.src = `images/team/${images[currentImageIndex]}`;
+            currentImageIndex = (currentImageIndex + 1) % images.length;
 
-        // Add animation class based on direction
-        galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+            images[currentImageIndex].classList.remove("slide-in-right");
+            images[currentImageIndex].style.display = "block";
+            images[currentImageIndex].classList.add("active-slide");
+        }
 
-        // After animation, set it back to active position
-        setTimeout(() => {
-            galleryImage.classList.remove("slide-in-left", "slide-in-right");
-            galleryImage.classList.add("active-slide");
-        }, 500); // Duration should match CSS transition time
-    }
+        // Function to show the previous image
+        function prevImage() {
+            images[currentImageIndex].classList.remove("active-slide");
+            images[currentImageIndex].style.display = "none";
+            images[currentImageIndex].classList.add("slide-out-right");
 
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+
+            images[currentImageIndex].classList.remove("slide-in-left");
+            images[currentImageIndex].style.display = "block";
+            images[currentImageIndex].classList.add("active-slide");
+        }
     </script>
     """
     html_content += """   
