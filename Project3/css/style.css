@@ -333,6 +333,7 @@ table {
 table th, table td {
     padding: 10px;
     text-align: center;
+    vertical-align: middle;
     border: 1px solid #ddd;
 }
 
@@ -444,7 +445,7 @@ dd {
 /* Styles for the Floating Action Buttons */
 .fab-container {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     right: 0px;
     display: flex;
     flex-direction: column;
@@ -474,7 +475,7 @@ dd {
 
 /* Modal styling */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -487,17 +488,19 @@ dd {
 }
 
 .modal-content {
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    width: 100%;
-    text-align: center;
     width: 300px; /* Fixed width for both modals */
-    height: 200px; /* Fixed height for both modals */
+    max-width: 90%; /* Responsive width */
     margin: 20% auto; /* Center the modal */
-    justify-content: center;
+    overflow: hidden; /* Hide overflow for dropdown within modal */
 }
 
 /* Show modal when active */
@@ -516,11 +519,14 @@ dd {
     width: 100%;
     padding: 8px;
     text-align: center;
+    z-index: 1; /* Make sure select box stays on top */
+    position: relative; /* Ensure positioning context */
 }
 
 input, select {
     font-size: 1em; /* Make inputs and buttons 1em */
     text-align: center;
+    padding: 8px;
     margin: 10px 0px;
     width: 100%; /* Make sure they take full width of modal */
 }

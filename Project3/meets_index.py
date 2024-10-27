@@ -174,19 +174,21 @@ def generate_homepage(csv_filename, folder_path, html_filename):
                     </tr>
             """
         # Close the HTML structure
-
-     # Get the list of images from the folder
-    image_list = generate_image_list(folder_path)
-
-    # Convert Python list of images to a JavaScript array format
-    js_image_array = f"const images = {image_list};"
        
     html_content += """
                     </table>
                 </div>
             </div>
         </section>
-        
+    """
+    
+    # Get the list of images from the folder
+    image_list = generate_image_list(folder_path)
+
+    # Convert Python list of images to a JavaScript array format
+    js_image_array = f"const images = {image_list};"
+    
+    html_content +="""
         <!-- Gallery Section -->
         <section id = "gallery" tabindex="0">
             <div class="section-header">

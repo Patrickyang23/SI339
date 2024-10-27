@@ -9,25 +9,19 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-   <body>
-   <a class="skip" href = "#main">Skip to Main Content</a>
-   <nav>
-        <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
-        <div class="nav-left">Cross Country</div>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#summary" tabindex="0">Summary</a></li>
-                <li><a href="#team-results" tabindex="0">Team Results</a></li>
-                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Gallery</a></li>
-            </ul>
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+            <div>Skyline Cross Country 2024</div>
         </div>
+        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
             <ul>
-                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
                 <li><a href="#summary" tabindex="0">Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
@@ -35,8 +29,8 @@
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
-   </nav>
-   
+    </nav>
+    
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
         // Select the relevant elements
@@ -56,6 +50,21 @@
             sideMenu.classList.remove("active");
             overlay.classList.remove("active");
         }
+        
+        // Function to toggle menu visibility
+        function toggleMenu() {
+            const isActive = sideMenu.classList.contains("active");
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener("click", function () {
+            toggleMenu();
+        });
 
         // Automatically open the menu when the hamburger icon is focused
         hamburger.addEventListener("focus", function () {
@@ -79,24 +88,43 @@
                 closeMenu();
             }
         });
+        
+        // Add event listener to overlay to close the menu when clicked
+        overlay.addEventListener("click", function () {
+            closeMenu();
+        });
     </script>
-   
-    <header tabindex="0">
-      <!--Meet Info-->
-       
+    
+    <header class="meets" tabindex="0">
         <h1><a href="https://www.athletic.net/CrossCountry/meet/236875/results/947085">Bret Clements Bath Invitational Mens 5000 Meters J.V.</a></h1>
         <h2>Sat Sep 7 2024</h2>
     </header>
+    
     <main id = "main">
 
 
-    <section class="summary" id = "summary" tabindex="0">
-      <h2>Race Summary</h2>
-      <p>Ann Arbor Skyline’s JV boys placed 2nd out of 15 teams. Leading the team was <span class="athlete">Enshu Kuan</span>, who finished 3rd with a time of <span class="time">18:13.19</span>, followed closely by <span class="athlete">Dylan Hanley</span> in 7th with <span class="time">18:25.13</span>. <span class="athlete">Raphael Fournier</span> (11th, <span class="time">18:46.09</span> PR), <span class="athlete">Jackson Cichewicz</span> (12th, <span class="time">18:51.99</span> PR), and <span class="athlete">Henry Strait</span> (15th, <span class="time">18:58.77</span>) rounded out Skyline’s top five. Other runners who set personal records include <span class="athlete">Marlowe Hartnett</span>, <span class="athlete">Elliot Daley</span>, <span class="athlete">Emmett Strait</span>, <span class="athlete">Joowon Lee</span>, and <span class="athlete">Lawrence Wang</span>.</p>
+    <section class="summary" id="summary" tabindex="0">
+        <div class="section-header">
+            <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
+        </div>
+        <div class="collapsible-content open">
+            <div class="summary-container">
+                <p>Ann Arbor Skyline’s JV boys placed 2nd out of 15 teams. Leading the team was <span class="athlete">Enshu Kuan</span>, who finished 3rd with a time of <span class="time">18:13.19</span>, followed closely by <span class="athlete">Dylan Hanley</span> in 7th with <span class="time">18:25.13</span>. <span class="athlete">Raphael Fournier</span> (11th, <span class="time">18:46.09</span> PR), <span class="athlete">Jackson Cichewicz</span> (12th, <span class="time">18:51.99</span> PR), and <span class="athlete">Henry Strait</span> (15th, <span class="time">18:58.77</span>) rounded out Skyline’s top five. Other runners who set personal records include <span class="athlete">Marlowe Hartnett</span>, <span class="athlete">Elliot Daley</span>, <span class="athlete">Emmett Strait</span>, <span class="athlete">Joowon Lee</span>, and <span class="athlete">Lawrence Wang</span>.</p>
+            </div>
+        </div>
     </section>
-<section id="team-results" tabindex="0">
+    <section id="team-results" tabindex="0">
 
-        <h2>Team Results</h2><div class="table-container">
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Team Results</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+
+        
+        <div class="collapsible-content open">
+
+            <div class="table-container">
 <table>
 <tr><th>Place</th><th>Team</th><th>Score</th></tr>
 <tr><td>1</td><td>Chuck Block Timing</td><td> 18</td></tr>
@@ -115,827 +143,582 @@
 <tr><td>14</td><td>Fenton</td><td> 409</td></tr>
 <tr><td>15</td><td>Haslett</td><td> 463</td></tr>
 </table>
-</section>
 
-                    <section id="individual-results" tabindex="0">
-
-                    <h2>Individual Results</h2>
-                    
-                    <!-- Dropdown to filter by grade -->
-                    <label for="grade-filter">Filter by Grade: </label>
-                    <select id="grade-filter">
-                        <option value="all">All Grades</option>
-                        <option value="9">Grade 9</option>
-                        <option value="10">Grade 10</option>
-                        <option value="11">Grade 11</option>
-                        <option value="12">Grade 12</option>
-                    </select>
-                    
-                    <div class="athlete-cards-container">
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23687884.jpg" width="200" alt="Profile picture of Enshu Kuan"> 
-            <figcaption>Enshu Kuan</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>3.</dd>
-                <dt>Time</dt><dd>18:13.19</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23349680.jpg" width="200" alt="Profile picture of Dylan Hanley"> 
-            <figcaption>Dylan Hanley</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>7.</dd>
-                <dt>Time</dt><dd>18:25.13</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23564875.jpg" width="200" alt="Profile picture of Raphael Fournier"> 
-            <figcaption>Raphael Fournier</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>11.</dd>
-                <dt>Time</dt><dd>18:46.09</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="12">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26322046.jpg" width="200" alt="Profile picture of Jackson Cichewicz"> 
-            <figcaption>Jackson Cichewicz</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>12.</dd>
-                <dt>Time</dt><dd>18:51.99</dd>
-                <dt>Grade</dt><dd>12</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="12">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/22288700.jpg" width="200" alt="Profile picture of Henry Strait"> 
-            <figcaption>Henry Strait</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>15.</dd>
-                <dt>Time</dt><dd>18:58.77</dd>
-                <dt>Grade</dt><dd>12</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23821078.jpg" width="200" alt="Profile picture of Santiago Valenzuela"> 
-            <figcaption>Santiago Valenzuela</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>16.</dd>
-                <dt>Time</dt><dd>19:01.25</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="11">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/21147174.jpg" width="200" alt="Profile picture of Marlowe Hartnett"> 
-            <figcaption>Marlowe Hartnett</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>17.</dd>
-                <dt>Time</dt><dd>19:02.46</dd>
-                <dt>Grade</dt><dd>11</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26322015.jpg" width="200" alt="Profile picture of Elliot Daley"> 
-            <figcaption>Elliot Daley</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>20.</dd>
-                <dt>Time</dt><dd>19:05.59</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/25989957.jpg" width="200" alt="Profile picture of Roman Stilwell"> 
-            <figcaption>Roman Stilwell</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>22.</dd>
-                <dt>Time</dt><dd>19:06.51</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="12">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/18820260.jpg" width="200" alt="Profile picture of Alex Nemecek"> 
-            <figcaption>Alex Nemecek</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>31.</dd>
-                <dt>Time</dt><dd>19:21.77</dd>
-                <dt>Grade</dt><dd>12</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26322025.jpg" width="200" alt="Profile picture of Emmett Strait"> 
-            <figcaption>Emmett Strait</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>40.</dd>
-                <dt>Time</dt><dd>19:41.25</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="12">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/21147172.jpg" width="200" alt="Profile picture of Micah Winchell"> 
-            <figcaption>Micah Winchell</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>57.</dd>
-                <dt>Time</dt><dd>20:09.92</dd>
-                <dt>Grade</dt><dd>12</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23349712.jpg" width="200" alt="Profile picture of Paxton Rose"> 
-            <figcaption>Paxton Rose</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>69.</dd>
-                <dt>Time</dt><dd>20:39.63</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23349696.jpg" width="200" alt="Profile picture of Joowon Lee"> 
-            <figcaption>Joowon Lee</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>78.</dd>
-                <dt>Time</dt><dd>20:55.11</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26460401.jpg" width="200" alt="Profile picture of Leo Chi"> 
-            <figcaption>Leo Chi</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>81.</dd>
-                <dt>Time</dt><dd>21:08.26</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="10">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23636797.jpg" width="200" alt="Profile picture of Phylip Elliott"> 
-            <figcaption>Phylip Elliott</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>85.</dd>
-                <dt>Time</dt><dd>21:19.42</dd>
-                <dt>Grade</dt><dd>10</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23349703.jpg" width="200" alt="Profile picture of Ethan Miller"> 
-            <figcaption>Ethan Miller</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>86.</dd>
-                <dt>Time</dt><dd>21:25.07</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26322021.jpg" width="200" alt="Profile picture of Sage O'Lor"> 
-            <figcaption>Sage O'Lor</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>117.</dd>
-                <dt>Time</dt><dd>22:22.29</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/23349707.jpg" width="200" alt="Profile picture of Ezekiel Paloff"> 
-            <figcaption>Ezekiel Paloff</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>145.</dd>
-                <dt>Time</dt><dd>23:25.78</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26322018.jpg" width="200" alt="Profile picture of Cole Harms"> 
-            <figcaption>Cole Harms</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>168.</dd>
-                <dt>Time</dt><dd>24:34.45</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26460421.jpg" width="200" alt="Profile picture of Lawrence Wang"> 
-            <figcaption>Lawrence Wang</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>186.</dd>
-                <dt>Time</dt><dd>25:52.57</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-
-    <div class="athlete-card" data-grade="9">
-        <figure class="athlete-figure"> 
-            <img src="../images/profiles/26460414.jpg" width="200" alt="Profile picture of Caspian Ruiz"> 
-            <figcaption>Caspian Ruiz</figcaption>
-        </figure>
-        <div class="athlete-info">
-            <dl>
-                <dt>Place</dt><dd>187.</dd>
-                <dt>Time</dt><dd>25:52.66</dd>
-                <dt>Grade</dt><dd>9</dd>
-            </dl>
-        </div>
-    </div>
-    
-    <script>
-        // JavaScript to filter athlete cards by grade
-        document.getElementById("grade-filter").addEventListener("change", function() {
-            var selectedGrade = this.value;
-            var athleteCards = document.querySelectorAll(".athlete-card");
-
-            athleteCards.forEach(function(card) {
-                // Get the grade of the current card
-                var cardGrade = card.getAttribute("data-grade");
-
-                // Show or hide the card based on the selected grade
-                if (selectedGrade === "all" || cardGrade === selectedGrade) {
-                    card.style.display = "flex"; // Show card
-                } else {
-                    card.style.display = "none"; // Hide card
-                }
-            });
-        });
-    </script>
-</div>
-
-        </section>
-
-        <section id = "gallery" tabindex="0">
-            <h2>Gallery</h2>
-            <div class="gallery-container">
-            <img src=../images/meets/235827/IMG_20240829_171709091.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9038.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9032.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9022.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9045.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_8974.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9031.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9023.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9036.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9043.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9025.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9033.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9050.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_20240829_171701146.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_20240829_171731303.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9049.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9034.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9051.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9018.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9039.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9035.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_8973.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9037.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9030.jpg width = "200" alt="Meet Photo Gallery">
-<img src=../images/meets/235827/IMG_9024.jpg width = "200" alt="Meet Photo Gallery">
             </div>
-        </section>
-   
-   </main>   
-   <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <p>
-                    Skyline High School<br>
-                    <address>
-                        2552 North Maple Road<br>
-                        Ann Arbor, MI 48103<br>
-                    </address>
-                </p>
+
+        </div>
+
+    </section>
+
+    <section id="individual-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-running"></i> Individual Results</h2>              
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+        
+        <div class="collapsible-content open">
+        <div class="individual-results-container">
+            <div class="athlete-cards-container">
+            
+            <!-- No results message (hidden by default) -->
+            <p id="no-results-message" >No results matched your criteria.</p>
+            
+            <div class="athlete-card" data-grade="10" data-name="enshu kuan">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23687884.jpg" width="200" alt="Profile picture of Enshu Kuan"> 
+                    <figcaption>Enshu Kuan</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>3.</dd>
+                        <dt>Time</dt><dd>18:13.19</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
             </div>
             
-            <div class="footer-right">
-                <p>
-                    <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
-                    Follow us on Instagram
-                    <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
-                    </a> 
-                </p>
+            <div class="athlete-card" data-grade="10" data-name="dylan hanley">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349680.jpg" width="200" alt="Profile picture of Dylan Hanley"> 
+                    <figcaption>Dylan Hanley</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>7.</dd>
+                        <dt>Time</dt><dd>18:25.13</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
             </div>
-            <p class="footer-bottom">&copy 2024 Skyline High School. All rights reserved.<br></p>
+            
+            <div class="athlete-card" data-grade="10" data-name="raphael fournier">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23564875.jpg" width="200" alt="Profile picture of Raphael Fournier"> 
+                    <figcaption>Raphael Fournier</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>11.</dd>
+                        <dt>Time</dt><dd>18:46.09</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="jackson cichewicz">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322046.jpg" width="200" alt="Profile picture of Jackson Cichewicz"> 
+                    <figcaption>Jackson Cichewicz</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>12.</dd>
+                        <dt>Time</dt><dd>18:51.99</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="henry strait">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/22288700.jpg" width="200" alt="Profile picture of Henry Strait"> 
+                    <figcaption>Henry Strait</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>15.</dd>
+                        <dt>Time</dt><dd>18:58.77</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="santiago valenzuela">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23821078.jpg" width="200" alt="Profile picture of Santiago Valenzuela"> 
+                    <figcaption>Santiago Valenzuela</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>16.</dd>
+                        <dt>Time</dt><dd>19:01.25</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="marlowe hartnett">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147174.jpg" width="200" alt="Profile picture of Marlowe Hartnett"> 
+                    <figcaption>Marlowe Hartnett</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>17.</dd>
+                        <dt>Time</dt><dd>19:02.46</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="elliot daley">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322015.jpg" width="200" alt="Profile picture of Elliot Daley"> 
+                    <figcaption>Elliot Daley</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>20.</dd>
+                        <dt>Time</dt><dd>19:05.59</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="roman stilwell">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/25989957.jpg" width="200" alt="Profile picture of Roman Stilwell"> 
+                    <figcaption>Roman Stilwell</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>22.</dd>
+                        <dt>Time</dt><dd>19:06.51</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="alex nemecek">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/18820260.jpg" width="200" alt="Profile picture of Alex Nemecek"> 
+                    <figcaption>Alex Nemecek</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>31.</dd>
+                        <dt>Time</dt><dd>19:21.77</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="emmett strait">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322025.jpg" width="200" alt="Profile picture of Emmett Strait"> 
+                    <figcaption>Emmett Strait</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>40.</dd>
+                        <dt>Time</dt><dd>19:41.25</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="micah winchell">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147172.jpg" width="200" alt="Profile picture of Micah Winchell"> 
+                    <figcaption>Micah Winchell</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>57.</dd>
+                        <dt>Time</dt><dd>20:09.92</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="paxton rose">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349712.jpg" width="200" alt="Profile picture of Paxton Rose"> 
+                    <figcaption>Paxton Rose</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>69.</dd>
+                        <dt>Time</dt><dd>20:39.63</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="joowon lee">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349696.jpg" width="200" alt="Profile picture of Joowon Lee"> 
+                    <figcaption>Joowon Lee</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>78.</dd>
+                        <dt>Time</dt><dd>20:55.11</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="leo chi">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26460401.jpg" width="200" alt="Profile picture of Leo Chi"> 
+                    <figcaption>Leo Chi</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>81.</dd>
+                        <dt>Time</dt><dd>21:08.26</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="phylip elliott">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23636797.jpg" width="200" alt="Profile picture of Phylip Elliott"> 
+                    <figcaption>Phylip Elliott</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>85.</dd>
+                        <dt>Time</dt><dd>21:19.42</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="ethan miller">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349703.jpg" width="200" alt="Profile picture of Ethan Miller"> 
+                    <figcaption>Ethan Miller</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>86.</dd>
+                        <dt>Time</dt><dd>21:25.07</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="sage o'lor">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322021.jpg" width="200" alt="Profile picture of Sage O'Lor"> 
+                    <figcaption>Sage O'Lor</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>117.</dd>
+                        <dt>Time</dt><dd>22:22.29</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="ezekiel paloff">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349707.jpg" width="200" alt="Profile picture of Ezekiel Paloff"> 
+                    <figcaption>Ezekiel Paloff</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>145.</dd>
+                        <dt>Time</dt><dd>23:25.78</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="cole harms">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322018.jpg" width="200" alt="Profile picture of Cole Harms"> 
+                    <figcaption>Cole Harms</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>168.</dd>
+                        <dt>Time</dt><dd>24:34.45</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="lawrence wang">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26460421.jpg" width="200" alt="Profile picture of Lawrence Wang"> 
+                    <figcaption>Lawrence Wang</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>186.</dd>
+                        <dt>Time</dt><dd>25:52.57</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="caspian ruiz">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26460414.jpg" width="200" alt="Profile picture of Caspian Ruiz"> 
+                    <figcaption>Caspian Ruiz</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>187.</dd>
+                        <dt>Time</dt><dd>25:52.66</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+        </div>
+
+                
+        <!-- Floating Action Buttons (FABs) -->
+        <div class="fab-container">
+            <button class="fab" id="fab-filter" aria-label="Filter by Grade">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="fab" id="fab-search" aria-label="Search by Name">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        </div>
+
+        
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
+        
+        <!-- Modal for filtering by grade -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <h3>Filter by Grade</h3>
+                <select id="grade-filter" class="filter-select">
+                    <option value="all">All Grades</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button id="apply-filter">Apply</button>
+            </div>
+        </div>
+        
+        </div>
+
+        </section>
+
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const filterFab = document.getElementById('fab-filter');
+            const searchFab = document.getElementById('fab-search');
+            const filterModal = document.getElementById('filter-modal');
+            const searchModal = document.getElementById('search-modal');
+            const applyFilterButton = document.getElementById('apply-filter');
+            const applySearchButton = document.getElementById('apply-search');
+            const gradeFilter = document.getElementById('grade-filter');
+            const nameSearch = document.getElementById('name-search');
+            const athleteCards = document.querySelectorAll('.athlete-card');
+
+            // Show/Hide Filter Modal
+            filterFab.addEventListener('click', function() {
+                filterModal.classList.toggle('active');
+                if (searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active'); // Close search modal if open
+                }
+            });
+
+            // Show/Hide Search Modal
+            searchFab.addEventListener('click', function() {
+                searchModal.classList.toggle('active');
+                if (filterModal.classList.contains('active')) {
+                    filterModal.classList.remove('active'); // Close filter modal if open
+                }
+            });
+            
+            // Close modals when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.classList.remove('active');
+                }
+                if (event.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+
+            // Apply the filter
+            applyFilterButton.addEventListener('click', function() {
+                const selectedGrade = gradeFilter.value;
+                filterModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardGrade = card.getAttribute('data-grade');
+                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Apply the search
+            applySearchButton.addEventListener('click', function() {
+                const searchName = nameSearch.value.toLowerCase();
+                searchModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    if (cardName.includes(searchName)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
+        
+        <section id = "gallery" tabindex="0">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+            </div>
+            
+            <div class="collapsible-content open">
+                <div class="gallery-container">
+                    
+                    <div class="gallery-slide">
+            
+                    <img id="gallery-image" src="../images/meets/236875/IMG_9203.jpg" alt="Gallery Image">
+            
+                    </div>
+                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+            
+                </div>
+            </div>
+        </section>
+        
+            </div>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+
+                toggleButtons.forEach(toggleButton => {
+                    const sectionName = toggleButton.getAttribute('data-section');
+                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
+
+                    toggleButton.addEventListener('click', function() {
+                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                        toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                        // Update the button text based on the section
+                        if (isExpanded) {
+                            toggleButton.textContent = `Show ${sectionName}`;
+                            collapsibleContent.classList.remove('open');
+                        } else {
+                            toggleButton.textContent = `Hide ${sectionName}`;
+                            collapsibleContent.classList.add('open');
+                        }
+                    });
+                });
+            });
+        </script>  
+        
+            <script>
+                const meet_id = "236875";  // Pass meet_id as a JavaScript variable
+                const images = ['IMG_9203.jpg', 'IMG_9125.jpg', 'IMG_9163.jpg', 'IMG_9194.jpg', 'IMG_9150.jpg', 'IMG_9096.jpg', 'IMG_9164.png', 'IMG_9195.jpg', 'IMG_9123.jpg', 'PXL_20240907_131626782~2.jpg'];  // JavaScript array of images generated from Python
+
+                let currentImageIndex = 0;
+                const galleryImage = document.getElementById("gallery-image");
+            
+
+                // Function to show the next image
+                function nextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    showImage("right");
+                }
+
+                // Function to show the previous image
+                function prevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    showImage("left");
+                }
+
+                // Function to display the image with sliding animation
+                function showImage(direction) {
+                    galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+                    
+                    // Trigger a reflow to restart animation
+                    void galleryImage.offsetWidth;
+
+                    // Set the new image source
+                    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+
+                    // Add animation class based on direction
+                    galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+
+                    // After animation, set it back to active position
+                    setTimeout(() => {
+                        galleryImage.classList.remove("slide-in-left", "slide-in-right");
+                        galleryImage.classList.add("active-slide");
+                    }, 500); // Duration should match CSS transition time
+                }
+            </script>
+        
+    </main>   
+    <footer>
+        <div class="footer-container">
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
         </div>
     </footer>
     </body>
