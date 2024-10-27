@@ -317,6 +317,7 @@ def generate_image_list(folder_path):
         if file_name.endswith((".jpg", ".jpeg", ".png")):
             images.append(file_name)
     images.sort()
+    print("List of images:", images)  # Print the sorted list of images
     return images
 
 csv_filename = "skyline_team_results.csv"  # The CSV file containing the team results

@@ -1,7 +1,6 @@
 import csv
 import os
 import random
-from PIL import Image  # Import the Pillow library for image handling
 import html  # To safely escape filenames in HTML
 
 def csv_to_html(csv_filename, output_folder):
@@ -329,7 +328,14 @@ def csv_to_html(csv_filename, output_folder):
             });
         });
         </script>
+        """
+        meet_id = extract_meet_id(link_url)
+        # Get the list of images from the folder
+        image_list = create_meet_image_gallery(link_url)
+        # Convert Python list of images to a JavaScript array format
+        js_image_array = f"const images = {image_list};"
         
+        html_content += """
         <section id = "gallery" tabindex="0">
             <div class="section-header">
                 <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
@@ -337,10 +343,21 @@ def csv_to_html(csv_filename, output_folder):
             </div>
             
             <div class="collapsible-content open">
-                <div class="gallery-container">
-            """
-
-        html_content += create_meet_image_gallery(link_url)
+                <div class="gallery-slide-container">
+                    <div class="gallery-slide">
+                    """
+        html_content += f"""
+                            <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Gallery Image">
+                    """
+        html_content += """
+                    </div>
+                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+                </div>
+            </div>
+        </section>
+        """
+    
         # Close the HTML document
         html_content += """
             </div>
@@ -370,6 +387,50 @@ def csv_to_html(csv_filename, output_folder):
                     });
                 });
             });
+            
+            """    
+
+        html_content += f"""
+            const meet_id = "{meet_id}";  // Inject Python meet_id variable here
+            {js_image_array}  // JavaScript array of images generated from Python
+
+            let currentImageIndex = 0;
+            const galleryImage = document.getElementById("gallery-image");
+        """
+        
+        html_content += """
+
+        // Function to show the next image
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage("right");
+        }
+
+        // Function to show the previous image
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage("left");
+        }
+
+        // Function to display the image with sliding animation
+        function showImage(direction) {
+            galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+            
+            // Trigger a reflow to restart animation
+            void galleryImage.offsetWidth;
+
+            // Set the new image source
+            galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+
+            // Add animation class based on direction
+            galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+
+            // After animation, set it back to active position
+            setTimeout(() => {
+                galleryImage.classList.remove("slide-in-left", "slide-in-right");
+                galleryImage.classList.add("active-slide");
+            }, 500); // Duration should match CSS transition time
+        }
         </script>
    
    </main>   
@@ -443,40 +504,29 @@ def extract_meet_id(url):
     else:
         raise ValueError("Meet ID not found in URL.")
 
-# Step 2: Select 15 random photos from the folder
-def select_random_photos(folder_path, num_photos=15):
-    # List to store eligible vertical photos
-    vertical_images = []
-
-    # List all files in the folder
+# Step 2: Select 10 random photos from the folder
+def select_random_photos(folder_path, num_photos=10):
+     # List all image files in the folder
     print(f"Checking {folder_path}")
     all_files = os.listdir(folder_path)
+    image_files = [f for f in all_files if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+
+    # Ensure we have enough images to select
+    if len(image_files) < num_photos:
+        return ""
+        raise ValueError(f"Not enough images in the folder. Found {len(image_files)} images.")
     
-    # Filter out non-image files and check dimensions to find vertical images
-    for file_name in all_files:
-        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-            file_path = os.path.join(folder_path, file_name)
-            with Image.open(file_path) as img:
-                width, height = img.size
-                if height > width:  # Check if the image is vertical
-                    vertical_images.append(file_name)
-    
-    # Ensure we have enough vertical images to select
-    if len(vertical_images) < num_photos:
-        raise ValueError(f"Not enough vertical images in the folder. Found {len(vertical_images)} vertical images.")
-    
-    # Select the specified number of random vertical images
-    return random.sample(vertical_images, num_photos)
+    # Select 10 random images
+    return random.sample(image_files, num_photos)
 
 # Step 3: Generate HTML image tags
-def generate_image_tags(image_files, folder_path):
+def generate_image_tags(image_files):
     img_tags = []
     for img in image_files:
-        img_path = os.path.join(folder_path, img)
         # Use html.escape to handle special characters, including spaces
-        img_path_escaped = html.escape(img_path)
-        img_tags.append(f'<img src="../{img_path_escaped}" width = "80" alt="Meet Photo Gallery">')
-    return "\n".join(img_tags)
+        img_path_escaped = html.escape(img)
+        img_tags.append(f'{img_path_escaped}')
+    return img_tags
 
 # Putting it all together
 def create_meet_image_gallery(url):
@@ -494,7 +544,9 @@ def create_meet_image_gallery(url):
     selected_photos = select_random_photos(folder_path)
     
     # Generate image tags
-    html_image_tags = generate_image_tags(selected_photos, folder_path)
+    html_image_tags = generate_image_tags(selected_photos)
+    
+    print("List of images:", html_image_tags)  # Print the sorted list of images
     
     return html_image_tags
 
