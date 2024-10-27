@@ -1,5 +1,8 @@
 import csv
 import os
+import random
+from PIL import Image  # Import the Pillow library for image handling
+import html  # To safely escape filenames in HTML
 
 def csv_to_html(csv_filename, output_folder):
     # Derive the HTML filename by replacing the CSV extension with '.html' in the meets folder
@@ -337,7 +340,7 @@ def csv_to_html(csv_filename, output_folder):
                 <div class="gallery-container">
             """
 
-        html_content += create_meet_image_gallery(url)
+        html_content += create_meet_image_gallery(link_url)
         # Close the HTML document
         html_content += """
             </div>
@@ -442,27 +445,37 @@ def extract_meet_id(url):
 
 # Step 2: Select 15 random photos from the folder
 def select_random_photos(folder_path, num_photos=15):
+    # List to store eligible vertical photos
+    vertical_images = []
+
     # List all files in the folder
     print(f"Checking {folder_path}")
     all_files = os.listdir(folder_path)
-    # Filter out non-image files if necessary (assuming .jpg, .png, etc.)
-    image_files = [f for f in all_files if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
     
-    # Ensure we have enough images to select
-    if len(image_files) < num_photos:
-        return ""
-        raise ValueError(f"Not enough images in the folder. Found {len(image_files)} images.")
+    # Filter out non-image files and check dimensions to find vertical images
+    for file_name in all_files:
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+            file_path = os.path.join(folder_path, file_name)
+            with Image.open(file_path) as img:
+                width, height = img.size
+                if height > width:  # Check if the image is vertical
+                    vertical_images.append(file_name)
     
-    # Select 15 random images
-    return random.sample(image_files, num_photos)
+    # Ensure we have enough vertical images to select
+    if len(vertical_images) < num_photos:
+        raise ValueError(f"Not enough vertical images in the folder. Found {len(vertical_images)} vertical images.")
+    
+    # Select the specified number of random vertical images
+    return random.sample(vertical_images, num_photos)
 
 # Step 3: Generate HTML image tags
 def generate_image_tags(image_files, folder_path):
     img_tags = []
     for img in image_files:
         img_path = os.path.join(folder_path, img)
-        # print(f"The image_path is {img_path}")
-        img_tags.append(f'<img src=../{img_path} width = "80" alt="Meet Photo Gallery">')
+        # Use html.escape to handle special characters, including spaces
+        img_path_escaped = html.escape(img_path)
+        img_tags.append(f'<img src="../{img_path_escaped}" width = "80" alt="Meet Photo Gallery">')
     return "\n".join(img_tags)
 
 # Putting it all together
@@ -474,7 +487,7 @@ def create_meet_image_gallery(url):
     # print(f"The folder path is {folder_path}")
     
     if not os.path.exists(folder_path):
-        return ""
+        return "<p>Waiting for updating photo gallery for this meet.</p>"
         raise FileNotFoundError(f"The folder {folder_path} does not exist.")
     
     # Select 15 random photos
@@ -486,9 +499,9 @@ def create_meet_image_gallery(url):
     return html_image_tags
 
 # Example usage
-url = "https://www.athletic.net/CrossCountry/meet/235827/results/943367"
-html_gallery = create_meet_image_gallery(url)
-print(html_gallery)
+# url = "https://www.athletic.net/CrossCountry/meet/235827/results/943367"
+# html_gallery = create_meet_image_gallery(url)
+# print(html_gallery)
 
 
 if __name__ == "__main__":

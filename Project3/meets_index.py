@@ -1,7 +1,7 @@
 import csv
 import os
 
-def generate_homepage(csv_filename, html_filename):
+def generate_homepage(csv_filename, folder_path, html_filename):
     # Initialize HTML content
     html_content = """
 <!DOCTYPE html>
@@ -10,8 +10,8 @@ def generate_homepage(csv_filename, html_filename):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skyline Cross Country</title>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
    <body>
@@ -21,7 +21,7 @@ def generate_homepage(csv_filename, html_filename):
             <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
         </div>
-        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        <img src="images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -30,7 +30,7 @@ def generate_homepage(csv_filename, html_filename):
                 <li><a href="#about" tabindex="0">Summary</a></li>
                 <li><a href="#meets" tabindex="0">Team Results</a></li>
                 <li><a href="#performance" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+                <li><a href="#gallery" tabindex="0">Team Photos</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -128,6 +128,9 @@ def generate_homepage(csv_filename, html_filename):
                 </div> 
             </div>
         </section>
+        """
+        
+    html_content += """
 
         <!-- Meets Section -->
         <section id = "meets" tabindex="0">
@@ -138,32 +141,47 @@ def generate_homepage(csv_filename, html_filename):
             
             <div class="collapsible-content open">
                 <div class="table-container">
-                """
-                    # Open the CSV file and read the data
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Meet</th>
+                            <th>Place</th>
+                            <th>Score</th>
+                        </tr>
+    """
+                        
+    # Open the CSV file and read the data
     with open(csv_filename, mode='r', newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         rows = list(reader)
-        html_content += """<table>\n"""
-            # Loop through the rows of the CSV (starting from the third row to skip headers)
-    for row in rows[2:]:
-        date = row[0]
-        meet_name = row[1]
-        category = row[2]
-        place = row[3]
-        score = row[4]
-        html_file = row[6]  # The HTML file for the meet link
 
-        # Add a table row for each entry in the CSV, with the meet name as a clickable link
-        html_content += f"""
-            <tr>
-                <td>{date}</td>
-                <td><a href="{html_file}" target="_blank">{meet_name}</a></td>
-                <td>{place}</td>
-                <td>{score}</td>
-            </tr>
-        """
+        # Loop through the rows of the CSV (starting from the third row to skip headers)
+        for row in rows[2:]:
+            date = row[0]
+            meet_name = row[1]
+            category = row[2]
+            place = row[3]
+            score = row[4]
+            html_file = row[6]  # The HTML file for the meet link
+
+            # Add a table row for each entry in the CSV, with the meet name as a clickable link
+            html_content += f"""
+                    <tr>
+                        <td>{date}</td>
+                        <td><a href="meets/{html_file}">{meet_name}</a></td>
+                        <td>{place}</td>
+                        <td>{score}</td>
+                    </tr>
+            """
         # Close the HTML structure
-    html_content += """"
+
+     # Get the list of images from the folder
+    image_list = generate_image_list(folder_path)
+
+    # Convert Python list of images to a JavaScript array format
+    js_image_array = f"const images = {image_list};"
+       
+    html_content += """
                     </table>
                 </div>
             </div>
@@ -172,12 +190,21 @@ def generate_homepage(csv_filename, html_filename):
         <!-- Gallery Section -->
         <section id = "gallery" tabindex="0">
             <div class="section-header">
-                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
-                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+                <h2><i class="fas fa-camera"></i> Team Photos</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Photos">Hide Photos</button>
             </div>
             
             <div class="collapsible-content open">
-                <div class="gallery-container">
+                <div class="gallery-slide-container">
+                    <div class="gallery-slide">
+                    """
+    html_content += f"""
+                            <img id="gallery-image" src="images/team/{image_list[0]}" alt="Gallery Image">
+                    """
+    html_content += """
+                    </div>
+                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
                 </div>
             </div>
         </section>
@@ -207,9 +234,73 @@ def generate_homepage(csv_filename, html_filename):
                 });
             });
         });
+    """    
+
+    html_content += f"""
+        {js_image_array}  // JavaScript array of images generated from Python
+
+        let currentImageIndex = 0;
+        const galleryImage = document.getElementById("gallery-image");
+    """
+    
+    html_content += """
+
+    // Function to show the next image
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage("right");
+    }
+
+    // Function to show the previous image
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage("left");
+    }
+
+    // Function to display the image with sliding animation
+    function showImage(direction) {
+        galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+        
+        // Trigger a reflow to restart animation
+        void galleryImage.offsetWidth;
+
+        // Set the new image source
+        galleryImage.src = `images/team/${images[currentImageIndex]}`;
+
+        // Add animation class based on direction
+        galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+
+        // After animation, set it back to active position
+        setTimeout(() => {
+            galleryImage.classList.remove("slide-in-left", "slide-in-right");
+            galleryImage.classList.add("active-slide");
+        }, 500); // Duration should match CSS transition time
+    }
+
     </script>
     """
     html_content += """   
+    <footer>
+        <div class="footer-container">
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
+        </div>
+    </footer>
+    
     </main>
     </body>
     </html>
@@ -220,8 +311,15 @@ def generate_homepage(csv_filename, html_filename):
 
     print(f"HTML file generated: {html_filename}")
 
+def generate_image_list(folder_path):
+    images = []
+    for file_name in os.listdir(folder_path):
+        if file_name.endswith((".jpg", ".jpeg", ".png")):
+            images.append(file_name)
+    images.sort()
+    return images
 
-# Example usage
 csv_filename = "skyline_team_results.csv"  # The CSV file containing the team results
 html_filename = "index.html"  # The output HTML file
-generate_homepage(csv_filename, html_filename)
+folder_path = "images/team"
+generate_homepage(csv_filename, folder_path, html_filename)
