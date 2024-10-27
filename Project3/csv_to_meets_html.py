@@ -359,7 +359,7 @@ def csv_to_html(csv_filename, output_folder):
         else:  # If image_list is a message string
             # Display a "Waiting for update" message if no images are found
             html_content += """
-                <p>Waiting for updating photo gallery for this meet.</p>
+                <p>Wait for updating photo gallery for this meet.</p>
             """
 
         html_content += """

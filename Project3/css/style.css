@@ -365,13 +365,10 @@ table th {
 /* Container for all athlete cards */
 .athlete-cards-container {
     margin-top: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
     flex: 1;   /* Take up available space */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
     gap: 20px;  /* Space between cards */
-    padding: 10px;
     /* max-height: 40vh;  Limit the height to 30% of the viewport */
     overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
     overflow-x: auto;  /* Enable horizontal scrolling if content exceeds the height */
