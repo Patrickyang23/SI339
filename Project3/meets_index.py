@@ -1,5 +1,6 @@
 import csv
 import os
+import urllib.parse
 
 def generate_homepage(csv_filename, folder_path, html_filename):
     # Initialize HTML content
@@ -167,7 +168,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             html_content += f"""
                     <tr>
                         <td>{date}</td>
-                        <td><a href="meets/{html_file}">{meet_name}</a></td>
+                        <td><a href="meets/{encode_filename(html_file)}">{meet_name}</a></td>
                         <td>{place}</td>
                         <td>{score}</td>
                     </tr>
@@ -318,6 +319,9 @@ def generate_image_list(folder_path):
     images.sort()
     print("List of images:", images)  # Print the sorted list of images
     return images
+
+def encode_filename(filename):
+    return urllib.parse.quote(filename)
 
 csv_filename = "skyline_team_results.csv"  # The CSV file containing the team results
 html_filename = "index.html"  # The output HTML file

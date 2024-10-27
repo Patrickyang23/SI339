@@ -47,7 +47,7 @@ def csv_to_html(csv_filename, output_folder):
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
             <ul>
-                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
                 <li><a href="#summary" tabindex="0">Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
@@ -156,7 +156,7 @@ def csv_to_html(csv_filename, output_folder):
         # Add a collapsible div container to enable scrolling
         html_content += """
         <div class="collapsible-content open">\n
-        <div class="table-container">\n"""
+            <div class="table-container">\n"""
         
         # Process the remaining rows (after the first five)
         html_content += """<table>\n"""
@@ -176,22 +176,23 @@ def csv_to_html(csv_filename, output_folder):
                 if table_start == True:
                     table_start = False
                     html_content += """</table>\n
-                    </div>\n
-                    </div>\n"""
-                    html_content += """</section>\n
-                    <section id="individual-results" tabindex="0">\n
-                    <div class="section-header">
-                        <h2><i class="fas fa-running"></i> Individual Results</h2>              
-                        <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
-                    </div>
-                    
-                    <div class="collapsible-content open">
-                    <div class="individual-results-container">
-                        <div class="athlete-cards-container">
-                        
-                        <!-- No results message (hidden by default) -->
-                        <p id="no-results-message" >No results matched your criteria.</p>
-                        """
+            </div>\n
+        </div>\n"""
+                    html_content += """
+    </section>\n
+    <section id="individual-results" tabindex="0">\n
+        <div class="section-header">
+            <h2><i class="fas fa-running"></i> Individual Results</h2>              
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+        
+        <div class="collapsible-content open">
+        <div class="individual-results-container">
+            <div class="athlete-cards-container">
+            
+            <!-- No results message (hidden by default) -->
+            <p id="no-results-message" >No results matched your criteria.</p>
+            """
 
                 place = row[0]
                 grade = row[1]
@@ -201,21 +202,21 @@ def csv_to_html(csv_filename, output_folder):
 
                 # Add the athlete div
                 html_content += f"""
-                <div class="athlete-card" data-grade="{grade}" data-name="{name.lower()}">
-                    <figure class="athlete-figure"> 
-                        <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
-                        <figcaption>{name}</figcaption>
-                    </figure>
-                    
-                    <div class="athlete-info">
-                        <dl>
-                            <dt>Place</dt><dd>{place}</dd>
-                            <dt>Time</dt><dd>{time}</dd>
-                            <dt>Grade</dt><dd>{grade}</dd>
-                        </dl>
-                    </div>
+            <div class="athlete-card" data-grade="{grade}" data-name="{name.lower()}">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
+                    <figcaption>{name}</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>{place}</dd>
+                        <dt>Time</dt><dd>{time}</dd>
+                        <dt>Grade</dt><dd>{grade}</dd>
+                    </dl>
                 </div>
-                """
+            </div>
+            """
 
         html_content += """
         </div>\n
@@ -332,9 +333,7 @@ def csv_to_html(csv_filename, output_folder):
         meet_id = extract_meet_id(link_url)
         # Get the list of images from the folder
         image_list = create_meet_image_gallery(link_url)
-        # Convert Python list of images to a JavaScript array format
-        js_image_array = f"const images = {image_list};"
-        
+
         html_content += """
         <section id = "gallery" tabindex="0">
             <div class="section-header">
@@ -344,15 +343,26 @@ def csv_to_html(csv_filename, output_folder):
             
             <div class="collapsible-content open">
                 <div class="gallery-container">
+                    """
+        if isinstance(image_list, list) and image_list:  # Check if image_list is a non-empty list
+            html_content += """
                     <div class="gallery-slide">
-                    """
-        html_content += f"""
-                            <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Gallery Image">
-                    """
-        html_content += """
+            """
+            html_content += f"""
+                    <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Gallery Image">
+            """
+            html_content += """
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
                     <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+            """
+        else:  # If image_list is a message string
+            # Display a "Waiting for update" message if no images are found
+            html_content += """
+                <p>Waiting for updating photo gallery for this meet.</p>
+            """
+
+        html_content += """
                 </div>
             </div>
         </section>
@@ -387,54 +397,60 @@ def csv_to_html(csv_filename, output_folder):
                     });
                 });
             });
+        </script>  
+        """    
+
+        # Add any necessary JavaScript for the gallery only if images exist
+        if isinstance(image_list, list) and image_list:
+            # Convert Python list of images to a JavaScript array format
+            js_image_array = f"const images = {image_list};"
+            html_content += f"""
+            <script>
+                const meet_id = "{meet_id}";  // Pass meet_id as a JavaScript variable
+                {js_image_array}  // JavaScript array of images generated from Python
+
+                let currentImageIndex = 0;
+                const galleryImage = document.getElementById("gallery-image");
+            """
             
-            """    
+            html_content += """
 
-        html_content += f"""
-            const meet_id = "{meet_id}";  // Inject Python meet_id variable here
-            {js_image_array}  // JavaScript array of images generated from Python
+                // Function to show the next image
+                function nextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    showImage("right");
+                }
 
-            let currentImageIndex = 0;
-            const galleryImage = document.getElementById("gallery-image");
+                // Function to show the previous image
+                function prevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    showImage("left");
+                }
+
+                // Function to display the image with sliding animation
+                function showImage(direction) {
+                    galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+                    
+                    // Trigger a reflow to restart animation
+                    void galleryImage.offsetWidth;
+
+                    // Set the new image source
+                    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+
+                    // Add animation class based on direction
+                    galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+
+                    // After animation, set it back to active position
+                    setTimeout(() => {
+                        galleryImage.classList.remove("slide-in-left", "slide-in-right");
+                        galleryImage.classList.add("active-slide");
+                    }, 500); // Duration should match CSS transition time
+                }
+            </script>
         """
-        
-        html_content += """
-
-        // Function to show the next image
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            showImage("right");
-        }
-
-        // Function to show the previous image
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            showImage("left");
-        }
-
-        // Function to display the image with sliding animation
-        function showImage(direction) {
-            galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
-            
-            // Trigger a reflow to restart animation
-            void galleryImage.offsetWidth;
-
-            // Set the new image source
-            galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
-
-            // Add animation class based on direction
-            galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
-
-            // After animation, set it back to active position
-            setTimeout(() => {
-                galleryImage.classList.remove("slide-in-left", "slide-in-right");
-                galleryImage.classList.add("active-slide");
-            }, 500); // Duration should match CSS transition time
-        }
-        </script>
-   
-   </main>   
-   <footer>
+    html_content += """
+    </main>   
+    <footer>
         <div class="footer-container">
             <p>
                 Skyline High School<br>
@@ -457,15 +473,15 @@ def csv_to_html(csv_filename, output_folder):
     </body>
 </html>
 """
-        import re
-        html_content = re.sub(r'<time>', '<span class="time">', html_content)
-        html_content = re.sub(r'</time>', '</span>', html_content)
+    import re
+    html_content = re.sub(r'<time>', '<span class="time">', html_content)
+    html_content = re.sub(r'</time>', '</span>', html_content)
 
-        # Save HTML content to a file in the meets folder
-        with open(html_filename, 'w', encoding='utf-8') as htmlfile:
-            htmlfile.write(html_content)
+    # Save HTML content to a file in the meets folder
+    with open(html_filename, 'w', encoding='utf-8') as htmlfile:
+        htmlfile.write(html_content)
 
-        print(f"HTML file '{html_filename}' created successfully.")
+    print(f"HTML file '{html_filename}' created successfully.")
 
     # except Exception as e:
     #     print(f"Error processing file: {e}")
@@ -513,7 +529,7 @@ def select_random_photos(folder_path, num_photos=10):
 
     # Ensure we have enough images to select
     if len(image_files) < num_photos:
-        return ""
+        return []
         raise ValueError(f"Not enough images in the folder. Found {len(image_files)} images.")
     
     # Select 10 random images
@@ -537,7 +553,7 @@ def create_meet_image_gallery(url):
     # print(f"The folder path is {folder_path}")
     
     if not os.path.exists(folder_path):
-        return "<p>Waiting for updating photo gallery for this meet.</p>"
+        return "Waiting for updating photo gallery for this meet."
         raise FileNotFoundError(f"The folder {folder_path} does not exist.")
     
     # Select 15 random photos
