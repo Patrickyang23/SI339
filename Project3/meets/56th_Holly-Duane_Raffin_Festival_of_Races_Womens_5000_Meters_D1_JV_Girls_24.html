@@ -16,7 +16,19 @@
             <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
         </div>
-        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -25,7 +37,7 @@
                 <li><a href="#summary" tabindex="0">Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Gallery</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -577,7 +589,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236072/09-14 Holly Invitational 03.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236072/IMG_9366_V2F_2024-09-14_13-34-09_467.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -618,7 +630,7 @@
         
             <script>
                 const meet_id = "236072";  // Pass meet_id as a JavaScript variable
-                const images = ['09-14 Holly Invitational 03.jpg', '20240914_130055_009_01.jpg', '20240914_130115.jpg', '20240914_130055_007_01.jpg', '20240914_125427.jpg', '20240914_133632_029_01.jpg', 'IMG_9358.jpg', 'IMG_4177.jpg', 'IMG_9363.jpg', '20240914_133718_010_01.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9366_V2F_2024-09-14_13-34-09_467.jpg', '20240914_133704_018_01.jpg', '20240914_125433.jpg', '20240914_133619_012_01.jpg', '20240914_124622_004_01.jpg', 'IMG_9363.jpg', '20240914_130116_009_01.jpg', 'IMG_9367.jpg', 'IMG_4178.jpg', '20240914_133632_020_01.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

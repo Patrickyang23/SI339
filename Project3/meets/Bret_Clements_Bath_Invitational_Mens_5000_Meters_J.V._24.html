@@ -16,7 +16,19 @@
             <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
         </div>
-        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -25,7 +37,7 @@
                 <li><a href="#summary" tabindex="0">Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Gallery</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
@@ -620,7 +632,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236875/IMG_9203.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236875/PXL_20240907_131626782~2.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -661,7 +673,7 @@
         
             <script>
                 const meet_id = "236875";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9203.jpg', 'IMG_9125.jpg', 'IMG_9163.jpg', 'IMG_9194.jpg', 'IMG_9150.jpg', 'IMG_9096.jpg', 'IMG_9164.png', 'IMG_9195.jpg', 'IMG_9123.jpg', 'PXL_20240907_131626782~2.jpg'];  // JavaScript array of images generated from Python
+                const images = ['PXL_20240907_131626782~2.jpg', 'IMG_9091.jpg', 'IMG_9228.jpg', 'IMG_9213.jpg', 'IMG_9102.jpg', 'IMG_9196.jpg', 'IMG_9137.jpg', 'IMG_9163.jpg', 'IMG_9191.jpg', 'IMG_9200.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");
