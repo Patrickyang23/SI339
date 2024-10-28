@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>The Skyline boys cross country team hit the ground running—literally—at the SEC-HS Jamboree #2, taking on some tough competition at Pioneer High School. With a 4th-place finish out of 8 teams, Skyline's runners proved once again that they can hold their own in the fiercely competitive SEC Red division.</p> <p>Leading the charge for Skyline was <span class="athlete">Nicholas Yuan</span>, who dashed through the course with a time of <span class="time">17:20.70</span>, setting the tone for the rest of the team. Not far behind, <span class="athlete">Bruno Cifaldi</span> finished with a solid <span class="time">17:32.20</span>, followed closely by <span class="athlete">Matthew Guikema</span> at <span class="time">17:39.10</span>.</p><p><span class="athlete">Oskar MacArthur</span> also made his mark, crossing the finish line in <span class="time">17:39.40</span>. Wrapping up the top five for Skyline was <span class="athlete">Jack Robichaud</span> at <span class="time">17:46.60</span>, proving Skyline's strength in depth.</p>
             </div>
         </div>
@@ -323,7 +323,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -332,7 +333,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>

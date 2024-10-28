@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>The Skyline girls reserve cross country team delivered an impressive performance at the SEC-HS Jamboree #2, finishing strong in 2nd place overall. The team showcased their depth and determination, pushing through the competition to place right behind Saline.</p><p><span class="athlete">Gwen Stotts-Walshe</span> led the charge, finishing with a personal record of <span class="time">22:20.60</span>. Freshman <span class="athlete">Violet Olley</span> clocked in at <span class="time">23:07.20</span> for a personal best, followed closely by junior <span class="athlete">Adrienne Stewart</span> at <span class="time">23:07.70</span>.</p> <p>Sophomore <span class="athlete">Pia Odell</span> hit a personal best of <span class="time">24:09.90</span>, with junior <span class="athlete">Ruthie Scott</span> finishing in <span class="time">24:45.30</span>, rounding out a solid team effort.</p>
             </div>
         </div>
@@ -441,7 +441,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -450,7 +451,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>

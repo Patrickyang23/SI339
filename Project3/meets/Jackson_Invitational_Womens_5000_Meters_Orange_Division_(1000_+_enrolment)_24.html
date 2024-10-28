@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>The Skyline girls cross country team took on the Jackson Invitational bright and early, showcasing their grit and determination despite the fact that most of us were still rolling out of bed. Racing in the cool morning air, the girls gave it their all and finished a solid 19th out of 29 teams—proof that Skyline doesn’t just rise early, they rise to the occasion.</p><p>Leading the team was <span class="athlete">Becca Van Lent</span>, who powered through the course to finish with a time of <span class="time">19:57.87</span>, setting the pace for her teammates. Not far behind was <span class="athlete">Isla Tharp</span>, clocking in at <span class="time">20:12.31</span> with a personal record, and she certainly earned her spot at the breakfast table.</p><p>Continuing the strong effort, <span class="athlete">Lila Edison</span> crossed the finish line with a personal best of <span class="time">20:46.19</span>, while <span class="athlete">Alison Kauffman</span> made her mark with a time of <span class="time">21:38.28</span>. The pack was rounded out by <span class="athlete">Mara Mocanu</span>, who finished in <span class="time">21:40.87</span>, securing Skyline’s position for the day.</p>
             </div>
         </div>
@@ -345,7 +345,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -354,7 +355,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>

@@ -24,7 +24,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -127,7 +127,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
                 <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
             </div>
             <div class="collapsible-content open">
-                <div class="summary-container">
+                <div class="summary-container" tabindex="0"> 
                     <p>
                         <b>Welcome to the website of the Ann Arbor Skyline Cross Country team!</b> 
                     </p>

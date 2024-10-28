@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>Ann Arbor Skyline's JV girls team delivered an impressive 3rd place finish at the 56th Holly-Duane Raffin Festival of Races, scoring 64 points and showcasing the team's depth and determination.</p><p>Sophomore standout <span class="athlete">Gwen Stotts-Walshe</span> led the way, crossing the finish line with a strong time of <span class="time">23:00.7</span>. Junior <span class="athlete">Tia Cocciolone</span> followed closely behind, finishing in <span class="time">23:10.6</span>. Freshman <span class="athlete">Elin Tenbrink</span> had a solid race as well, clocking in at <span class="time">23:19.4</span>, contributing to the team’s close-knit pack.</p><p>Junior <span class="athlete">Adrienne Stewart</span> finished with a time of <span class="time">23:31.1</span>, and freshman <span class="athlete">Violet Olley</span> rounded out the top five for Skyline with a time of <span class="time">23:46.1</span>, helping secure Skyline's podium spot.</p><p>Overall, the team had a fantastic showing with tight finishes, proving that the JV squad has the potential to keep building toward even stronger performances in the future!</p>
             </div>
         </div>
@@ -483,7 +483,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -492,7 +493,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -589,7 +591,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236072/IMG_9366_V2F_2024-09-14_13-34-09_467.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236072/20240914_133632_029_01.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -630,7 +632,7 @@
         
             <script>
                 const meet_id = "236072";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9366_V2F_2024-09-14_13-34-09_467.jpg', '20240914_133704_018_01.jpg', '20240914_125433.jpg', '20240914_133619_012_01.jpg', '20240914_124622_004_01.jpg', 'IMG_9363.jpg', '20240914_130116_009_01.jpg', 'IMG_9367.jpg', 'IMG_4178.jpg', '20240914_133632_020_01.jpg'];  // JavaScript array of images generated from Python
+                const images = ['20240914_133632_029_01.jpg', 'IMG_4181.jpg', 'IMG_9355.jpg', 'IMG_9348.jpg', 'IMG_9371.jpg', '20240914_124622_004_01.jpg', '20240914_133632_030_01.jpg', '20240914_130102_001_01.jpg', '09-14 Holly Invitational 01.jpg', 'IMG_9357.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

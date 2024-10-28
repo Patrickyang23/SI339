@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>At the SEC Jamboree #1 held on September 10, 2024, at Willow Metropark, the Ann Arbor Skyline Junior Varsity girls team delivered a strong performance, finishing 4th overall with a team score of 84 points. The race included competitive teams from Saline, Dexter, Ann Arbor Pioneer, and others.</p><p>Leading the charge for Skyline was sophomore <span class="athlete">Alison Kauffman</span>, who placed 8th with a time of <span class="time">23:43.30</span>, followed by freshman <span class="athlete">Violet Olley</span> in 19th place with a time of <span class="time">24:37.10</span>. Junior <span class="athlete">Adrienne Stewart</span> was close behind, finishing 20th with a time of <span class="time">24:40.60</span>.</p><p>Senior <span class="athlete">Julianna Heung</span> finished 25th, clocking in at <span class="time">25:21.20</span>, and freshman <span class="athlete">Calla Sopoci</span> followed in 26th with a time of <span class="time">25:22.90</span>, rounding out Skyline’s top five scorers.</p><p>Other notable performances included sophomore <span class="athlete">Ruthie Scott</span> (<span class="time">25:31.00</span>), senior <span class="athlete">Alexandra Wren</span> (<span class="time">25:33.90</span>), and sophomore <span class="athlete">Elsa Wenzlaff</span> (<span class="time">25:36.00</span>), all contributing to the team's overall success.</p><p>The Skyline girls showed strong depth and consistent effort, securing a solid 4th-place finish in a competitive field.</p>
             </div>
         </div>
@@ -383,7 +383,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -392,7 +393,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -489,7 +491,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/238311/IMG_9248.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/238311/IMG_9273.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -530,7 +532,7 @@
         
             <script>
                 const meet_id = "238311";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9248.jpg', 'IMG_9307.jpg', 'IMG_9254.jpg', 'IMG_9266.jpg', 'IMG_9329.jpg', 'IMG_9295.jpg', 'IMG_9316.jpg', 'IMG_9256.jpg', 'IMG_9297.jpg', 'IMG_9270.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9273.jpg', 'IMG_9277.jpg', 'IMG_9242.jpg', 'IMG_9244.jpg', 'IMG_9297.jpg', 'IMG_9285.jpg', 'IMG_9289.jpg', 'IMG_9303.jpg', 'IMG_9313.jpg', 'IMG_9256.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

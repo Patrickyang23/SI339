@@ -204,7 +204,7 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(44, 62, 80, 0.7); /* Semi-transparent overlay color */
+    background-color: rgba(44, 62, 80, 0.9); /* Semi-transparent overlay color */
     z-index: -1; /* Make sure the overlay stays behind the content */
     pointer-events: none; /* Prevent interaction with the overlay */
     border-radius: 8px;
@@ -320,7 +320,7 @@ time {
 }
 
 .toggle-button[aria-expanded="true"] {
-    background-color: #e74c3c;
+    background-color: #c0392b;
 }
 
 /* Scrollable container for the table */
@@ -344,6 +344,7 @@ table th, table td {
     border: 1px solid #ddd;
 }
 
+/* Apply alternating background colors to table rows */
 table tr:nth-child(even) {
     background-color: white;
 }
@@ -580,10 +581,10 @@ input, select {
 
 /* Image styling */
 .gallery-slide img {
-    max-width: 60vw;              /* The maximum width for the image */
-    max-height: 30vh;             /* The maximum height for the image */
-    width: auto;                  /* Keeps the width auto to maintain aspect ratio */
-    height: auto;                 /* Keeps the height auto to maintain aspect ratio */
+    max-width: 60vw;   /* The maximum width for the image */
+    max-height: 30vh;  /* The maximum height for the image */
+    width: auto;       /* Keeps the width auto to maintain aspect ratio */
+    height: auto;      /* Keeps the height auto to maintain aspect ratio */
     transition: transform 0.5s ease; /* Smooth transition for sliding */
     display: block;
     border-radius: 10px;
@@ -678,7 +679,7 @@ footer a, footer p {
 .fa-brands.fa-instagram {
     font-size: 24px;
     color: #ff4500; /* Starting color (orange) */
-    animation: colorChange1 2s infinite alternate; /* Animation for color change */
+    animation: colorChange 2s infinite alternate; /* Animation for color change */
     transition: transform 0.3s ease; /* Smooth scaling on hover */
 }
 
@@ -687,7 +688,7 @@ footer a, footer p {
 }
 
 /* Keyframes for color alternation between orange and purple */
-@keyframes colorChange1 {
+@keyframes colorChange {
     0% {
         color: #ff4500; /* Orange */
     }
@@ -713,11 +714,6 @@ body.dark-mode {
 
 .fas.fa-moon:hover {
     transform: scale(1.2); /* Scale up on hover */
-}
-
-/* Dark mode toggle button with animated color change */
-#dark-mode-toggle .fas.fa-moon {
-    animation: colorChange2 2s infinite alternate; /* Animated color change */
 }
 
 
@@ -757,6 +753,14 @@ body.dark-mode {
     color: white;
 }
 
+.dark-mode .athlete-card {
+    background-color: #333;
+}
+
+.dark-mode .athlete-info {
+    color: white;
+}
+
 /* Dark mode toggle button */
 #dark-mode-toggle {
     background: none;
@@ -769,4 +773,85 @@ body.dark-mode {
 
 #dark-mode-toggle:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+/* Example for specific components */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Stop specific animations for color change */
+    .fa-brands.fa-instagram {
+        color: #8a2be2; /* Default color without animation */
+    }
+
+    .fab:hover {
+        background-color: #3498db;
+    }
+
+    /* Remove hover scaling effects */
+    .hamburger:hover,
+    .athlete-card:hover,
+    .fab:hover,
+    .fa-brands.fa-instagram:hover,
+    .fas.fa-moon:hover,
+    #dark-mode-toggle:hover  {
+        transform: none !important;
+    }
+
+    /* Disable slide animations */
+    .slide-in-left,
+    .slide-in-right,
+    .slide-out-left,
+    .slide-out-right,
+    .active-slide {
+        transform: translateX(0) !important; /* Remove slide effect */
+    }
+}
+
+/* Apply dark mode styles automatically if user prefers dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .section p {
+        color: white;
+    }
+
+    main {
+        background-image: url(../images/EAGLE-dark.png);
+    }
+
+    section {
+        background-color: rgba(44, 62, 80, 0.7);
+    }
+
+    .summary-container p {
+        color: white;
+    }
+
+    .section-header {
+        border-bottom: 2px solid white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #2c3e50;
+    }
+
+    a {
+        color: white;
+    }
+
+    .dark-mode .athlete-card {
+        background-color: #333;
+    }
+    
+    .dark-mode .athlete-info {
+        color: white;
+    }
 }

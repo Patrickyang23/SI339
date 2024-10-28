@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>The Skyline team performed admirably at the 37th Early Bird Open, securing 7th place overall with a team score of 186. Notable individual performances include several athletes who achieved personal records (PRs). <span class="athlete">Matthew Guikema</span> led the team with a time of <span class="time">17:35.10</span>, followed closely by <span class="athlete">Nicholas Yuan</span> at <span class="time">17:44.40</span>. <span class="athlete">Zeke Lafferty</span>, <span class="athlete">Jack Robichaud</span>, and <span class="athlete">Gustaf Finn</span> rounded out the top five for Skyline, contributing to the team's tight spread between runners. Other athletes who achieved PRs include <span class="athlete">Oskar MacArthur</span> (<span class="time">18:37.50</span>), <span class="athlete">Grayson Crooks</span> (<span class="time">19:37.10</span>), <span class="athlete">Juan Luis Llanes</span> (<span class="time">19:48.00</span>), and <span class="athlete">Paxton Alicandro</span> (<span class="time">21:13.00</span>). This race showcased the team's strong depth and improvement as they continue the season.</p>
             </div>
         </div>
@@ -499,7 +499,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -508,7 +509,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -605,7 +607,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/235827/IMG_20240829_171731303.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/235827/IMG_9050.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -646,7 +648,7 @@
         
             <script>
                 const meet_id = "235827";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_20240829_171731303.jpg', 'IMG_9023.jpg', 'IMG_9035.jpg', 'IMG_8973.jpg', 'IMG_9037.jpg', 'IMG_9025.jpg', 'IMG_9034.jpg', 'IMG_9050.jpg', 'IMG_20240829_171701146.jpg', 'IMG_8974.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9050.jpg', 'IMG_9030.jpg', 'IMG_9032.jpg', 'IMG_9037.jpg', 'IMG_9034.jpg', 'IMG_8984.jpg', 'IMG_20240829_171731303.jpg', 'IMG_9024.jpg', 'IMG_9039.jpg', 'IMG_9051.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

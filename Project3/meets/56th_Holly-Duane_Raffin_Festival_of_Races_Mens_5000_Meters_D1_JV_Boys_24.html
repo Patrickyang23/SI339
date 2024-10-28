@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>The Ann Arbor Skyline JV Boys team delivered a strong performance at the 56th Holly-Duane Raffin Festival of Races, finishing in 3rd place overall with 72 points. The team’s impressive consistency and depth were on full display during the 5,000-meter race.</p><p>Freshman <span class="athlete">Oskar MacArthur</span> led the Skyline pack, finishing in <span class="time">17:57.7</span>, followed closely by freshman <span class="athlete">Martin Gehrke</span> at <span class="time">17:58.8</span>. Both runners broke the 18-minute barrier, setting the pace for the team.</p><p>Sophomore <span class="athlete">Dylan Hanley</span> clocked in at <span class="time">18:13.9</span>, with junior <span class="athlete">Parker Razelun</span> finishing in <span class="time">18:21.8</span>. Rounding out the top five for Skyline, sophomore <span class="athlete">Santiago Valenzuela</span> crossed the line at <span class="time">18:56.7</span>, capping off a solid team performance.</p><p>The close grouping of Skyline’s top runners helped secure their strong placement, setting the stage for a promising season ahead.</p>
             </div>
         </div>
@@ -486,7 +486,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -495,7 +496,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -592,7 +594,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236072/20240914_133718_005_01.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236072/09-14 Holly Invitational 15.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -633,7 +635,7 @@
         
             <script>
                 const meet_id = "236072";  // Pass meet_id as a JavaScript variable
-                const images = ['20240914_133718_005_01.jpg', '20240914_125431.jpg', 'IMG_9367.jpg', '20240914_125252.jpg', '20240914_125421(0).jpg', 'IMG_4184(1).jpg', 'IMG_9351.jpg', 'IMG_9368.jpg', '20240914_133718_004_01.jpg', '20240914_133639_014_01.jpg'];  // JavaScript array of images generated from Python
+                const images = ['09-14 Holly Invitational 15.jpg', 'IMG_4177.jpg', '09-14 Holly Invitational 04.jpg', 'IMG_9349.jpg', '20240914_133113_013_01.jpg', 'IMG_9345_V2F_2024-09-14_12-39-43_867.jpg', 'IMG_9366_V2F_2024-09-14_13-34-18_867.jpg', '20240914_125252.jpg', '20240914_125427.jpg', '20240914_133606_030_01.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

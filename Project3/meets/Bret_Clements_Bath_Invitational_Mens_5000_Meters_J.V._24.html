@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>Ann Arbor Skyline’s JV boys placed 2nd out of 15 teams. Leading the team was <span class="athlete">Enshu Kuan</span>, who finished 3rd with a time of <span class="time">18:13.19</span>, followed closely by <span class="athlete">Dylan Hanley</span> in 7th with <span class="time">18:25.13</span>. <span class="athlete">Raphael Fournier</span> (11th, <span class="time">18:46.09</span> PR), <span class="athlete">Jackson Cichewicz</span> (12th, <span class="time">18:51.99</span> PR), and <span class="athlete">Henry Strait</span> (15th, <span class="time">18:58.77</span>) rounded out Skyline’s top five. Other runners who set personal records include <span class="athlete">Marlowe Hartnett</span>, <span class="athlete">Elliot Daley</span>, <span class="athlete">Emmett Strait</span>, <span class="athlete">Joowon Lee</span>, and <span class="athlete">Lawrence Wang</span>.</p>
             </div>
         </div>
@@ -526,7 +526,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -535,7 +536,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -632,7 +634,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236875/PXL_20240907_131626782~2.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236875/IMG_9165.png" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -673,7 +675,7 @@
         
             <script>
                 const meet_id = "236875";  // Pass meet_id as a JavaScript variable
-                const images = ['PXL_20240907_131626782~2.jpg', 'IMG_9091.jpg', 'IMG_9228.jpg', 'IMG_9213.jpg', 'IMG_9102.jpg', 'IMG_9196.jpg', 'IMG_9137.jpg', 'IMG_9163.jpg', 'IMG_9191.jpg', 'IMG_9200.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9165.png', 'IMG_9131.jpg', 'IMG_9115.jpg', 'IMG_9150.jpg', 'IMG_9169.jpg', 'IMG_9124.jpg', 'IMG_9110.jpg', 'IMG_9200.jpg', 'IMG_9123.jpg', 'IMG_9146.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

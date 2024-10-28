@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>At the Bret Clements Bath Invitational, the Skyline men's team secured 4th place overall with a score of 147. Leading the team was <span class="athlete">Bruno Cifaldi</span>, who finished with a season record (SR) time of <span class="time">17:07.73</span>. <span class="athlete">Nicholas Yuan</span> followed closely, setting a personal record (PR) with a time of <span class="time">17:13.08</span>, and <span class="athlete">Jack Robichaud</span> also achieved a PR with a time of <span class="time">17:14.90</span>. Other notable performances came from <span class="athlete">Kyle Krasan</span> (<span class="time">17:43.36</span> PR) and <span class="athlete">Zeke Lafferty</span> (<span class="time">17:57.73</span> SR), rounding out the top five for Skyline. The team's spread was just under a minute, showcasing strong depth as they competed against tough opponents.</p>
             </div>
         </div>
@@ -327,7 +327,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -336,7 +337,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -433,7 +435,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236875/IMG_9203.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236875/IMG_9131.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -474,7 +476,7 @@
         
             <script>
                 const meet_id = "236875";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9203.jpg', 'IMG_9166.jpg', 'IMG_9100.jpg', 'IMG_9175.jpg', 'IMG_9145.jpg', 'IMG_9220.jpg', 'IMG_9163.jpg', 'IMG_9201.jpg', 'IMG_9211.jpg', 'IMG_9134.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9131.jpg', 'IMG_9177.jpg', 'IMG_9125.jpg', 'IMG_9092.jpg', 'IMG_9137.jpg', 'IMG_9096.jpg', 'IMG_9128.jpg', 'IMG_9208.jpg', 'IMG_9200.jpg', 'IMG_9170.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>At the Bret Clements Bath Invitational on September 7, 2024, the Ann Arbor Skyline women's cross country team placed 6th overall with a score of 146. Top performers included <span class="athlete">Irie Scrase</span> (<span class="time">20:04.61</span>), <span class="athlete">Isla Tharp</span> (<span class="time">20:34.25</span> PR), and <span class="athlete">Lila Edison</span> (<span class="time">20:55.12</span> PR). <span class="athlete">Becca Van Lent</span> (<span class="time">21:38.76</span> SR) and <span class="athlete">Ayla Balazer</span> (<span class="time">21:55.86</span> SR) rounded out Skyline's top five runners. The team's spread was 1:51, reflecting strong efforts across the board.</p>
             </div>
         </div>
@@ -343,7 +343,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -352,7 +353,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -449,7 +451,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236875/IMG_9166.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/236875/IMG_9100.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -490,7 +492,7 @@
         
             <script>
                 const meet_id = "236875";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9166.jpg', 'IMG_9149.jpg', 'IMG_9095.jpg', 'IMG_9161.jpg', 'IMG_9192.jpg', 'IMG_9231.jpg', 'IMG_9189.jpg', 'IMG_9158.jpg', 'IMG_9134.jpg', 'IMG_9223.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9100.jpg', 'PXL_20240907_131450818.jpg', 'IMG_9201.jpg', 'IMG_9112.jpg', 'IMG_9097.jpg', 'IMG_9091.jpg', 'IMG_9139.jpg', 'IMG_9173.jpg', 'IMG_9197.jpg', 'IMG_9200.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");

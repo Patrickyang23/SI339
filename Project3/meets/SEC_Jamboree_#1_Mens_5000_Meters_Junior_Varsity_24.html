@@ -18,7 +18,7 @@
         </div>
         
         <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
@@ -121,7 +121,7 @@
             <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
         </div>
         <div class="collapsible-content open">
-            <div class="summary-container">
+            <div class="summary-container" tabindex="0">
                 <p>At the SEC Jamboree #1 held on September 10, 2024, at Willow Metropark, the Ann Arbor Skyline Junior Varsity boys team faced off against tough competition and finished 4th overall with a team score of 49 points. The race featured teams from Saline, Pinckney, Chelsea, Dexter, and more.</p><p>Key performances for Skyline included sophomore <span class="athlete">Santiago Valenzuela</span>, who finished 7th overall with a time of <span class="time">18:55.70</span>, followed closely by senior <span class="athlete">Henry Strait</span> in 8th place, clocking in at <span class="time">18:56.20</span>. Senior <span class="athlete">Jackson Cichewicz</span> crossed the finish line in 11th place with a time of <span class="time">19:11.80</span>, while sophomore <span class="athlete">Dylan Hanley</span> placed 12th at <span class="time">19:13.50</span>. Senior <span class="athlete">Alex Nemecek</span> also contributed to the team's success, finishing 16th with a season-best time of <span class="time">19:21.40</span>.</p><p>Overall, the team showcased solid performances and consistency, with a tight spread between their top runners, marking a strong showing in the SEC Jamboree.</p>
             </div>
         </div>
@@ -474,7 +474,8 @@
         <div id="search-modal" class="modal">
             <div class="modal-content">
                 <h3>Search by Name</h3>
-                <input type="text" id="name-search" placeholder="Enter Athlete Name">
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
                 <button id="apply-search">Search</button>
             </div>
         </div>
@@ -483,7 +484,8 @@
         <div id="filter-modal" class="modal">
             <div class="modal-content">
                 <h3>Filter by Grade</h3>
-                <select id="grade-filter" class="filter-select">
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
                     <option value="all">All Grades</option>
                     <option value="9">Grade 9</option>
                     <option value="10">Grade 10</option>
@@ -580,7 +582,7 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/238311/IMG_9243.jpg" alt="Gallery Image">
+                    <img id="gallery-image" src="../images/meets/238311/IMG_9279.jpg" alt="Gallery Image">
             
                     </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
@@ -621,7 +623,7 @@
         
             <script>
                 const meet_id = "238311";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9243.jpg', 'IMG_9265.jpg', 'IMG_9303.jpg', 'IMG_9309.jpg', 'IMG_9256.jpg', 'IMG_9313.jpg', 'IMG_9273.jpg', 'IMG_9242.jpg', 'IMG_9297.jpg', 'IMG_9286.jpg'];  // JavaScript array of images generated from Python
+                const images = ['IMG_9279.jpg', 'IMG_9275.jpg', 'IMG_9254.jpg', 'IMG_9295.jpg', 'IMG_9266.jpg', 'IMG_9269.jpg', 'IMG_9324.jpg', 'IMG_9278.jpg', 'IMG_9327.jpg', 'IMG_9311.jpg'];  // JavaScript array of images generated from Python
 
                 let currentImageIndex = 0;
                 const galleryImage = document.getElementById("gallery-image");
