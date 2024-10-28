@@ -81,13 +81,20 @@ nav {
     margin-left: 10px;
 }
 
+.nav-right {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-right: 10px;
+}
+
 /* Logo styling */
 .nav-logo {
     width: 60px; /* Adjust the width as necessary */
     height: auto;
     border-radius: 50%; /* Makes the image elliptical */
     object-fit: cover;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 /* Hamburger Menu (default: visible on smaller screens) */
@@ -241,14 +248,14 @@ section h2 {
 main {
     margin-top: 20px;
     background-image: url(../images/EAGLE.png);
-    background-size: 90vw auto;  /* Make the image fill the viewport width, height adjusts automatically */
+    background-size: 100vw auto;  /* Make the image fill the viewport width, height adjusts automatically */
     background-position: center top;  /* Center horizontally, start at the top vertically */
     background-repeat: repeat-y;  /* Repeat the image vertically if the content doesn't fill the screen */
 }
 
 .summary-container {
     line-height: 1.6;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     word-wrap: break-word;
     white-space: normal;  /* Ensure proper word wrapping */
     margin-top: 15px;
@@ -427,6 +434,7 @@ table th {
     margin-top: 20px;
     margin-left: 20px;
     flex: 1; /* Let it take up remaining space */
+    color: rgba(51, 51, 51);
 }
 
 dl {
@@ -521,6 +529,11 @@ dd {
     text-align: center;
     z-index: 1; /* Make sure select box stays on top */
     position: relative; /* Ensure positioning context */
+}
+
+/* Ensure the dropdown menu itself is centered */
+.filter-select option {
+    text-align: center;
 }
 
 input, select {
@@ -665,7 +678,7 @@ footer a, footer p {
 .fa-brands.fa-instagram {
     font-size: 24px;
     color: #ff4500; /* Starting color (orange) */
-    animation: colorChange 2s infinite alternate; /* Animation for color change */
+    animation: colorChange1 2s infinite alternate; /* Animation for color change */
     transition: transform 0.3s ease; /* Smooth scaling on hover */
 }
 
@@ -674,11 +687,86 @@ footer a, footer p {
 }
 
 /* Keyframes for color alternation between orange and purple */
-@keyframes colorChange {
+@keyframes colorChange1 {
     0% {
         color: #ff4500; /* Orange */
     }
     100% {
         color: #8a2be2; /* Purple */
     }
+}
+
+/* Define color variables */
+:root {
+    --moon-color: black; /* Default is black for light mode */
+}
+
+body.dark-mode {
+    --moon-color: white; /* Change to white in dark mode */
+}
+
+/* Dark mode toggle button icon */
+.fas.fa-moon {
+    color: var(--moon-color); /* Use color variable */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for scaling and color */
+}
+
+.fas.fa-moon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Dark mode toggle button with animated color change */
+#dark-mode-toggle .fas.fa-moon {
+    animation: colorChange2 2s infinite alternate; /* Animated color change */
+}
+
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode .section p {
+    color: white;
+}
+
+/* Dark mode */
+.dark-mode main {
+    /* Keep the background image */
+    background-image: url(../images/EAGLE-dark.png);
+}
+
+.dark-mode section {
+    background-color: rgba(44, 62, 80, 0.7);
+}
+
+.dark-mode .summary-container p {
+    color: white;
+}
+
+.dark-mode .section-header {
+    border-bottom: 2px solid white;
+}
+
+.dark-mode table tr:nth-child(even) {
+    background-color: #2c3e50;
+}
+
+.dark-mode a {
+    color: white;
+}
+
+/* Dark mode toggle button */
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem; /* Size of the moon icon */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
 }

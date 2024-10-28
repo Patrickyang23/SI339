@@ -42,7 +42,21 @@ def csv_to_html(csv_filename, output_folder):
             <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
         </div>
-        <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    """
+    
+        html_content += """
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -51,7 +65,7 @@ def csv_to_html(csv_filename, output_folder):
                 <li><a href="#summary" tabindex="0">Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Gallery</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->

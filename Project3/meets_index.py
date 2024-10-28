@@ -15,14 +15,26 @@ def generate_homepage(csv_filename, folder_path, html_filename):
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-   <body>
-   <a class="skip" href = "#main">Skip to Main Content</a>
-   <nav>
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
         <div class="nav-left">
             <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
             <div>Skyline Cross Country 2024</div>
         </div>
-        <img src="images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+        
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -34,7 +46,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
-   </nav>
+    </nav>
    
     <!-- JavaScript to handle the hamburger and overlay behavior -->
     <script>
@@ -104,6 +116,8 @@ def generate_homepage(csv_filename, folder_path, html_filename):
         <h1>Skyline Cross Country</h1>
         <h2>Striving for Excellence, Race by Race</h2>
     </header>
+    
+
     
     <main id = "main">
         <!-- About Section -->
