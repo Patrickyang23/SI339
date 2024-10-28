@@ -483,7 +483,7 @@ dd {
 
 /* Modal styling */
 .modal {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
@@ -496,19 +496,17 @@ dd {
 }
 
 .modal-content {
-    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+    width: 100%;
+    text-align: center;
     width: 300px; /* Fixed width for both modals */
-    max-width: 90%; /* Responsive width */
+    height: 200px; /* Fixed height for both modals */
     margin: 20% auto; /* Center the modal */
-    overflow: hidden; /* Hide overflow for dropdown within modal */
+    justify-content: center;
 }
 
 /* Show modal when active */
@@ -527,21 +525,23 @@ dd {
     width: 100%;
     padding: 8px;
     text-align: center;
-    z-index: 1; /* Make sure select box stays on top */
-    position: relative; /* Ensure positioning context */
-}
-
-/* Ensure the dropdown menu itself is centered */
-.filter-select option {
-    text-align: center;
 }
 
 input, select {
     font-size: 1em; /* Make inputs and buttons 1em */
     text-align: center;
-    padding: 8px;
     margin: 10px 0px;
     width: 100%; /* Make sure they take full width of modal */
+}
+
+.modal-content button {
+    font-size: 1em;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .modal-content button {
