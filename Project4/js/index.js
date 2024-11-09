@@ -112,7 +112,7 @@ function showImage(direction) {
     void galleryImage.offsetWidth;
 
     // Set the new image source
-    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+    galleryImage.src = `images/team/${images[currentImageIndex]}`;
 
     // Add animation class based on direction
     galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
@@ -123,73 +123,3 @@ function showImage(direction) {
         galleryImage.classList.add("active-slide");
     }, 500); // Duration should match CSS transition time
 }
-
-
-// JavaScript to handle the search and filter FAB
-document.addEventListener('DOMContentLoaded', function() {
-const filterFab = document.getElementById('fab-filter');
-const searchFab = document.getElementById('fab-search');
-const filterModal = document.getElementById('filter-modal');
-const searchModal = document.getElementById('search-modal');
-const applyFilterButton = document.getElementById('apply-filter');
-const applySearchButton = document.getElementById('apply-search');
-const gradeFilter = document.getElementById('grade-filter');
-const nameSearch = document.getElementById('name-search');
-const athleteCards = document.querySelectorAll('.athlete-card');
-
-// Show/Hide Filter Modal
-filterFab.addEventListener('click', function() {
-    filterModal.classList.toggle('active');
-    if (searchModal.classList.contains('active')) {
-        searchModal.classList.remove('active'); // Close search modal if open
-    }
-});
-
-// Show/Hide Search Modal
-searchFab.addEventListener('click', function() {
-    searchModal.classList.toggle('active');
-    if (filterModal.classList.contains('active')) {
-        filterModal.classList.remove('active'); // Close filter modal if open
-    }
-});
-
-// Close modals when clicking outside of modal content
-window.addEventListener('click', function(event) {
-    if (event.target === filterModal) {
-        filterModal.classList.remove('active');
-    }
-    if (event.target === searchModal) {
-        searchModal.classList.remove('active');
-    }
-});
-
-// Apply the filter
-applyFilterButton.addEventListener('click', function() {
-    const selectedGrade = gradeFilter.value;
-    filterModal.classList.remove('active');
-
-    athleteCards.forEach(card => {
-        const cardGrade = card.getAttribute('data-grade');
-        if (selectedGrade === 'all' || cardGrade === selectedGrade) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-});
-
-// Apply the search
-applySearchButton.addEventListener('click', function() {
-    const searchName = nameSearch.value.toLowerCase();
-    searchModal.classList.remove('active');
-
-    athleteCards.forEach(card => {
-        const cardName = card.getAttribute('data-name');
-        if (cardName.includes(searchName)) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-});
-});
