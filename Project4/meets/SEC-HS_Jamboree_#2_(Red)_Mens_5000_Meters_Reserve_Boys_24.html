@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEC-HS Jamboree #2 (Red) Mens 5000 Meters Reserve Boys</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+            <div>Skyline Cross Country 2024</div>
+        </div>
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
+        
+        <!-- Side menu for small screens (hidden by default) -->
+        <div class="side-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div> <!-- Background overlay -->
+    </nav>
+    
+    <!-- JavaScript to handle the hamburger and overlay behavior -->
+    <script>
+        // Select the relevant elements
+        const hamburger = document.querySelector(".hamburger");
+        const sideMenu = document.querySelector(".side-menu");
+        const overlay = document.querySelector(".overlay");
+        const sideMenuLinks = document.querySelectorAll(".side-menu a");
+
+        // Function to open the menu
+        function openMenu() {
+            sideMenu.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            sideMenu.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+        
+        // Function to toggle menu visibility
+        function toggleMenu() {
+            const isActive = sideMenu.classList.contains("active");
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener("click", function () {
+            toggleMenu();
+        });
+
+        // Automatically open the menu when the hamburger icon is focused
+        hamburger.addEventListener("focus", function () {
+            openMenu();
+        });
+
+        // Add focus listeners to each link in the side menu
+        sideMenuLinks.forEach(function (link) {
+            link.addEventListener("focus", function () {
+                openMenu();
+            });
+        });
+
+        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
+        document.addEventListener("focusin", function (event) {
+            // Check if the newly focused element is outside both the side menu and the hamburger icon
+            if (
+                !sideMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                closeMenu();
+            }
+        });
+        
+        // Add event listener to overlay to close the menu when clicked
+        overlay.addEventListener("click", function () {
+            closeMenu();
+        });
+    </script>
+    
+    <header class="meets" tabindex="0">
+        <h1><a href="https://www.athletic.net/CrossCountry/meet/238857/results/954245">SEC-HS Jamboree #2 (Red) Mens 5000 Meters Reserve Boys</a></h1>
+        <h2>Tue Sep 24 2024</h2>
+    </header>
+    
+    <main id = "main">
+
+
+    <section class="summary" id="summary" tabindex="0">
+        <div class="section-header">
+            <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
+        </div>
+        <div class="collapsible-content open">
+            <div class="summary-container" tabindex="0">
+                <p>The Skyline boys JV cross country team hit the course at the SEC-HS Jamboree #2, racing hard and leaving nothing behind. While the varsity teams grabbed the headlines, the JV squad quietly showed they’re more than ready to make their own mark.</p> <p>Leading the way was sophomore <span class="athlete">Enshu Kuan</span>, who finished with a time of <span class="time">18:29.50</span>. Hot on his heels, freshman <span class="athlete">Dylan Hanley</span> clocked in at <span class="time">18:33.30</span>, with solid performances from <span class="athlete">Zeke Lafferty</span> (<span class="time">18:20.60</span>), <span class="athlete">Hudson McCleskey</span> (<span class="time">18:42.30</span>), and <span class="athlete">Cooper Ankeney</span> (<span class="time">18:45.10</span>).</p>
+            </div>
+        </div>
+    </section>
+    <section id="team-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Team Results</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+
+        
+        <div class="collapsible-content open">
+
+            <div class="table-container">
+<table>
+<tr><th>Place</th><th>Team</th><th>Score</th></tr>
+<tr><td>1</td><td>Saline</td><td> 65</td></tr>
+<tr><td>2</td><td>Ann Arbor Skyline</td><td> 69</td></tr>
+<tr><td>3</td><td>Ann Arbor Huron</td><td> 113</td></tr>
+<tr><td>4</td><td>Temperance Bedford</td><td> 123</td></tr>
+<tr><td>5</td><td>Dexter</td><td> 154</td></tr>
+</table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="individual-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-running"></i> Individual Results</h2>              
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+        
+        <div class="collapsible-content open">
+        <div class="individual-results-container">
+            <div class="athlete-cards-container">
+            
+            <!-- No results message (hidden by default) -->
+            <p id="no-results-message" >No results matched your criteria.</p>
+            
+            <div class="athlete-card" data-grade="11" data-name="gustaf finn">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147171.jpg" width="200" alt="Profile picture of Gustaf Finn"> 
+                    <figcaption>Gustaf Finn</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>8.</dd>
+                        <dt>Time</dt><dd>18:31.00</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="henry strait">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/22288700.jpg" width="200" alt="Profile picture of Henry Strait"> 
+                    <figcaption>Henry Strait</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>12.</dd>
+                        <dt>Time</dt><dd>18:50.50</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="santiago valenzuela">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23821078.jpg" width="200" alt="Profile picture of Santiago Valenzuela"> 
+                    <figcaption>Santiago Valenzuela</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>13.</dd>
+                        <dt>Time</dt><dd>18:50.60</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="paxton rose">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349712.jpg" width="200" alt="Profile picture of Paxton Rose"> 
+                    <figcaption>Paxton Rose</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>15.</dd>
+                        <dt>Time</dt><dd>18:59.00</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="roman stilwell">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/25989957.jpg" width="200" alt="Profile picture of Roman Stilwell"> 
+                    <figcaption>Roman Stilwell</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>17.</dd>
+                        <dt>Time</dt><dd>19:06.60</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="marlowe hartnett">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147174.jpg" width="200" alt="Profile picture of Marlowe Hartnett"> 
+                    <figcaption>Marlowe Hartnett</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>18.</dd>
+                        <dt>Time</dt><dd>19:10.40</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="micah winchell">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147172.jpg" width="200" alt="Profile picture of Micah Winchell"> 
+                    <figcaption>Micah Winchell</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>24.</dd>
+                        <dt>Time</dt><dd>19:36.40</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="jackson cichewicz">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322046.jpg" width="200" alt="Profile picture of Jackson Cichewicz"> 
+                    <figcaption>Jackson Cichewicz</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>30.</dd>
+                        <dt>Time</dt><dd>20:06.90</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="alex nemecek">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/18820260.jpg" width="200" alt="Profile picture of Alex Nemecek"> 
+                    <figcaption>Alex Nemecek</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>31.</dd>
+                        <dt>Time</dt><dd>20:09.30</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="emmett strait">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322025.jpg" width="200" alt="Profile picture of Emmett Strait"> 
+                    <figcaption>Emmett Strait</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>32.</dd>
+                        <dt>Time</dt><dd>20:15.70</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="phylip elliott">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23636797.jpg" width="200" alt="Profile picture of Phylip Elliott"> 
+                    <figcaption>Phylip Elliott</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>40.</dd>
+                        <dt>Time</dt><dd>20:36.50</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="joowon lee">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349696.jpg" width="200" alt="Profile picture of Joowon Lee"> 
+                    <figcaption>Joowon Lee</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>57.</dd>
+                        <dt>Time</dt><dd>21:25.10</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="leo chi">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26460401.jpg" width="200" alt="Profile picture of Leo Chi"> 
+                    <figcaption>Leo Chi</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>60.</dd>
+                        <dt>Time</dt><dd>21:30.40</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="jude shafer">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349716.jpg" width="200" alt="Profile picture of Jude Shafer"> 
+                    <figcaption>Jude Shafer</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>78.</dd>
+                        <dt>Time</dt><dd>22:11.70</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="rowan kim">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/24801855.jpg" width="200" alt="Profile picture of Rowan Kim"> 
+                    <figcaption>Rowan Kim</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>81.</dd>
+                        <dt>Time</dt><dd>22:23.10</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="william johnson">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23564879.jpg" width="200" alt="Profile picture of William Johnson"> 
+                    <figcaption>William Johnson</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>88.</dd>
+                        <dt>Time</dt><dd>22:56.20</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="ezekiel paloff">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349707.jpg" width="200" alt="Profile picture of Ezekiel Paloff"> 
+                    <figcaption>Ezekiel Paloff</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>91.</dd>
+                        <dt>Time</dt><dd>23:10.00</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="amir abston">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/25395576.jpg" width="200" alt="Profile picture of Amir Abston"> 
+                    <figcaption>Amir Abston</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>94.</dd>
+                        <dt>Time</dt><dd>23:52.30</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="evan leach">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322027.jpg" width="200" alt="Profile picture of Evan Leach"> 
+                    <figcaption>Evan Leach</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>97.</dd>
+                        <dt>Time</dt><dd>24:07.20</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="cole harms">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322018.jpg" width="200" alt="Profile picture of Cole Harms"> 
+                    <figcaption>Cole Harms</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>99.</dd>
+                        <dt>Time</dt><dd>24:11.60</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="lawrence wang">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26460421.jpg" width="200" alt="Profile picture of Lawrence Wang"> 
+                    <figcaption>Lawrence Wang</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>102.</dd>
+                        <dt>Time</dt><dd>24:33.90</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+        </div>
+
+                
+        <!-- Floating Action Buttons (FABs) -->
+        <div class="fab-container">
+            <button class="fab" id="fab-filter" aria-label="Filter by Grade">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="fab" id="fab-search" aria-label="Search by Name">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        </div>
+
+        
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
+        
+        <!-- Modal for filtering by grade -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <h3>Filter by Grade</h3>
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
+                    <option value="all">All Grades</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button id="apply-filter">Apply</button>
+            </div>
+        </div>
+        
+        </div>
+
+        </section>
+
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const filterFab = document.getElementById('fab-filter');
+            const searchFab = document.getElementById('fab-search');
+            const filterModal = document.getElementById('filter-modal');
+            const searchModal = document.getElementById('search-modal');
+            const applyFilterButton = document.getElementById('apply-filter');
+            const applySearchButton = document.getElementById('apply-search');
+            const gradeFilter = document.getElementById('grade-filter');
+            const nameSearch = document.getElementById('name-search');
+            const athleteCards = document.querySelectorAll('.athlete-card');
+
+            // Show/Hide Filter Modal
+            filterFab.addEventListener('click', function() {
+                filterModal.classList.toggle('active');
+                if (searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active'); // Close search modal if open
+                }
+            });
+
+            // Show/Hide Search Modal
+            searchFab.addEventListener('click', function() {
+                searchModal.classList.toggle('active');
+                if (filterModal.classList.contains('active')) {
+                    filterModal.classList.remove('active'); // Close filter modal if open
+                }
+            });
+            
+            // Close modals when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.classList.remove('active');
+                }
+                if (event.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+
+            // Apply the filter
+            applyFilterButton.addEventListener('click', function() {
+                const selectedGrade = gradeFilter.value;
+                filterModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardGrade = card.getAttribute('data-grade');
+                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Apply the search
+            applySearchButton.addEventListener('click', function() {
+                const searchName = nameSearch.value.toLowerCase();
+                searchModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    if (cardName.includes(searchName)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
+        
+        <section id = "gallery" tabindex="0">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+            </div>
+            
+            <div class="collapsible-content open">
+                <div class="gallery-container">
+                    
+                <p>Wait for updating photo gallery for this meet.</p>
+            
+                </div>
+            </div>
+        </section>
+        
+            </div>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+
+                toggleButtons.forEach(toggleButton => {
+                    const sectionName = toggleButton.getAttribute('data-section');
+                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
+
+                    toggleButton.addEventListener('click', function() {
+                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                        toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                        // Update the button text based on the section
+                        if (isExpanded) {
+                            toggleButton.textContent = `Show ${sectionName}`;
+                            collapsibleContent.classList.remove('open');
+                        } else {
+                            toggleButton.textContent = `Hide ${sectionName}`;
+                            collapsibleContent.classList.add('open');
+                        }
+                    });
+                });
+            });
+        </script>  
+        
+    </main>   
+    <footer>
+        <div class="footer-container">
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
+        </div>
+    </footer>
+    </body>
+</html>

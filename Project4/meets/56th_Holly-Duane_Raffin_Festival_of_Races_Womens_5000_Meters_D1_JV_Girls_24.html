@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>56th Holly-Duane Raffin Festival of Races Womens 5000 Meters D1 JV Girls</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+            <div>Skyline Cross Country 2024</div>
+        </div>
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
+        
+        <!-- Side menu for small screens (hidden by default) -->
+        <div class="side-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div> <!-- Background overlay -->
+    </nav>
+    
+    <!-- JavaScript to handle the hamburger and overlay behavior -->
+    <script>
+        // Select the relevant elements
+        const hamburger = document.querySelector(".hamburger");
+        const sideMenu = document.querySelector(".side-menu");
+        const overlay = document.querySelector(".overlay");
+        const sideMenuLinks = document.querySelectorAll(".side-menu a");
+
+        // Function to open the menu
+        function openMenu() {
+            sideMenu.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            sideMenu.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+        
+        // Function to toggle menu visibility
+        function toggleMenu() {
+            const isActive = sideMenu.classList.contains("active");
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener("click", function () {
+            toggleMenu();
+        });
+
+        // Automatically open the menu when the hamburger icon is focused
+        hamburger.addEventListener("focus", function () {
+            openMenu();
+        });
+
+        // Add focus listeners to each link in the side menu
+        sideMenuLinks.forEach(function (link) {
+            link.addEventListener("focus", function () {
+                openMenu();
+            });
+        });
+
+        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
+        document.addEventListener("focusin", function (event) {
+            // Check if the newly focused element is outside both the side menu and the hamburger icon
+            if (
+                !sideMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                closeMenu();
+            }
+        });
+        
+        // Add event listener to overlay to close the menu when clicked
+        overlay.addEventListener("click", function () {
+            closeMenu();
+        });
+    </script>
+    
+    <header class="meets" tabindex="0">
+        <h1><a href="https://www.athletic.net/CrossCountry/meet/236072/results/944161">56th Holly-Duane Raffin Festival of Races Womens 5000 Meters D1 JV Girls</a></h1>
+        <h2>Sat Sep 14 2024</h2>
+    </header>
+    
+    <main id = "main">
+
+
+    <section class="summary" id="summary" tabindex="0">
+        <div class="section-header">
+            <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
+        </div>
+        <div class="collapsible-content open">
+            <div class="summary-container" tabindex="0">
+                <p>Ann Arbor Skyline's JV girls team delivered an impressive 3rd place finish at the 56th Holly-Duane Raffin Festival of Races, scoring 64 points and showcasing the team's depth and determination.</p><p>Sophomore standout <span class="athlete">Gwen Stotts-Walshe</span> led the way, crossing the finish line with a strong time of <span class="time">23:00.7</span>. Junior <span class="athlete">Tia Cocciolone</span> followed closely behind, finishing in <span class="time">23:10.6</span>. Freshman <span class="athlete">Elin Tenbrink</span> had a solid race as well, clocking in at <span class="time">23:19.4</span>, contributing to the team’s close-knit pack.</p><p>Junior <span class="athlete">Adrienne Stewart</span> finished with a time of <span class="time">23:31.1</span>, and freshman <span class="athlete">Violet Olley</span> rounded out the top five for Skyline with a time of <span class="time">23:46.1</span>, helping secure Skyline's podium spot.</p><p>Overall, the team had a fantastic showing with tight finishes, proving that the JV squad has the potential to keep building toward even stronger performances in the future!</p>
+            </div>
+        </div>
+    </section>
+    <section id="team-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Team Results</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+
+        
+        <div class="collapsible-content open">
+
+            <div class="table-container">
+<table>
+<tr><th>Place</th><th>Team</th><th>Score</th></tr>
+<tr><td>1</td><td>Holly</td><td> 36</td></tr>
+<tr><td>2</td><td>Dexter</td><td> 62</td></tr>
+<tr><td>3</td><td>Midland Dow</td><td> 64</td></tr>
+<tr><td>4</td><td>Ann Arbor Skyline</td><td> 65</td></tr>
+<tr><td>5</td><td>Romeo</td><td> 183</td></tr>
+<tr><td>6</td><td>Rochester Adams</td><td> 185</td></tr>
+<tr><td>7</td><td>Troy</td><td> 208</td></tr>
+<tr><td>8</td><td>Oxford</td><td> 237</td></tr>
+<tr><td>9</td><td>Hartland</td><td> 319</td></tr>
+<tr><td>10</td><td>Clinton Twp. Chippewa Valley</td><td> 342</td></tr>
+<tr><td>11</td><td>Plymouth</td><td> 346</td></tr>
+<tr><td>12</td><td>Lake Orion</td><td> 349</td></tr>
+<tr><td>13</td><td>Livonia Stevenson</td><td> 362</td></tr>
+<tr><td>14</td><td>Troy Athens</td><td> 373</td></tr>
+<tr><td>15</td><td>Utica Eisenhower</td><td> 433</td></tr>
+<tr><td>16</td><td>Howell</td><td> 439</td></tr>
+<tr><td>17</td><td>Davison</td><td> 466</td></tr>
+</table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="individual-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-running"></i> Individual Results</h2>              
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+        
+        <div class="collapsible-content open">
+        <div class="individual-results-container">
+            <div class="athlete-cards-container">
+            
+            <!-- No results message (hidden by default) -->
+            <p id="no-results-message" >No results matched your criteria.</p>
+            
+            <div class="athlete-card" data-grade="10" data-name="gwen stotts-walshe">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/24802677.jpg" width="200" alt="Profile picture of Gwen Stotts-Walshe"> 
+                    <figcaption>Gwen Stotts-Walshe</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>7.</dd>
+                        <dt>Time</dt><dd>23:00.7</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="tia cocciolone">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/22520342.jpg" width="200" alt="Profile picture of Tia Cocciolone"> 
+                    <figcaption>Tia Cocciolone</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>9.</dd>
+                        <dt>Time</dt><dd>23:10.6</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="elin tenbrink">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349718.jpg" width="200" alt="Profile picture of Elin Tenbrink"> 
+                    <figcaption>Elin Tenbrink</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>11.</dd>
+                        <dt>Time</dt><dd>23:19.4</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="adrienne stewart">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21142907.jpg" width="200" alt="Profile picture of Adrienne Stewart"> 
+                    <figcaption>Adrienne Stewart</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>15.</dd>
+                        <dt>Time</dt><dd>23:31.1</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="violet olley">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26328683.jpg" width="200" alt="Profile picture of Violet Olley"> 
+                    <figcaption>Violet Olley</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>22.</dd>
+                        <dt>Time</dt><dd>23:46.1</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="grace hopkins">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21142901.jpg" width="200" alt="Profile picture of Grace Hopkins"> 
+                    <figcaption>Grace Hopkins</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>32.</dd>
+                        <dt>Time</dt><dd>24:26.5</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="julianna heung">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23687880.jpg" width="200" alt="Profile picture of Julianna Heung"> 
+                    <figcaption>Julianna Heung</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>36.</dd>
+                        <dt>Time</dt><dd>24:33.8</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="ruthie scott">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349715.jpg" width="200" alt="Profile picture of Ruthie Scott"> 
+                    <figcaption>Ruthie Scott</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>52.</dd>
+                        <dt>Time</dt><dd>25:23.0</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="alexandra wren">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21142908.jpg" width="200" alt="Profile picture of Alexandra Wren"> 
+                    <figcaption>Alexandra Wren</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>60.</dd>
+                        <dt>Time</dt><dd>25:33.3</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="elsa wenzlaff">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/22520388.jpg" width="200" alt="Profile picture of Elsa Wenzlaff"> 
+                    <figcaption>Elsa Wenzlaff</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>61.</dd>
+                        <dt>Time</dt><dd>25:34.6</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="vera naines">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/18895017.jpg" width="200" alt="Profile picture of Vera Naines"> 
+                    <figcaption>Vera Naines</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>77.</dd>
+                        <dt>Time</dt><dd>26:09.8</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="pia odell">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26328678.jpg" width="200" alt="Profile picture of Pia Odell"> 
+                    <figcaption>Pia Odell</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>88.</dd>
+                        <dt>Time</dt><dd>26:40.7</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="nina beals">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23564881.jpg" width="200" alt="Profile picture of Nina Beals"> 
+                    <figcaption>Nina Beals</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>98.</dd>
+                        <dt>Time</dt><dd>27:19.2</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="lily greenberg">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23687875.jpg" width="200" alt="Profile picture of Lily Greenberg"> 
+                    <figcaption>Lily Greenberg</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>105.</dd>
+                        <dt>Time</dt><dd>27:32.8</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="emily mei">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/22520376.jpg" width="200" alt="Profile picture of Emily Mei"> 
+                    <figcaption>Emily Mei</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>138.</dd>
+                        <dt>Time</dt><dd>29:32.6</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="leanne fayyad">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/24802883.jpg" width="200" alt="Profile picture of LeAnne Fayyad"> 
+                    <figcaption>LeAnne Fayyad</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>160.</dd>
+                        <dt>Time</dt><dd>31:24.7</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="arabella kessler">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23564883.jpg" width="200" alt="Profile picture of Arabella Kessler"> 
+                    <figcaption>Arabella Kessler</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>164.</dd>
+                        <dt>Time</dt><dd>31:35.8</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="livi byers">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/26322051.jpg" width="200" alt="Profile picture of Livi Byers"> 
+                    <figcaption>Livi Byers</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>184.</dd>
+                        <dt>Time</dt><dd>33:54.6</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="cecilia deguzman">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21142897.jpg" width="200" alt="Profile picture of Cecilia DeGuzman"> 
+                    <figcaption>Cecilia DeGuzman</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>185.</dd>
+                        <dt>Time</dt><dd>34:10.1</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+        </div>
+
+                
+        <!-- Floating Action Buttons (FABs) -->
+        <div class="fab-container">
+            <button class="fab" id="fab-filter" aria-label="Filter by Grade">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="fab" id="fab-search" aria-label="Search by Name">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        </div>
+
+        
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
+        
+        <!-- Modal for filtering by grade -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <h3>Filter by Grade</h3>
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
+                    <option value="all">All Grades</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button id="apply-filter">Apply</button>
+            </div>
+        </div>
+        
+        </div>
+
+        </section>
+
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const filterFab = document.getElementById('fab-filter');
+            const searchFab = document.getElementById('fab-search');
+            const filterModal = document.getElementById('filter-modal');
+            const searchModal = document.getElementById('search-modal');
+            const applyFilterButton = document.getElementById('apply-filter');
+            const applySearchButton = document.getElementById('apply-search');
+            const gradeFilter = document.getElementById('grade-filter');
+            const nameSearch = document.getElementById('name-search');
+            const athleteCards = document.querySelectorAll('.athlete-card');
+
+            // Show/Hide Filter Modal
+            filterFab.addEventListener('click', function() {
+                filterModal.classList.toggle('active');
+                if (searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active'); // Close search modal if open
+                }
+            });
+
+            // Show/Hide Search Modal
+            searchFab.addEventListener('click', function() {
+                searchModal.classList.toggle('active');
+                if (filterModal.classList.contains('active')) {
+                    filterModal.classList.remove('active'); // Close filter modal if open
+                }
+            });
+            
+            // Close modals when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.classList.remove('active');
+                }
+                if (event.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+
+            // Apply the filter
+            applyFilterButton.addEventListener('click', function() {
+                const selectedGrade = gradeFilter.value;
+                filterModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardGrade = card.getAttribute('data-grade');
+                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Apply the search
+            applySearchButton.addEventListener('click', function() {
+                const searchName = nameSearch.value.toLowerCase();
+                searchModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    if (cardName.includes(searchName)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
+        
+        <section id = "gallery" tabindex="0">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+            </div>
+            
+            <div class="collapsible-content open">
+                <div class="gallery-container">
+                    
+                    <div class="gallery-slide">
+            
+                    <img id="gallery-image" src="../images/meets/236072/20240914_133632_029_01.jpg" alt="Gallery Image">
+            
+                    </div>
+                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+            
+                </div>
+            </div>
+        </section>
+        
+            </div>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+
+                toggleButtons.forEach(toggleButton => {
+                    const sectionName = toggleButton.getAttribute('data-section');
+                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
+
+                    toggleButton.addEventListener('click', function() {
+                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                        toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                        // Update the button text based on the section
+                        if (isExpanded) {
+                            toggleButton.textContent = `Show ${sectionName}`;
+                            collapsibleContent.classList.remove('open');
+                        } else {
+                            toggleButton.textContent = `Hide ${sectionName}`;
+                            collapsibleContent.classList.add('open');
+                        }
+                    });
+                });
+            });
+        </script>  
+        
+            <script>
+                const meet_id = "236072";  // Pass meet_id as a JavaScript variable
+                const images = ['20240914_133632_029_01.jpg', 'IMG_4181.jpg', 'IMG_9355.jpg', 'IMG_9348.jpg', 'IMG_9371.jpg', '20240914_124622_004_01.jpg', '20240914_133632_030_01.jpg', '20240914_130102_001_01.jpg', '09-14 Holly Invitational 01.jpg', 'IMG_9357.jpg'];  // JavaScript array of images generated from Python
+
+                let currentImageIndex = 0;
+                const galleryImage = document.getElementById("gallery-image");
+            
+
+                // Function to show the next image
+                function nextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    showImage("right");
+                }
+
+                // Function to show the previous image
+                function prevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    showImage("left");
+                }
+
+                // Function to display the image with sliding animation
+                function showImage(direction) {
+                    galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
+                    
+                    // Trigger a reflow to restart animation
+                    void galleryImage.offsetWidth;
+
+                    // Set the new image source
+                    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+
+                    // Add animation class based on direction
+                    galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
+
+                    // After animation, set it back to active position
+                    setTimeout(() => {
+                        galleryImage.classList.remove("slide-in-left", "slide-in-right");
+                        galleryImage.classList.add("active-slide");
+                    }, 500); // Duration should match CSS transition time
+                }
+            </script>
+        
+    </main>   
+    <footer>
+        <div class="footer-container">
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
+        </div>
+    </footer>
+    </body>
+</html>

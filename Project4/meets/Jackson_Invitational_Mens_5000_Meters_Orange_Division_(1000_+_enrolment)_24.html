@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackson Invitational Mens 5000 Meters Orange Division (1000 + enrolment)</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+    <body>
+    <a class="skip" href = "#main">Skip to Main Content</a>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" tabindex="0">&#9776;</div>  <!-- Hamburger icon (three lines) -->
+            <div>Skyline Cross Country 2024</div>
+        </div>
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+    
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle("dark-mode");
+            }
+        </script>
+        
+        <!-- Side menu for small screens (hidden by default) -->
+        <div class="side-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div> <!-- Background overlay -->
+    </nav>
+    
+    <!-- JavaScript to handle the hamburger and overlay behavior -->
+    <script>
+        // Select the relevant elements
+        const hamburger = document.querySelector(".hamburger");
+        const sideMenu = document.querySelector(".side-menu");
+        const overlay = document.querySelector(".overlay");
+        const sideMenuLinks = document.querySelectorAll(".side-menu a");
+
+        // Function to open the menu
+        function openMenu() {
+            sideMenu.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            sideMenu.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+        
+        // Function to toggle menu visibility
+        function toggleMenu() {
+            const isActive = sideMenu.classList.contains("active");
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener("click", function () {
+            toggleMenu();
+        });
+
+        // Automatically open the menu when the hamburger icon is focused
+        hamburger.addEventListener("focus", function () {
+            openMenu();
+        });
+
+        // Add focus listeners to each link in the side menu
+        sideMenuLinks.forEach(function (link) {
+            link.addEventListener("focus", function () {
+                openMenu();
+            });
+        });
+
+        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
+        document.addEventListener("focusin", function (event) {
+            // Check if the newly focused element is outside both the side menu and the hamburger icon
+            if (
+                !sideMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                closeMenu();
+            }
+        });
+        
+        // Add event listener to overlay to close the menu when clicked
+        overlay.addEventListener("click", function () {
+            closeMenu();
+        });
+    </script>
+    
+    <header class="meets" tabindex="0">
+        <h1><a href="https://www.athletic.net/CrossCountry/meet/236877/results/947091">Jackson Invitational Mens 5000 Meters Orange Division (1000 + enrolment)</a></h1>
+        <h2>Sat Sep 21 2024</h2>
+    </header>
+    
+    <main id = "main">
+
+
+    <section class="summary" id="summary" tabindex="0">
+        <div class="section-header">
+            <h2><i class="fas fa-sticky-note"></i> Race Summary</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Summary">Hide Summary</button>
+        </div>
+        <div class="collapsible-content open">
+            <div class="summary-container" tabindex="0">
+                <p>The Skyline boys cross country team had the unique privilege of running before most people even had their first sip of coffee at the Jackson Invitational. Let’s be honest, the early morning start was a challenge in itself—those bleary-eyed athletes were up and running before the sun had properly woken up. But once the gun went off, the team showed that Skyline doesn’t just wake up; they show up!</p><p>Despite the pre-dawn timing, the boys battled through the cool morning mist and still managed to snag 19th place out of 31 teams. Sure, the Highland-Milford kids were practically sprinting to breakfast with their first-place times, but Skyline held their own with some strong performances.</p><p>Leading the charge for Skyline was <span class="athlete">Bruno Cifaldi</span>, who zoomed across the finish line in <span class="time">16:41.60</span>, faster than most of us could run to grab our morning coffee. Close behind, <span class="athlete">Kyle Krasan</span> wasn’t about to let Bruno have all the glory, finishing with a time of <span class="time">16:55.97</span>—proving he can clock in under 17 minutes just in time to still feel sleepy.</p><p>Next up was <span class="athlete">Matthew Guikema</span>, crossing the line in <span class="time">17:01.11</span> and no doubt thinking about the breakfast that awaited him. <span class="athlete">Oskar MacArthur</span>, one of Skyline’s younger speedsters, raced in with a time of <span class="time">17:11.69</span>, followed closely by <span class="athlete">Enshu Kuan</span> at <span class="time">17:12.62</span>. <span class="athlete">Jack Robichaud</span> came in just a bit after them at <span class="time">17:14.63</span>, rounding out a solid pack of Skyline runners.</p><p>And let’s not forget <span class="athlete">Martin Gehrke</span>, who finished his morning jog in <span class="time">17:28.69</span>—just fast enough to beat the early-bird special. <span class="athlete">Dylan Hanley</span>, determined to keep pace, came in at <span class="time">17:55.80</span>, wrapping up a well-fought race for the Skyline crew.</p>
+            </div>
+        </div>
+    </section>
+    <section id="team-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Team Results</h2>
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+
+        
+        <div class="collapsible-content open">
+
+            <div class="table-container">
+<table>
+<tr><th>Place</th><th>Team</th><th>Score</th></tr>
+<tr><td>1</td><td>Chuck Block Timing</td><td> 158</td></tr>
+<tr><td>2</td><td>Livonia Churchill</td><td> 172</td></tr>
+<tr><td>3</td><td>Clarkston</td><td> 179</td></tr>
+<tr><td>4</td><td>Saline</td><td> 204</td></tr>
+<tr><td>5</td><td>Canton</td><td> 237</td></tr>
+<tr><td>6</td><td>East Kentwood</td><td> 248</td></tr>
+<tr><td>7</td><td>White Lake Lakeland</td><td> 253</td></tr>
+<tr><td>8</td><td>Traverse City Central</td><td> 287</td></tr>
+<tr><td>9</td><td>Highland-Milford</td><td> 302</td></tr>
+<tr><td>10</td><td>Macomb Dakota</td><td> 333</td></tr>
+<tr><td>11</td><td>Plymouth</td><td> 351</td></tr>
+<tr><td>12</td><td>Grandville</td><td> 364</td></tr>
+<tr><td>13</td><td>Howell</td><td> 376</td></tr>
+<tr><td>14</td><td>Troy</td><td> 376</td></tr>
+<tr><td>15</td><td>Rochester</td><td> 383</td></tr>
+<tr><td>16</td><td>Dexter</td><td> 389</td></tr>
+<tr><td>17</td><td>Salem</td><td> 395</td></tr>
+<tr><td>18</td><td>Utica</td><td> 414</td></tr>
+<tr><td>19</td><td>Romeo</td><td> 438</td></tr>
+<tr><td>20</td><td>Ann Arbor Skyline</td><td> 466</td></tr>
+<tr><td>21</td><td>Temperance Bedford</td><td> 492</td></tr>
+<tr><td>22</td><td>Kalamazoo Loy Norrix</td><td> 520</td></tr>
+<tr><td>23</td><td>Ann Arbor Pioneer</td><td> 526</td></tr>
+<tr><td>24</td><td>Woodhaven Brownstown</td><td> 633</td></tr>
+<tr><td>25</td><td>BC Lakeview</td><td> 655</td></tr>
+<tr><td>26</td><td>Royal Oak</td><td> 674</td></tr>
+<tr><td>27</td><td>Hartland</td><td> 695</td></tr>
+<tr><td>28</td><td>Fraser</td><td> 722</td></tr>
+<tr><td>29</td><td>Farmington</td><td> 799</td></tr>
+<tr><td>30</td><td>South Lyon East</td><td> 868</td></tr>
+<tr><td>31</td><td>Dearborn</td><td> 900</td></tr>
+</table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="individual-results" tabindex="0">
+
+        <div class="section-header">
+            <h2><i class="fas fa-running"></i> Individual Results</h2>              
+            <button class="toggle-button" aria-expanded="true" data-section="Results">Hide Results</button>
+        </div>
+        
+        <div class="collapsible-content open">
+        <div class="individual-results-container">
+            <div class="athlete-cards-container">
+            
+            <!-- No results message (hidden by default) -->
+            <p id="no-results-message" >No results matched your criteria.</p>
+            
+            <div class="athlete-card" data-grade="11" data-name="bruno cifaldi">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21147176.jpg" width="200" alt="Profile picture of Bruno Cifaldi"> 
+                    <figcaption>Bruno Cifaldi</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>63.</dd>
+                        <dt>Time</dt><dd>16:41.60</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="kyle krasan">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21245954.jpg" width="200" alt="Profile picture of Kyle Krasan"> 
+                    <figcaption>Kyle Krasan</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>80.</dd>
+                        <dt>Time</dt><dd>16:55.97</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="matthew guikema">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349678.jpg" width="200" alt="Profile picture of Matthew Guikema"> 
+                    <figcaption>Matthew Guikema</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>90.</dd>
+                        <dt>Time</dt><dd>17:01.11</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="oskar macarthur">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349698.jpg" width="200" alt="Profile picture of Oskar MacArthur"> 
+                    <figcaption>Oskar MacArthur</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>105.</dd>
+                        <dt>Time</dt><dd>17:11.69</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="enshu kuan">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23687884.jpg" width="200" alt="Profile picture of Enshu Kuan"> 
+                    <figcaption>Enshu Kuan</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>107.</dd>
+                        <dt>Time</dt><dd>17:12.62</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="12" data-name="jack robichaud">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/18820279.jpg" width="200" alt="Profile picture of Jack Robichaud"> 
+                    <figcaption>Jack Robichaud</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>117.</dd>
+                        <dt>Time</dt><dd>17:14.63</dd>
+                        <dt>Grade</dt><dd>12</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="nicholas yuan">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21615273.jpg" width="200" alt="Profile picture of Nicholas Yuan"> 
+                    <figcaption>Nicholas Yuan</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>133.</dd>
+                        <dt>Time</dt><dd>17:21.25</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="11" data-name="zeke lafferty">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/21142917.jpg" width="200" alt="Profile picture of Zeke Lafferty"> 
+                    <figcaption>Zeke Lafferty</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>136.</dd>
+                        <dt>Time</dt><dd>17:22.85</dd>
+                        <dt>Grade</dt><dd>11</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="9" data-name="martin gehrke">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/19203161.jpg" width="200" alt="Profile picture of Martin Gehrke"> 
+                    <figcaption>Martin Gehrke</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>146.</dd>
+                        <dt>Time</dt><dd>17:28.69</dd>
+                        <dt>Grade</dt><dd>9</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="athlete-card" data-grade="10" data-name="dylan hanley">
+                <figure class="athlete-figure"> 
+                    <img src="../images/profiles/23349680.jpg" width="200" alt="Profile picture of Dylan Hanley"> 
+                    <figcaption>Dylan Hanley</figcaption>
+                </figure>
+                
+                <div class="athlete-info">
+                    <dl>
+                        <dt>Place</dt><dd>184.</dd>
+                        <dt>Time</dt><dd>17:55.80</dd>
+                        <dt>Grade</dt><dd>10</dd>
+                    </dl>
+                </div>
+            </div>
+            
+        </div>
+
+                
+        <!-- Floating Action Buttons (FABs) -->
+        <div class="fab-container">
+            <button class="fab" id="fab-filter" aria-label="Filter by Grade">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="fab" id="fab-search" aria-label="Search by Name">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        </div>
+
+        
+        <!-- Modal for searching by name -->
+        <div id="search-modal" class="modal">
+            <div class="modal-content">
+                <h3>Search by Name</h3>
+                <label for="name-search" class="sr-only">Enter Athlete Name</label>
+                <input type="text" id="name-search" placeholder="Enter Athlete Name" aria-label="Enter Athlete Name">
+                <button id="apply-search">Search</button>
+            </div>
+        </div>
+        
+        <!-- Modal for filtering by grade -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <h3>Filter by Grade</h3>
+                <label for="grade-filter" class="sr-only">Select Grade</label> 
+                <select id="grade-filter" class="filter-select" aria-label="Select Grade">
+                    <option value="all">All Grades</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button id="apply-filter">Apply</button>
+            </div>
+        </div>
+        
+        </div>
+
+        </section>
+
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const filterFab = document.getElementById('fab-filter');
+            const searchFab = document.getElementById('fab-search');
+            const filterModal = document.getElementById('filter-modal');
+            const searchModal = document.getElementById('search-modal');
+            const applyFilterButton = document.getElementById('apply-filter');
+            const applySearchButton = document.getElementById('apply-search');
+            const gradeFilter = document.getElementById('grade-filter');
+            const nameSearch = document.getElementById('name-search');
+            const athleteCards = document.querySelectorAll('.athlete-card');
+
+            // Show/Hide Filter Modal
+            filterFab.addEventListener('click', function() {
+                filterModal.classList.toggle('active');
+                if (searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active'); // Close search modal if open
+                }
+            });
+
+            // Show/Hide Search Modal
+            searchFab.addEventListener('click', function() {
+                searchModal.classList.toggle('active');
+                if (filterModal.classList.contains('active')) {
+                    filterModal.classList.remove('active'); // Close filter modal if open
+                }
+            });
+            
+            // Close modals when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.classList.remove('active');
+                }
+                if (event.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+
+            // Apply the filter
+            applyFilterButton.addEventListener('click', function() {
+                const selectedGrade = gradeFilter.value;
+                filterModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardGrade = card.getAttribute('data-grade');
+                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Apply the search
+            applySearchButton.addEventListener('click', function() {
+                const searchName = nameSearch.value.toLowerCase();
+                searchModal.classList.remove('active');
+
+                athleteCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    if (cardName.includes(searchName)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
+        
+        <section id = "gallery" tabindex="0">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Photo Gallery</h2>
+                <button class="toggle-button" aria-expanded="true" data-section="Gallery">Hide Gallery</button>
+            </div>
+            
+            <div class="collapsible-content open">
+                <div class="gallery-container">
+                    
+                <p>Wait for updating photo gallery for this meet.</p>
+            
+                </div>
+            </div>
+        </section>
+        
+            </div>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+
+                toggleButtons.forEach(toggleButton => {
+                    const sectionName = toggleButton.getAttribute('data-section');
+                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
+
+                    toggleButton.addEventListener('click', function() {
+                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                        toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                        // Update the button text based on the section
+                        if (isExpanded) {
+                            toggleButton.textContent = `Show ${sectionName}`;
+                            collapsibleContent.classList.remove('open');
+                        } else {
+                            toggleButton.textContent = `Hide ${sectionName}`;
+                            collapsibleContent.classList.add('open');
+                        }
+                    });
+                });
+            });
+        </script>  
+        
+    </main>   
+    <footer>
+        <div class="footer-container">
+            <p>
+                Skyline High School<br>
+                <address>
+                    2552 North Maple Road<br>
+                    Ann Arbor, MI 48103<br>
+                </address>
+            </p>
+        
+            <p>
+                <a href = "https://sites.google.com/aaps.k12.mi.us/skylinecrosscountry2021/home">XC Skyline Page</a><br>
+                Follow us on Instagram
+                <a href = "https://www.instagram.com/a2skylinexc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+                </a> 
+            </p>
+
+            <p>&copy 2024 Skyline High School. All rights reserved.</p>
+        </div>
+    </footer>
+    </body>
+</html>
