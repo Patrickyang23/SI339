@@ -176,6 +176,7 @@ header.meets {
     z-index: 1;  /* Ensure it's behind the nav if needed */
     position: relative;  /* Avoid overlap with nav */
     margin-top: 65px;
+    background-color: black;
     background-image: url(../images/background.jpeg);
     background-size: cover; /* Make the image cover the entire container */
     background-position: center;  /* Center the image within the container */
@@ -190,6 +191,7 @@ header.index {
     z-index: 1;  /* Ensure it's behind the nav if needed */
     position: relative;  /* Avoid overlap with nav */
     margin-top: 65px;
+    background-color: black;
     background-image: url(../images/camping.jpeg);
     background-size: cover; /* Make the image cover the entire container */
     background-position: 60% 60%;  /* Center the image within the container */
@@ -290,7 +292,7 @@ time {
 
 /* Styles for the collapsible section */
 .collapsible-content {
-    max-height: 500px;  /* Default to expanded */
+    max-height: 50vh;  /* Default to expanded */
     overflow: hidden;
     transition: max-height 0.5s ease, transform 0.5s ease;  /* Smooth expand/collapse transition */
     transform: translateY(0);  /* Default position */
@@ -311,7 +313,7 @@ time {
     display: inline-block;
     margin: 10px 0;
     padding: 10px 10px;
-    background-color: #3498db;
+    background-color: #1e8449;
     color: white;
     border: none;
     border-radius: 5px;
@@ -320,7 +322,7 @@ time {
 }
 
 .toggle-button[aria-expanded="true"] {
-    background-color: #c0392b;
+    background-color: rgba(30, 108, 147);
 }
 
 /* Scrollable container for the table */
@@ -560,41 +562,42 @@ input, select {
 .gallery-container {
     margin: 15px auto 0px auto;
     position: relative;
-    width: 100%;
-    max-width: 600px;
+    /* width: 100%; */
+    /* max-width: 600px; */
     overflow: hidden;
     display: flex;
-    justify-content: center;  /* Centers the image horizontally */
-    align-items: center;      /* Centers the image vertically */
+    justify-content: space-evenly;  /* Centers the image horizontally */
+    align-items: center;     /* Centers the image vertically */
 }
 
 /* Slide area for images */
 .gallery-slide {
-    margin: 0px auto 0px auto;
-    position: relative;
-    width: 100%;
-    height: 100%;
+    /* margin: 0px auto 0px auto; */
+    /* position: relative; */
+    /* width: 100%; */
+    /* height: 100%; */
     display: flex;            /* Enable flexbox for centering */
-    justify-content: center;  /* Centers image horizontally */
+    justify-content: space-evenly;  /* Centers image horizontally */
     align-items: center;      /* Centers image vertically */
 }
 
 /* Image styling */
 .gallery-slide img {
     max-width: 60vw;   /* The maximum width for the image */
-    max-height: 30vh;  /* The maximum height for the image */
+    max-height: 45vh;  /* The maximum height for the image */
     width: auto;       /* Keeps the width auto to maintain aspect ratio */
     height: auto;      /* Keeps the height auto to maintain aspect ratio */
     transition: transform 0.5s ease; /* Smooth transition for sliding */
     display: block;
+    margin: 0px 15px;
     border-radius: 10px;
 }
 
 /* Arrows styling */
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    /* position: relative; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
@@ -605,11 +608,11 @@ input, select {
 }
 
 .left-arrow {
-    left: 5px;
+    left: -15px;
 }
 
 .right-arrow {
-    right: 5px;
+    right: -15px;
 }
 
 /* Slide-in and slide-out effects */
