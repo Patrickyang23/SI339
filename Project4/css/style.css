@@ -1,0 +1,857 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    background-color: white;
+    color: rgba(51, 51, 51);
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+}
+
+b {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size for large headings */
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size for medium headings */
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Responsive font size for smaller headings */
+}
+
+/* Styling for "Skip to Main Content" link */
+.skip {
+    position: absolute;
+    top: -100px;
+    text-align: center;
+    width: 60vw;
+    left: 50%;
+    transform:translateX(-50%);
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    z-index: 1000;  /* Ensures it's on top of other elements */
+    opacity: 0;  /* Initially invisible */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;  /* Smooth transitions */
+}
+
+.skip:focus {
+    top: 10px;  /* Move the link back into view */
+    opacity: 1;  /* Make it visible */
+    z-index: 1200
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    display: flex;
+    justify-content: space-between; /* Default for the small screen */
+    align-items: center;
+    background-color: rgba(30, 108, 147, 1);  /* Add a background color */
+    padding: 10px 20px;  /* Padding around the nav to give space */
+    z-index: 1000;  /* Ensure the nav stays on top of other elements */
+}
+
+.nav-left {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.nav-right {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-right: 10px;
+}
+
+/* Logo styling */
+.nav-logo {
+    width: 60px; /* Adjust the width as necessary */
+    height: auto;
+    border-radius: 50%; /* Makes the image elliptical */
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+/* Hamburger Menu (default: visible on smaller screens) */
+.hamburger {
+    display: block;
+    font-size: 1.4rem;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+    z-index: 1100;  /* Ensure it's above the overlay */
+}
+
+.hamburger:hover{
+    transform: scale(1.2);
+}
+
+/* .hamburger:focus{
+    transform: scale(1.2);
+} */
+
+/* Side Menu (hidden by default, visible on small screens) */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(30, 108, 147, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1100;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    margin: 20px 0;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    /* font-size: 1.2em; */
+}
+
+/* Make the side menu slide in */
+.side-menu.active {
+    left: 0;
+}
+
+/* Overlay (initially hidden) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Header styling */
+header.meets {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 1;  /* Ensure it's behind the nav if needed */
+    position: relative;  /* Avoid overlap with nav */
+    margin-top: 65px;
+    background-image: url(../images/background.jpeg);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: center;  /* Center the image within the container */
+    background-repeat:no-repeat;
+}
+
+header.index {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 1;  /* Ensure it's behind the nav if needed */
+    position: relative;  /* Avoid overlap with nav */
+    margin-top: 65px;
+    background-image: url(../images/camping.jpeg);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: 60% 60%;  /* Center the image within the container */
+    background-repeat:no-repeat;
+}
+
+/* Add the color overlay */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.9); /* Semi-transparent overlay color */
+    z-index: -1; /* Make sure the overlay stays behind the content */
+    pointer-events: none; /* Prevent interaction with the overlay */
+    border-radius: 8px;
+}
+
+header h1 {
+    font-weight: normal;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+header a {
+    color: white;
+}
+
+/* Section styling */
+section {
+    scroll-margin-top: 80px;  /* Adjust this value to match or slightly exceed the height of your fixed navbar */
+    background-color: rgba(236, 240, 241, 0.8);;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+section h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 0px 10px 0px;
+    /* margin-bottom: 10px;
+    padding-bottom: 5px; */
+}
+
+/* Summary Section */
+main {
+    margin-top: 20px;
+    background-image: url(../images/EAGLE.png);
+    background-size: 100vw auto;  /* Make the image fill the viewport width, height adjusts automatically */
+    background-position: center top;  /* Center horizontally, start at the top vertically */
+    background-repeat: repeat-y;  /* Repeat the image vertically if the content doesn't fill the screen */
+}
+
+.summary-container {
+    line-height: 1.6;
+    /* border-radius: 8px; */
+    word-wrap: break-word;
+    white-space: normal;  /* Ensure proper word wrapping */
+    margin-top: 15px;
+    max-height: 30vh;
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling on smaller screens */
+}
+
+.summary-container p {
+    color: rgb(51, 51, 51);
+}
+
+/* Athlete section */
+span.athlete  {
+    font-weight: bold;
+    /* color: #2980b9; */
+    white-space: nowrap;  /* Ensure athlete names do not break onto new lines */
+    display: inline;  /* Ensure span is treated as inline element */
+}
+
+/* Time styling */
+time {
+    font-style: italic;
+    color: #333;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #333;
+}
+
+/* Styles for the collapsible section */
+.collapsible-content {
+    max-height: 500px;  /* Default to expanded */
+    overflow: hidden;
+    transition: max-height 0.5s ease, transform 0.5s ease;  /* Smooth expand/collapse transition */
+    transform: translateY(0);  /* Default position */
+    opacity: 1;  /* Default opacity */
+}
+
+.collapsible-content:not(.open) {
+    max-height: 0;  /* Hidden when not expanded */
+    transform: translateY(-30px);  /* Slide up when hidden */
+    opacity: 0;  /* Fade out as it slides up */
+    transition: max-height 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+    overflow: hidden;
+}
+
+/* Toggle button styling */
+.toggle-button {
+    font-size: 1em;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160px; /* Set a fixed width for all buttons */
+}
+
+.toggle-button[aria-expanded="true"] {
+    background-color: #c0392b;
+}
+
+/* Scrollable container for the table */
+.table-container {
+    max-height: 30vh;  /* Limit the height to 30% of the viewport */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling on smaller screens */
+    margin-top: 15px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+/* Apply alternating background colors to table rows */
+table tr:nth-child(even) {
+    background-color: white;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+    position: sticky;  /* Enable the sticky behavior */
+    top: 0;  /* Stick the header to the top of the container */
+    z-index: 2;  /* Ensure it stays above other content when scrolling */
+}
+
+#no-results-message {
+    display: none;
+    color: rgb(51, 51, 51);
+    text-align: center;
+}
+
+/* Parent container to hold both the cards container and FAB container */
+.individual-results-container {
+    position: relative;  /* Relative to position FABs inside it */
+    max-height: 40vh;    /* Limit height of the parent container */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+/* Container for all athlete cards */
+.athlete-cards-container {
+    margin-top: 15px;
+    flex: 1;   /* Take up available space */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive columns based on screen size */
+    gap: 20px;  /* Space between cards */
+    /* max-height: 40vh;  Limit the height to 30% of the viewport */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling if content exceeds the height */
+}
+
+/* Athlete Card Styling */
+.athlete-card {
+    display: flex;  /* Flexbox to align image and info side by side */
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    align-items: center;  /* Ensure the image is aligned at the top */
+    width: 100%;
+    max-width: 260px;  /* Limit the card width on large screens */
+    margin-bottom: 10px;  /* Center the card and add vertical spacing */
+    margin: auto;
+}
+
+.athlete-card:hover {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+}
+
+/* Athlete Image */
+.athlete-figure {
+    margin-left: 20px;
+    margin-right: 20px;  /* Space between image and info */
+    text-align: center;
+    width: 100px;  /* Set width for the figure */
+    height: 150px;  /* Ensure uniform height */
+    flex-shrink: 0;  /* Prevent the image from shrinking */
+}
+
+.athlete-figure img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.athlete-figure figcaption {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #3498db;
+}
+
+/* Athlete Info */
+.athlete-info {
+    margin-top: 20px;
+    margin-left: 20px;
+    flex: 1; /* Let it take up remaining space */
+    color: rgba(51, 51, 51);
+}
+
+dl {
+    margin: 0;
+}
+
+dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+dd {
+    margin-bottom: 15px;
+}
+
+/* Styles for the Floating Action Buttons */
+.fab-container {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between FABs */
+    z-index: 500; /* Ensure FABs are on top of the content */
+}
+
+.fab {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.fab:hover {
+    background-color: rgba(30, 108, 147);
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* On top of FAB */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    width: 300px; /* Fixed width for both modals */
+    height: 200px; /* Fixed height for both modals */
+    margin: 20% auto; /* Center the modal */
+    justify-content: center;
+}
+
+/* Show modal when active */
+.modal.active {
+    display: flex;
+}
+
+/* Make the header text smaller */
+.modal-content h3 {
+    font-size: 1.1em; /* Adjust the header size */
+}
+
+/* Filter select box styling */
+.filter-select {
+    margin: 10px 0;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+}
+
+input, select {
+    font-size: 1em; /* Make inputs and buttons 1em */
+    text-align: center;
+    margin: 10px 0px;
+    width: 100%; /* Make sure they take full width of modal */
+}
+
+.modal-content button {
+    font-size: 1em;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button {
+    font-size: 1em;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Gallery Section */
+/* Container to hold the slide gallery */
+.gallery-container {
+    margin: 15px auto 0px auto;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;  /* Centers the image horizontally */
+    align-items: center;      /* Centers the image vertically */
+}
+
+/* Slide area for images */
+.gallery-slide {
+    margin: 0px auto 0px auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;            /* Enable flexbox for centering */
+    justify-content: center;  /* Centers image horizontally */
+    align-items: center;      /* Centers image vertically */
+}
+
+/* Image styling */
+.gallery-slide img {
+    max-width: 60vw;   /* The maximum width for the image */
+    max-height: 30vh;  /* The maximum height for the image */
+    width: auto;       /* Keeps the width auto to maintain aspect ratio */
+    height: auto;      /* Keeps the height auto to maintain aspect ratio */
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+    display: block;
+    border-radius: 10px;
+}
+
+/* Arrows styling */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 5px;
+}
+
+.right-arrow {
+    right: 5px;
+}
+
+/* Slide-in and slide-out effects */
+.slide-in-left {
+    transform: translateX(-100vw);
+}
+
+.slide-in-right {
+    transform: translateX(100vw);
+}
+
+.active-slide {
+    transform: translateX(0);
+    transition: transform 0.5s ease; /* Smooth transition for the active slide */
+}
+
+
+
+/* Footer styling */
+footer {
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    background-image: url(../images/family5k.png);
+    background-size: cover; /* Make the image cover the entire container */
+    background-position: center;  /* Center the image within the container */
+    background-repeat: no-repeat;
+    position: relative; /* Ensure the ::before overlay is positioned correctly */
+}
+
+/* Add the color overlay */
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.7); /* Semi-transparent overlay color */
+    z-index: 1; /* Make sure the overlay stays behind the content */
+    pointer-events: none; /* Prevent interaction with the overlay */
+    border-radius: 8px;
+}
+
+/* Container for flex layout */
+.footer-container {
+    position: relative;
+    display: flex;  /* Use flexbox for layout */
+    flex-direction: column;
+    align-items: center;  /* Align content at the top*/
+    z-index: 1;
+    gap: 8px;
+}
+
+.footer-left address {
+    font-style: normal;  /* Remove italic from the address tag */
+}
+
+footer a, footer p {
+    color: white;
+    padding: 5px;
+}
+
+/* Instagram Icon - Ensure Font Awesome works */
+.fa-brands.fa-instagram {
+    font-size: 24px;
+    color: #ff4500; /* Starting color (orange) */
+    animation: colorChange 2s infinite alternate; /* Animation for color change */
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.fa-brands.fa-instagram:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Keyframes for color alternation between orange and purple */
+@keyframes colorChange {
+    0% {
+        color: #ff4500; /* Orange */
+    }
+    100% {
+        color: #8a2be2; /* Purple */
+    }
+}
+
+/* Define color variables */
+:root {
+    --moon-color: black; /* Default is black for light mode */
+}
+
+body.dark-mode {
+    --moon-color: white; /* Change to white in dark mode */
+}
+
+/* Dark mode toggle button icon */
+.fas.fa-moon {
+    color: var(--moon-color); /* Use color variable */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for scaling and color */
+}
+
+.fas.fa-moon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode .section p {
+    color: white;
+}
+
+/* Dark mode */
+.dark-mode main {
+    /* Keep the background image */
+    background-image: url(../images/EAGLE-dark.png);
+}
+
+.dark-mode section {
+    background-color: rgba(44, 62, 80, 0.7);
+}
+
+.dark-mode .summary-container p {
+    color: white;
+}
+
+.dark-mode .section-header {
+    border-bottom: 2px solid white;
+}
+
+.dark-mode table tr:nth-child(even) {
+    background-color: #2c3e50;
+}
+
+.dark-mode a {
+    color: white;
+}
+
+.dark-mode .athlete-card {
+    background-color: #333;
+}
+
+.dark-mode .athlete-info {
+    color: white;
+}
+
+/* Dark mode toggle button */
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem; /* Size of the moon icon */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+/* Example for specific components */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Stop specific animations for color change */
+    .fa-brands.fa-instagram {
+        color: #8a2be2; /* Default color without animation */
+    }
+
+    .fab:hover {
+        background-color: #3498db;
+    }
+
+    /* Remove hover scaling effects */
+    .hamburger:hover,
+    .athlete-card:hover,
+    .fab:hover,
+    .fa-brands.fa-instagram:hover,
+    .fas.fa-moon:hover,
+    #dark-mode-toggle:hover  {
+        transform: none !important;
+    }
+
+    /* Disable slide animations */
+    .slide-in-left,
+    .slide-in-right,
+    .slide-out-left,
+    .slide-out-right,
+    .active-slide {
+        transform: translateX(0) !important; /* Remove slide effect */
+    }
+}
+
+/* Apply dark mode styles automatically if user prefers dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .section p {
+        color: white;
+    }
+
+    main {
+        background-image: url(../images/EAGLE-dark.png);
+    }
+
+    section {
+        background-color: rgba(44, 62, 80, 0.7);
+    }
+
+    .summary-container p {
+        color: white;
+    }
+
+    .section-header {
+        border-bottom: 2px solid white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #2c3e50;
+    }
+
+    a {
+        color: white;
+    }
+
+    .dark-mode .athlete-card {
+        background-color: #333;
+    }
+    
+    .dark-mode .athlete-info {
+        color: white;
+    }
+}
