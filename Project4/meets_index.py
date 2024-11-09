@@ -123,11 +123,12 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             </div>
         </section>
     """
-    # Convert Python list of images to a JavaScript array format
-    js_image_array = f"const images = {image_list};"
     
     # Get the list of images from the folder
     image_list = generate_image_list(folder_path)
+    
+    # Convert Python list of images to a JavaScript array format
+    js_image_array = f"const images = {image_list};"
     
     html_content +="""
         <!-- Gallery Section -->
@@ -142,22 +143,23 @@ def generate_homepage(csv_filename, folder_path, html_filename):
                     <div class="gallery-slide">
                     """
     html_content += f"""
-                            <img id="gallery-image" src="images/team/{image_list[0]}" alt="Gallery Image">
-                    """
-    html_content += """
+                        <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                        <img id="gallery-image" src="images/team/{image_list[0]}" alt="Skyline Gallery Images">
+                        <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
                     </div>
-                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
-                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
                 </div>
             </div>
         </section>
+        """
         
+    html_content += f"""   
         <script>
-            {js_image_array}
+            {js_image_array}  // JavaScript array of images generated from Python
         </script>
         """
         
     html_content += """   
+    </main>  
     <footer>
         <div class="footer-container">
             <p>
@@ -178,10 +180,9 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             <p>&copy 2024 Skyline High School. All rights reserved.</p>
         </div>
     </footer>
-    </main>
     
-    <script src="js/meet.js"></script>
-    
+    <script src="js/index.js"></script>
+        
     </body>
     </html>
     """
@@ -204,6 +205,6 @@ def encode_filename(filename):
     return urllib.parse.quote(filename)
 
 csv_filename = "skyline_team_results.csv"  # The CSV file containing the team results
-html_filename = "index1.html"  # The output HTML file
+html_filename = "index.html"  # The output HTML file
 folder_path = "images/team"
 generate_homepage(csv_filename, folder_path, html_filename)

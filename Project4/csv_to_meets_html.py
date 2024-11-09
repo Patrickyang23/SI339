@@ -52,11 +52,6 @@ def csv_to_html(csv_filename, output_folder):
     """
     
         html_content += """
-        <script>
-            function toggleDarkMode() {
-                document.body.classList.toggle("dark-mode");
-            }
-        </script>
         
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
@@ -70,71 +65,6 @@ def csv_to_html(csv_filename, output_folder):
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
     </nav>
-    """
-        html_content += """
-    <!-- JavaScript to handle the hamburger and overlay behavior -->
-    <script>
-        // Select the relevant elements
-        const hamburger = document.querySelector(".hamburger");
-        const sideMenu = document.querySelector(".side-menu");
-        const overlay = document.querySelector(".overlay");
-        const sideMenuLinks = document.querySelectorAll(".side-menu a");
-
-        // Function to open the menu
-        function openMenu() {
-            sideMenu.classList.add("active");
-            overlay.classList.add("active");
-        }
-
-        // Function to close the menu
-        function closeMenu() {
-            sideMenu.classList.remove("active");
-            overlay.classList.remove("active");
-        }
-        
-        // Function to toggle menu visibility
-        function toggleMenu() {
-            const isActive = sideMenu.classList.contains("active");
-            if (isActive) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        }
-
-        // Toggle menu when clicking the hamburger icon
-        hamburger.addEventListener("click", function () {
-            toggleMenu();
-        });
-
-        // Automatically open the menu when the hamburger icon is focused
-        hamburger.addEventListener("focus", function () {
-            openMenu();
-        });
-
-        // Add focus listeners to each link in the side menu
-        sideMenuLinks.forEach(function (link) {
-            link.addEventListener("focus", function () {
-                openMenu();
-            });
-        });
-
-        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
-        document.addEventListener("focusin", function (event) {
-            // Check if the newly focused element is outside both the side menu and the hamburger icon
-            if (
-                !sideMenu.contains(event.target) &&
-                !hamburger.contains(event.target)
-            ) {
-                closeMenu();
-            }
-        });
-        
-        // Add event listener to overlay to close the menu when clicked
-        overlay.addEventListener("click", function () {
-            closeMenu();
-        });
-    </script>
     """
     
         html_content += f"""
@@ -272,79 +202,9 @@ def csv_to_html(csv_filename, output_folder):
                 <button id="apply-filter">Apply</button>
             </div>
         </div>
-        
         </div>\n
         </section>\n
         
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            const filterFab = document.getElementById('fab-filter');
-            const searchFab = document.getElementById('fab-search');
-            const filterModal = document.getElementById('filter-modal');
-            const searchModal = document.getElementById('search-modal');
-            const applyFilterButton = document.getElementById('apply-filter');
-            const applySearchButton = document.getElementById('apply-search');
-            const gradeFilter = document.getElementById('grade-filter');
-            const nameSearch = document.getElementById('name-search');
-            const athleteCards = document.querySelectorAll('.athlete-card');
-
-            // Show/Hide Filter Modal
-            filterFab.addEventListener('click', function() {
-                filterModal.classList.toggle('active');
-                if (searchModal.classList.contains('active')) {
-                    searchModal.classList.remove('active'); // Close search modal if open
-                }
-            });
-
-            // Show/Hide Search Modal
-            searchFab.addEventListener('click', function() {
-                searchModal.classList.toggle('active');
-                if (filterModal.classList.contains('active')) {
-                    filterModal.classList.remove('active'); // Close filter modal if open
-                }
-            });
-            
-            // Close modals when clicking outside of modal content
-            window.addEventListener('click', function(event) {
-                if (event.target === filterModal) {
-                    filterModal.classList.remove('active');
-                }
-                if (event.target === searchModal) {
-                    searchModal.classList.remove('active');
-                }
-            });
-
-            // Apply the filter
-            applyFilterButton.addEventListener('click', function() {
-                const selectedGrade = gradeFilter.value;
-                filterModal.classList.remove('active');
-
-                athleteCards.forEach(card => {
-                    const cardGrade = card.getAttribute('data-grade');
-                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-
-            // Apply the search
-            applySearchButton.addEventListener('click', function() {
-                const searchName = nameSearch.value.toLowerCase();
-                searchModal.classList.remove('active');
-
-                athleteCards.forEach(card => {
-                    const cardName = card.getAttribute('data-name');
-                    if (cardName.includes(searchName)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        </script>
         """
         meet_id = extract_meet_id(link_url)
         # Get the list of images from the folder
@@ -365,13 +225,11 @@ def csv_to_html(csv_filename, output_folder):
                     <div class="gallery-slide">
             """
             html_content += f"""
-                    <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Gallery Image">
-            """
-            html_content += """
-                    </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Skyline Gallery Images">
                     <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
             """
+            
         else:  # If image_list is a message string
             # Display a "Waiting for update" message if no images are found
             html_content += """
@@ -389,31 +247,6 @@ def csv_to_html(csv_filename, output_folder):
             </div>
             </div>
         </section>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const toggleButtons = document.querySelectorAll('.toggle-button');
-
-                toggleButtons.forEach(toggleButton => {
-                    const sectionName = toggleButton.getAttribute('data-section');
-                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
-
-                    toggleButton.addEventListener('click', function() {
-                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                        toggleButton.setAttribute('aria-expanded', !isExpanded);
-
-                        // Update the button text based on the section
-                        if (isExpanded) {
-                            toggleButton.textContent = `Show ${sectionName}`;
-                            collapsibleContent.classList.remove('open');
-                        } else {
-                            toggleButton.textContent = `Hide ${sectionName}`;
-                            collapsibleContent.classList.add('open');
-                        }
-                    });
-                });
-            });
-        </script>  
         """    
 
         # Add any necessary JavaScript for the gallery only if images exist
@@ -424,46 +257,9 @@ def csv_to_html(csv_filename, output_folder):
             <script>
                 const meet_id = "{meet_id}";  // Pass meet_id as a JavaScript variable
                 {js_image_array}  // JavaScript array of images generated from Python
-
-                let currentImageIndex = 0;
-                const galleryImage = document.getElementById("gallery-image");
-            """
-            
-            html_content += """
-
-                // Function to show the next image
-                function nextImage() {
-                    currentImageIndex = (currentImageIndex + 1) % images.length;
-                    showImage("right");
-                }
-
-                // Function to show the previous image
-                function prevImage() {
-                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                    showImage("left");
-                }
-
-                // Function to display the image with sliding animation
-                function showImage(direction) {
-                    galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
-                    
-                    // Trigger a reflow to restart animation
-                    void galleryImage.offsetWidth;
-
-                    // Set the new image source
-                    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
-
-                    // Add animation class based on direction
-                    galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
-
-                    // After animation, set it back to active position
-                    setTimeout(() => {
-                        galleryImage.classList.remove("slide-in-left", "slide-in-right");
-                        galleryImage.classList.add("active-slide");
-                    }, 500); // Duration should match CSS transition time
-                }
             </script>
-        """
+            """
+        
     html_content += """
     </main>   
     <footer>
@@ -486,6 +282,9 @@ def csv_to_html(csv_filename, output_folder):
             <p>&copy 2024 Skyline High School. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script src="../js/meet.js"></script>
+    
     </body>
 </html>
 """
