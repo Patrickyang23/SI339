@@ -115,6 +115,34 @@ nav {
     transform: scale(1.2);
 } */
 
+/* Right side - Navigation links */
+.nav-menu ul {
+    list-style: none;
+    color: white;
+    display: none; /* Default: hide menu for small screens */
+    padding: 0;
+    margin: 0;
+    gap: 10px;  /* Space between items */
+}
+
+.nav-menu ul li {
+    display: inline;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;  /* Make <a> behave as a block to allow transform */
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for scale */
+}
+
+.nav-menu ul li a:hover {
+    transform: scale(1.05);
+}
+
+
 /* Side Menu (hidden by default, visible on small screens) */
 .side-menu {
     position: fixed;
@@ -856,5 +884,27 @@ body.dark-mode {
     
     .dark-mode .athlete-info {
         color: white;
+    }
+}
+
+/* Responsive behavior for screens larger than 780px */
+@media (min-width: 780px) {
+    nav {
+        justify-content: space-between;
+    }
+
+    /* Hide the hamburger icon */
+    .hamburger {
+        display: none;
+    }
+    /* Show the full navigation menu */
+    .nav-menu ul {
+        display: flex;  /* Switch to horizontal nav layout */
+        justify-content: flex-start;
+    }
+
+    /* Hide the side menu since the full menu is visible */
+    .side-menu {
+        display: none;
     }
 }

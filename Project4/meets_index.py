@@ -24,6 +24,16 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             <div>Skyline Cross Country 2024</div>
         </div>
         
+        <div class="nav-menu">
+            <ul>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#about" tabindex="0">About Us</a></li>
+                <li><a href="#meets" tabindex="0">Our Meets</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        
+        
         <div class="nav-right">
             <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
@@ -41,6 +51,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
+        
     </nav>
    
     <header class="index" tabindex="0">

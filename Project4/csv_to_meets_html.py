@@ -44,6 +44,16 @@ def csv_to_html(csv_filename, output_folder):
             <div>Skyline Cross Country 2024</div>
         </div>
         
+        <div class="nav-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Race Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        
         <div class="nav-right">
             <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
@@ -58,7 +68,7 @@ def csv_to_html(csv_filename, output_folder):
         <div class="side-menu">
             <ul>
                 <li><a href="../index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#summary" tabindex="0">Race Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
                 <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
