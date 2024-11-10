@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let currentImageIndex = 0;
 const galleryImage = document.getElementById("gallery-image");
+const lightBoxImage = document.getElementById("lightbox-image");
 
 // Function to show the next image
 function nextImage() {
@@ -113,6 +114,7 @@ function showImage(direction) {
 
     // Set the new image source
     galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
+    lightBoxImage.href = `images/team/${meet_id}/${images[currentImageIndex]}`;
 
     // Add animation class based on direction
     galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
@@ -193,3 +195,17 @@ applySearchButton.addEventListener('click', function() {
     });
 });
 });
+
+// Select all images on the page
+document.querySelectorAll('img').forEach(img => {
+    img.onerror = function() {
+    this.onerror = null; // Prevents infinite loop if default image missing
+    this.src = '../images/default_image.jpg';
+    this.alt = "Default images"
+    };
+});
+
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+  })
