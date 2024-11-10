@@ -44,6 +44,18 @@ def csv_to_html(csv_filename, output_folder):
             <div>Skyline Cross Country 2024</div>
         </div>
         
+        <!-- Side menu for small screens (hidden by default) -->
+        <div class="side-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Race Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div> <!-- Background overlay -->
+
         <div class="nav-menu">
             <ul>
                 <li><a href="../index.html" tabindex="0">Home Page</a></li>
@@ -60,23 +72,10 @@ def csv_to_html(csv_filename, output_folder):
             </button>
             <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         </div>
-    """
-    
-        html_content += """
         
-        <!-- Side menu for small screens (hidden by default) -->
-        <div class="side-menu">
-            <ul>
-                <li><a href="../index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#summary" tabindex="0">Race Summary</a></li>
-                <li><a href="#team-results" tabindex="0">Team Results</a></li>
-                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
-                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
-            </ul>
-        </div>
-        <div class="overlay"></div> <!-- Background overlay -->
     </nav>
     """
+    
     
         html_content += f"""
     <header class="meets" tabindex="0">

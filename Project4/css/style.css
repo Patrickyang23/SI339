@@ -174,6 +174,10 @@ nav {
     /* font-size: 1.2em; */
 }
 
+.side-menu ul li a:hover {
+    transform: scale(1.05);
+}
+
 /* Make the side menu slide in */
 .side-menu.active {
     left: 0;
@@ -607,6 +611,8 @@ input, select {
     display: flex;            /* Enable flexbox for centering */
     justify-content: space-evenly;  /* Centers image horizontally */
     align-items: center;      /* Centers image vertically */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds the height */
+    overflow-x: auto;  /* Enable horizontal scrolling on smaller screens */
 }
 
 /* Image styling */
@@ -825,6 +831,8 @@ body.dark-mode {
 
     /* Remove hover scaling effects */
     .hamburger:hover,
+    .nav-menu ul li a:hover,
+    .side-menu ul li a:hover
     .athlete-card:hover,
     .fab:hover,
     .fa-brands.fa-instagram:hover,
@@ -904,7 +912,18 @@ body.dark-mode {
     }
 
     /* Hide the side menu since the full menu is visible */
+    .arrow {
+        position: absolute;
+    }
     .side-menu {
         display: none;
+    }
+
+    .left-arrow {
+        left: 30px;
+    }
+    
+    .right-arrow {
+        right: 30px;
     }
 }

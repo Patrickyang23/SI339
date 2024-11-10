@@ -1,6 +1,13 @@
 // JavaScript to handle the moon icon behavior
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
+
+    // Log a message to the console
+    if (document.body.classList.contains("dark-mode")) {
+        console.log("Dark mode is now enabled.");
+    } else {
+        console.log("Dark mode is now disabled.");
+    }
 }
 
 // JavaScript to handle the hamburger and overlay behavior
@@ -8,18 +15,20 @@ function toggleDarkMode() {
 const hamburger = document.querySelector(".hamburger");
 const sideMenu = document.querySelector(".side-menu");
 const overlay = document.querySelector(".overlay");
-const sideMenuLinks = document.querySelectorAll(".side-menu a");
+// const sideMenuLinks = document.querySelectorAll(".side-menu a");
 
 // Function to open the menu
 function openMenu() {
     sideMenu.classList.add("active");
     overlay.classList.add("active");
+    console.log("Opening menu.");
 }
 
 // Function to close the menu
 function closeMenu() {
     sideMenu.classList.remove("active");
     overlay.classList.remove("active");
+    console.log("Closing menu.");
 }
 
 // Function to toggle menu visibility
@@ -37,32 +46,25 @@ hamburger.addEventListener("click", function () {
     toggleMenu();
 });
 
-// Automatically open the menu when the hamburger icon is focused
-hamburger.addEventListener("focus", function () {
-    openMenu();
-});
-
-// Add focus listeners to each link in the side menu
-sideMenuLinks.forEach(function (link) {
-    link.addEventListener("focus", function () {
-        openMenu();
-    });
-});
-
-// Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
-document.addEventListener("focusin", function (event) {
-    // Check if the newly focused element is outside both the side menu and the hamburger icon
-    if (
-        !sideMenu.contains(event.target) &&
-        !hamburger.contains(event.target)
-    ) {
-        closeMenu();
-    }
-});
-
 // Add event listener to overlay to close the menu when clicked
 overlay.addEventListener("click", function () {
     closeMenu();
+});
+
+// Toggle menu when the hamburger icon is clicked or focused
+hamburger.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleMenu();
+    }
+});
+
+// Manage focus events to automatically close menu if focus leaves both menu and hamburger
+document.addEventListener("focusin", function(event) {
+    const focusedOutsideMenu = !sideMenu.contains(event.target) && !hamburger.contains(event.target);
+    if (focusedOutsideMenu && sideMenu.classList.contains("active")) {
+        closeMenu();
+    }
 });
 
 // JavaScript to toggle collapsible sections
@@ -205,7 +207,7 @@ document.querySelectorAll('img').forEach(img => {
     };
 });
 
-lightbox.option({
-    'resizeDuration': 200,
-    'wrapAround': true
-  })
+// lightbox.option({
+//     'resizeDuration': 200,
+//     'wrapAround': true
+// })

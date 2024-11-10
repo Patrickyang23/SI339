@@ -24,6 +24,17 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             <div>Skyline Cross Country 2024</div>
         </div>
         
+        <!-- Side menu for small screens (hidden by default) -->
+        <div class="side-menu">
+            <ul>
+                <li><a href="index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#about" tabindex="0">About Us</a></li>
+                <li><a href="#meets" tabindex="0">Our Meets</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div> <!-- Background overlay -->
+        
         <div class="nav-menu">
             <ul>
                 <li><a href="index.html" tabindex="0">Home Page</a></li>
@@ -40,17 +51,6 @@ def generate_homepage(csv_filename, folder_path, html_filename):
             </button>
             <img src="images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
         </div>
-        
-        <!-- Side menu for small screens (hidden by default) -->
-        <div class="side-menu">
-            <ul>
-                <li><a href="index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#about" tabindex="0">About Us</a></li>
-                <li><a href="#meets" tabindex="0">Our Meets</a></li>
-                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
-            </ul>
-        </div>
-        <div class="overlay"></div> <!-- Background overlay -->
         
     </nav>
    
