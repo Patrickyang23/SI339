@@ -14,6 +14,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="css/lightbox.css">
 </head>
     <body>
     <a class="skip" href = "#main">Skip to Main Content</a>
@@ -144,7 +145,9 @@ def generate_homepage(csv_filename, folder_path, html_filename):
                     """
     html_content += f"""
                         <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
-                        <img id="gallery-image" src="images/team/{image_list[0]}" alt="Skyline Gallery Images">
+                        <a href = "images/team/{image_list[0]}" id="lightbox-image" target="_blank" data-lightbox="athletes" data-title="Skyline Photo Gallery">
+                            <img id="gallery-image" src="images/team/{image_list[0]}" alt="Skyline Photo Gallery Images">
+                        </a>
                         <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
                     </div>
                 </div>
@@ -182,6 +185,7 @@ def generate_homepage(csv_filename, folder_path, html_filename):
     </footer>
     
     <script src="js/index.js"></script>
+    <script src="js/lightbox-plus-jquery.js"></script>
         
     </body>
     </html>

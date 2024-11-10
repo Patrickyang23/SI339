@@ -34,6 +34,7 @@ def csv_to_html(csv_filename, output_folder):
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="../css/lightbox.css">
 </head>
     <body>
     <a class="skip" href = "#main">Skip to Main Content</a>
@@ -226,7 +227,9 @@ def csv_to_html(csv_filename, output_folder):
             """
             html_content += f"""
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
-                    <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Skyline Gallery Images">
+                    <a href = "../images/meets/{meet_id}/{image_list[0]}" id="lightbox-image" target="_blank" data-lightbox="athletes" data-title="Skyline Photo Gallery">
+                        <img id="gallery-image" src="../images/meets/{meet_id}/{image_list[0]}" alt="Skyline Gallery Images">
+                    </a>
                     <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
             """
             
@@ -284,6 +287,7 @@ def csv_to_html(csv_filename, output_folder):
     </footer>
     
     <script src="../js/meet.js"></script>
+    <script src="../js/lightbox-plus-jquery.js"></script>
     
     </body>
 </html>
