@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="../css/lightbox.css">
 </head>
     <body>
     <a class="skip" href = "#main">Skip to Main Content</a>
@@ -17,95 +18,36 @@
             <div>Skyline Cross Country 2024</div>
         </div>
         
-        <div class="nav-right">
-            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
-        </div>
-    
-        <script>
-            function toggleDarkMode() {
-                document.body.classList.toggle("dark-mode");
-            }
-        </script>
-        
         <!-- Side menu for small screens (hidden by default) -->
         <div class="side-menu">
             <ul>
                 <li><a href="../index.html" tabindex="0">Home Page</a></li>
-                <li><a href="#summary" tabindex="0">Summary</a></li>
+                <li><a href="#summary" tabindex="0">Race Summary</a></li>
                 <li><a href="#team-results" tabindex="0">Team Results</a></li>
                 <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
                 <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
             </ul>
         </div>
         <div class="overlay"></div> <!-- Background overlay -->
+
+        <div class="nav-menu">
+            <ul>
+                <li><a href="../index.html" tabindex="0">Home Page</a></li>
+                <li><a href="#summary" tabindex="0">Race Summary</a></li>
+                <li><a href="#team-results" tabindex="0">Team Results</a></li>
+                <li><a href="#individual-results" tabindex="0">Individual Results</a></li>
+                <li><a href="#gallery" tabindex="0">Photo Gallery</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-right">
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <img src="../images/skylineeagle.jpg" alt="Skyline Eagles Logo" class="nav-logo">
+        </div>
+        
     </nav>
-    
-    <!-- JavaScript to handle the hamburger and overlay behavior -->
-    <script>
-        // Select the relevant elements
-        const hamburger = document.querySelector(".hamburger");
-        const sideMenu = document.querySelector(".side-menu");
-        const overlay = document.querySelector(".overlay");
-        const sideMenuLinks = document.querySelectorAll(".side-menu a");
-
-        // Function to open the menu
-        function openMenu() {
-            sideMenu.classList.add("active");
-            overlay.classList.add("active");
-        }
-
-        // Function to close the menu
-        function closeMenu() {
-            sideMenu.classList.remove("active");
-            overlay.classList.remove("active");
-        }
-        
-        // Function to toggle menu visibility
-        function toggleMenu() {
-            const isActive = sideMenu.classList.contains("active");
-            if (isActive) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        }
-
-        // Toggle menu when clicking the hamburger icon
-        hamburger.addEventListener("click", function () {
-            toggleMenu();
-        });
-
-        // Automatically open the menu when the hamburger icon is focused
-        hamburger.addEventListener("focus", function () {
-            openMenu();
-        });
-
-        // Add focus listeners to each link in the side menu
-        sideMenuLinks.forEach(function (link) {
-            link.addEventListener("focus", function () {
-                openMenu();
-            });
-        });
-
-        // Add focusout event listener to the side menu and hamburger icon to detect when focus leaves
-        document.addEventListener("focusin", function (event) {
-            // Check if the newly focused element is outside both the side menu and the hamburger icon
-            if (
-                !sideMenu.contains(event.target) &&
-                !hamburger.contains(event.target)
-            ) {
-                closeMenu();
-            }
-        });
-        
-        // Add event listener to overlay to close the menu when clicked
-        overlay.addEventListener("click", function () {
-            closeMenu();
-        });
-    </script>
     
     <header class="meets" tabindex="0">
         <h1><a href="https://www.athletic.net/CrossCountry/meet/236875/results/947086">Bret Clements Bath Invitational Womens 5000 Meters J.V.</a></h1>
@@ -426,81 +368,11 @@
                 <button id="apply-filter">Apply</button>
             </div>
         </div>
-        
         </div>
 
         </section>
 
         
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            const filterFab = document.getElementById('fab-filter');
-            const searchFab = document.getElementById('fab-search');
-            const filterModal = document.getElementById('filter-modal');
-            const searchModal = document.getElementById('search-modal');
-            const applyFilterButton = document.getElementById('apply-filter');
-            const applySearchButton = document.getElementById('apply-search');
-            const gradeFilter = document.getElementById('grade-filter');
-            const nameSearch = document.getElementById('name-search');
-            const athleteCards = document.querySelectorAll('.athlete-card');
-
-            // Show/Hide Filter Modal
-            filterFab.addEventListener('click', function() {
-                filterModal.classList.toggle('active');
-                if (searchModal.classList.contains('active')) {
-                    searchModal.classList.remove('active'); // Close search modal if open
-                }
-            });
-
-            // Show/Hide Search Modal
-            searchFab.addEventListener('click', function() {
-                searchModal.classList.toggle('active');
-                if (filterModal.classList.contains('active')) {
-                    filterModal.classList.remove('active'); // Close filter modal if open
-                }
-            });
-            
-            // Close modals when clicking outside of modal content
-            window.addEventListener('click', function(event) {
-                if (event.target === filterModal) {
-                    filterModal.classList.remove('active');
-                }
-                if (event.target === searchModal) {
-                    searchModal.classList.remove('active');
-                }
-            });
-
-            // Apply the filter
-            applyFilterButton.addEventListener('click', function() {
-                const selectedGrade = gradeFilter.value;
-                filterModal.classList.remove('active');
-
-                athleteCards.forEach(card => {
-                    const cardGrade = card.getAttribute('data-grade');
-                    if (selectedGrade === 'all' || cardGrade === selectedGrade) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-
-            // Apply the search
-            applySearchButton.addEventListener('click', function() {
-                const searchName = nameSearch.value.toLowerCase();
-                searchModal.classList.remove('active');
-
-                athleteCards.forEach(card => {
-                    const cardName = card.getAttribute('data-name');
-                    if (cardName.includes(searchName)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        </script>
         
         <section id = "gallery" tabindex="0">
             <div class="section-header">
@@ -513,10 +385,10 @@
                     
                     <div class="gallery-slide">
             
-                    <img id="gallery-image" src="../images/meets/236875/IMG_9223.jpg" alt="Gallery Image">
-            
-                    </div>
                     <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
+                    <a href = "../images/meets/236875/IMG_9181.jpg" id="lightbox-image" target="_blank" data-lightbox="athletes" data-title="Skyline Photo Gallery">
+                        <img id="gallery-image" src="../images/meets/236875/IMG_9181.jpg" alt="Skyline Gallery Images">
+                    </a>
                     <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
             
                 </div>
@@ -527,72 +399,11 @@
             </div>
         </section>
         
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const toggleButtons = document.querySelectorAll('.toggle-button');
-
-                toggleButtons.forEach(toggleButton => {
-                    const sectionName = toggleButton.getAttribute('data-section');
-                    const collapsibleContent = toggleButton.closest('.section-header').nextElementSibling;
-
-                    toggleButton.addEventListener('click', function() {
-                        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                        toggleButton.setAttribute('aria-expanded', !isExpanded);
-
-                        // Update the button text based on the section
-                        if (isExpanded) {
-                            toggleButton.textContent = `Show ${sectionName}`;
-                            collapsibleContent.classList.remove('open');
-                        } else {
-                            toggleButton.textContent = `Hide ${sectionName}`;
-                            collapsibleContent.classList.add('open');
-                        }
-                    });
-                });
-            });
-        </script>  
-        
             <script>
                 const meet_id = "236875";  // Pass meet_id as a JavaScript variable
-                const images = ['IMG_9223.jpg', 'IMG_9100.jpg', 'IMG_9177.jpg', 'IMG_9228.jpg', 'IMG_9110.jpg', 'IMG_9122.jpg', 'IMG_9210.jpg', 'IMG_9230.jpg', 'IMG_9096.jpg', 'PXL_20240907_131626782~2.jpg'];  // JavaScript array of images generated from Python
-
-                let currentImageIndex = 0;
-                const galleryImage = document.getElementById("gallery-image");
-            
-
-                // Function to show the next image
-                function nextImage() {
-                    currentImageIndex = (currentImageIndex + 1) % images.length;
-                    showImage("right");
-                }
-
-                // Function to show the previous image
-                function prevImage() {
-                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                    showImage("left");
-                }
-
-                // Function to display the image with sliding animation
-                function showImage(direction) {
-                    galleryImage.classList.remove("active-slide", "slide-in-left", "slide-in-right");
-                    
-                    // Trigger a reflow to restart animation
-                    void galleryImage.offsetWidth;
-
-                    // Set the new image source
-                    galleryImage.src = `../images/meets/${meet_id}/${images[currentImageIndex]}`;
-
-                    // Add animation class based on direction
-                    galleryImage.classList.add(direction === "left" ? "slide-in-left" : "slide-in-right");
-
-                    // After animation, set it back to active position
-                    setTimeout(() => {
-                        galleryImage.classList.remove("slide-in-left", "slide-in-right");
-                        galleryImage.classList.add("active-slide");
-                    }, 500); // Duration should match CSS transition time
-                }
+                const images = ['IMG_9181.jpg', 'IMG_9101.jpg', 'IMG_9158.jpg', 'IMG_9214.jpg', 'IMG_9107.jpg', 'IMG_9200.jpg', 'IMG_9164.png', 'IMG_9203.jpg', 'IMG_9195.jpg', 'IMG_9105.jpg'];  // JavaScript array of images generated from Python
             </script>
-        
+            
     </main>   
     <footer>
         <div class="footer-container">
@@ -614,5 +425,9 @@
             <p>&copy 2024 Skyline High School. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script src="../js/meet.js"></script>
+    <script src="../js/lightbox-plus-jquery.js"></script>
+    
     </body>
 </html>

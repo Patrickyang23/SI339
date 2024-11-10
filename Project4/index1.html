@@ -237,23 +237,23 @@
             
             <div class="collapsible-content open">
                 <div class="gallery-container">
+                    
                     <div class="gallery-slide">
+                        <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
                     
-                            <img id="gallery-image" src="images/team/DSC00357.jpg" alt="Gallery Image">
-                    
+                            <img id="gallery-image" src="images/team/DSC00357.jpg" alt="Skyline Gallery Images">
+
+                            <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
                     </div>
-                    <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button> <!-- Left arrow -->
-                    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button> <!-- Right arrow -->
+
                 </div>
             </div>
         </section>
-        
-
-    
-
-    
-
-       
+           
+        <script>
+            const images = ['DSC00357.jpg', 'DSC09380.jpg', 'DSC09461.jpg', 'DSC09495.jpg', 'DSC09556.jpg', 'DSC09580.jpg', 'DSC09641.jpg', 'DSC09695.jpg', 'DSC09717.jpg'];  // JavaScript array of images generated from Python
+        </script>
+           
     <footer>
         <div class="footer-container">
             <p>
